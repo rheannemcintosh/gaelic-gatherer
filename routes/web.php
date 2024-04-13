@@ -29,3 +29,9 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Frontend routes
+Route::get('/research-study', function () {
+    return view('research-study');
+});
+
