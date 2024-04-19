@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->string('slug');
+            $table->boolean('active');
+            $table->integer('sort_order');
+            $table->string('thumnbnail')->nullable();
+            $table->string('banner')->nullable();
             $table->timestamps();
         });
     }
