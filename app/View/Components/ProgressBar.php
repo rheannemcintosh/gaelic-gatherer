@@ -8,7 +8,11 @@ use Illuminate\View\Component;
 
 class ProgressBar extends Component
 {
-    public $percentage;
+    /**
+     * The progress bar percentage.
+     */
+    public int $percentage;
+
     /**
      * Create a new component instance.
      */
@@ -17,9 +21,10 @@ class ProgressBar extends Component
         // Generate a random number between 0 and 3
         $randomIndex = rand(0, 3);
 
-        // Array of possible values
+        // Array of possible percentage values
         $values = [0, 33, 66, 100];
 
+        // Set the percentage value
         $this->percentage = $values[$randomIndex];
     }
 
