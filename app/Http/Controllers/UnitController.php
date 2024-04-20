@@ -35,9 +35,13 @@ class UnitController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        //
+        // Retrieve the unit based on the slug
+        $unit = Unit::where('slug', $slug)->firstOrFail();
+
+        // Return the view with the unit data
+        return view('units.show', compact('unit'));
     }
 
     /**
