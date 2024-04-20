@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('slug');
             $table->boolean('active');
             $table->integer('sort_order');
-            $table->string('thumnbnail')->nullable();
             $table->string('banner')->nullable();
             $table->timestamps();
         });
