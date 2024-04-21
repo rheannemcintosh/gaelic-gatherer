@@ -34,9 +34,9 @@ class LessonController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Lesson $lesson)
+    public function show(string $unitSlug, Lesson $lesson)
     {
-        //
+        return view('lessons.show', compact('lesson'));
     }
 
     /**
