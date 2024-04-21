@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Unit;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 
-class UnitController extends Controller
+class LessonController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $units = Unit::with('lessons')->get();
-
-        return view('pages.overview', compact('units'));
+        //
     }
 
     /**
@@ -36,19 +34,15 @@ class UnitController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $slug)
+    public function show(string $unitSlug, Lesson $lesson)
     {
-        // Retrieve the unit based on the slug
-        $unit = Unit::where('slug', $slug)->firstOrFail();
-
-        // Return the view with the unit data
-        return view('units.show', compact('unit'));
+        return view('lessons.show', compact('lesson'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Lesson $lesson)
     {
         //
     }
@@ -56,7 +50,7 @@ class UnitController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Lesson $lesson)
     {
         //
     }
@@ -64,7 +58,7 @@ class UnitController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Lesson $lesson)
     {
         //
     }
