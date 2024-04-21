@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('unit_id')->constrained();
+            $table->foreignId('lesson_type_id')->constrained();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->boolean('active')->default(true);
+            $table->boolean('required')->default(false);
             $table->timestamps();
         });
     }
