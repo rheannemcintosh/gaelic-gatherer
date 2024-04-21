@@ -12,7 +12,8 @@ class UnitController extends Controller
      */
     public function index()
     {
-        $units = Unit::all();
+        $units = Unit::with('lessons')->get();
+
         return view('pages.overview', compact('units'));
     }
 
