@@ -18,4 +18,14 @@ class Lesson extends Model
     {
         return $this->belongsTo('App\Models\Unit');
     }
+
+    /**
+     * The type of lesson.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function lessonType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo('App\Models\LessonType');
+    }
 }
