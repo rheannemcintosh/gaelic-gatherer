@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Lesson;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -9,11 +10,16 @@ use Illuminate\View\Component;
 class OverviewLesson extends Component
 {
     /**
+     * The lesson instance.
+     */
+    public Lesson $lesson;
+
+    /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($lesson)
     {
-        //
+        $this->lesson = $lesson;
     }
 
     /**
