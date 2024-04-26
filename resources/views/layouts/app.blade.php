@@ -1,36 +1,29 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Head -->
+    @include('components.head')
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <!-- Body -->
+    <body class="font-sans antialiased min-h-screen bg-gray-50 sm:bg-gray-100 flex flex-col text-gray-800">
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+        <!-- Page Content -->
+        <main class="sm:p-8 flex justify-center items-center min-h-screen ">
+            <div class="w-full flex flex-col items-center lg:max-w-4xl pt-8">
+                <img class="w-28 h-28 bg-blue-500" src="" />
+                <h1 class="text-2xl font-bold">Gaelic Gatherer</h1>
+                <div class="m-8 p-8 bg-white shadow-md sm:rounded-lg">
+                    {{ $slot }}
+                </div>
+            </div>
+        </main>
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+        <!-- Footer -->
+        <footer class="mt-auto bg-gray-400 text-white p-4">
+            <div class="container mx-auto text-center">
+                © Rheanne McIntosh 2024
+            </div>
+        </footer>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
     </body>
 </html>
