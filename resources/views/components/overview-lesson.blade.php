@@ -1,3 +1,5 @@
-<div>
-    <!-- An <unexamined life is not worth living. - Socrates -->
+<div class="p-8">
+    @if($lesson->name == 'Numbers Overview')
+        <x-numbers-overview />
+    @endif
 </div>
