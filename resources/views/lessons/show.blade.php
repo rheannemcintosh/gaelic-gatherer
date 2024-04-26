@@ -15,4 +15,9 @@
             </p>
         </div>
     </div>
+
+    @if ($lesson->lessonType->name == 'Reading')
+        <x-overview-lesson :lesson="$lesson"/>
+    @endif
+
 </x-admin-layout>
