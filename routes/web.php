@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UnitController;
@@ -35,6 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/units/{slug}', [UnitController::class, 'show'])->name('units.show');
     Route::get('/units/{slug}/lessons/{lesson}', [LessonController::class, 'show'])->name('lessons.show');
 });
+
+Route::get('/research-study/download-pdf', [RegisteredUserController::class, 'downloadParticipantInformationSheetPDF'])->name('research-study.download-pdf');
 
 require __DIR__.'/auth.php';
 
