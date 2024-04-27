@@ -48,4 +48,14 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+    /**
+     * Download the participant information sheet PDF.
+     */
+    public function downloadParticipantInformationSheetPDF()
+    {
+        $filePath = storage_path('app/public/participant-information-sheet.pdf');
+
+        return response()->download($filePath);
+    }
 }
