@@ -1,5 +1,6 @@
 <div>
     <p class="font-bold">Please check each of the following boxes if you agree with the statement:</p>
+    <x-input-error :messages="$errors->get('initial_consent_statement')" class="mt-2" />
     <div class="p-2">
         @foreach (\App\Helpers\ConsentHelper::CONSENT_STATEMENTS as $statement)
             <div class="flex items-center mb-1">
