@@ -22,6 +22,7 @@ class User extends Authenticatable
         'password',
         'initial_consent',
         'pre_study_motivation',
+        'scottish_gaelic_competency'
     ];
 
     /**

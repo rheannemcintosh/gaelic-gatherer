@@ -39,6 +39,7 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'pre_study_motivation' => ['required', 'in:Highly Motivated,Moderately Motivated,Slightly Motivated,Not Motivated'],
+            'scottish_gaelic_competency' => ['required', 'in:None,Beginner,Intermediate,Advanced,Fluent,Native Speaker']
         ]);
 
         $user = User::create([
@@ -46,6 +47,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'initial_consent' => true,
             'pre_study_motivation' => $request->pre_study_motivation,
+            'scottish_gaelic_competency' => $request->scottish_gaelic_competency,
         ]);
 
         event(new Registered($user));

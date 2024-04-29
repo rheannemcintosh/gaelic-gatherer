@@ -19,6 +19,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->boolean('initial_consent')->default(false);
             $table->enum('pre_study_motivation', ['Highly Motivated', 'Moderately Motivated', 'Slightly Motivated', 'Not Motivated'])->nullable();
+            $table->enum('scottish_gaelic_competency', ['None', 'Beginner', 'Intermediate', 'Advanced', 'Fluent', 'Native Speaker'])->nullable();
             $table->timestamps();
         });
     }
