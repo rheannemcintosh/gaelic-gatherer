@@ -35,6 +35,19 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+        <!-- Pre-Study Motivation Level -->
+        <div class="mt-4">
+            <label for="pre_study_motivation" class="block text-sm font-medium text-gray-700">Motivation To Learn Scottish Gaelic Before Hearing About the Study</label>
+            <select id="pre_study_motivation" name="pre_study_motivation" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <option value="">Select your motivation level</option>
+                <option value="Highly Motivated">Highly motivated</option>
+                <option value="Moderately Motivated">Moderately motivated</option>
+                <option value="Slightly Motivated">Slightly motivated</option>
+                <option value="Not Motivated">Not motivated at all</option>
+            </select>
+            <x-input-error :messages="$errors->get('pre_study_motivation')" class="mt-2" />
+        </div>
+
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                 {{ __('Already registered?') }}

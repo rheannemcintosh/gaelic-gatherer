@@ -38,12 +38,14 @@ class RegisteredUserController extends Controller
         $request->validate([
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'pre_study_motivation' => ['required', 'in:Highly Motivated,Moderately Motivated,Slightly Motivated,Not Motivated'],
         ]);
 
         $user = User::create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'initial_consent' => true,
+            'pre_study_motivation' => $request->pre_study_motivation,
         ]);
 
         event(new Registered($user));
