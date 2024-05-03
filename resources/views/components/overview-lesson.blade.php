@@ -7,5 +7,7 @@
         <x-food-and-drink-overview />
     @elseif ($lesson->name == 'Places Overview')
         <x-places-overview />
+    @elseif ($lesson->name == 'Greetings Overview')
+        <x-greetings-overview />
     @endif
 </div>
