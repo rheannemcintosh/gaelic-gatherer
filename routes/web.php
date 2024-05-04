@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\PostStudyQuestionnaireController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/research-study/download-pdf', [RegisteredUserController::class, 'downloadParticipantInformationSheetPDF'])->name('research-study.download-pdf');
+
+
+// Post Study Questionnaire Routes
+Route::prefix('post-study-questionnaire')->group(function () {
+    Route::get('/', [PostStudyQuestionnaireController::class, 'show'])->name('post-study-questionnaire.show');
+    Route::post('/', [PostStudyQuestionnaireController::class, 'store'])->name('post-study-questionnaire.store');
+});
 
 require __DIR__.'/auth.php';
 
