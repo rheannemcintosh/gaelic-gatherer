@@ -22,28 +22,28 @@
             <p class="block text-base font-medium text-gray-700">Relations To Scotland</p>
             <div class="pl-2">
                 <div class="flex items-center">
-                    <input type="checkbox" id="scotland-relations[born-in-scotland]" name="scotland-relations[born-in-scotland]" value="Born In Scotland">
-                    <label class="pl-2" for="scotland-relations[born-in-scotland]">Born In Scotland</label>
+                    <input type="checkbox" id="born_in_scotland" name="born_in_scotland" value="true">
+                    <label class="pl-2" for="born_in_scotland">Born In Scotland</label>
                 </div>
                 <div class="flex items-center">
-                    <input type="checkbox" id="scotland-relations[live-in-scotland]" name="scotland-relations[live-in-scotland]" value="Live In Scotland">
-                    <label class="pl-2" for="scotland-relations[live-in-scotland]">Live In Scotland</label>
+                    <input type="checkbox" id="live_in_scotland" name="live_in_scotland" value="true">
+                    <label class="pl-2" for="live_in_scotland">Live In Scotland</label>
                 </div>
                 <div class="flex items-center">
-                    <input type="checkbox" id="scotland-relations[visited-scotland]" name="scotland-relations[visited-scotland]" value="Visited Scotland">
-                    <label class="pl-2" for="scotland-relations[visited-scotland]">Visited Scotland</label>
+                    <input type="checkbox" id="visited_scotland" name="visited_scotland" value="true">
+                    <label class="pl-2" for="visited_scotland">Visited Scotland</label>
                 </div>
                 <div class="flex items-center">
-                    <input type="checkbox" id="scotland-relations[scottish-ancestry]" name="scotland-relations[scottish-ancestry]" value="Scottish Ancestry">
-                    <label class="pl-2" for="scotland-relations[scottish-ancestry]">Scottish Ancestry</label>
+                    <input type="checkbox" id="scottish_ancestry" name="scottish_ancestry" value="true">
+                    <label class="pl-2" for="scottish_ancestry">Scottish Ancestry</label>
                 </div>
                 <div class="flex items-center">
-                    <input type="checkbox" id="scotland-relations[relations-to-highlands-and-islands]" name="scotland-relations[relations-to-highlands-and-islands]" value="Relations to Highlands and Island">
-                    <label class="pl-2" for="scotland-relations[relations-to-highlands-and-islands]">Relations to Highlands and Islands</label>
+                    <input type="checkbox" id="relations_to_highlands_and_islands" name="relations_to_highlands_and_islands" value="true">
+                    <label class="pl-2" for="relations_to_highlands_and_islands">Relations to Highlands and Islands</label>
                 </div>
                 <div class="flex items-center">
-                    <input type="checkbox" id="scotland-relations[interest-in-scottish-culture]" name="scotland-relations[interest-in-scottish-culture]" value="Interest In Scottish Culture">
-                    <label class="pl-2" for="scotland-relations[interest-in-scottish-culture]">Interested in Scottish Culture</label>
+                    <input type="checkbox" id="interested_in_scottish_culture" name="interested_in_scottish_culture" value="true">
+                    <label class="pl-2" for="interested_in_scottish_culture">Interested in Scottish Culture</label>
                 </div>
             </div>
         </div>
@@ -53,20 +53,20 @@
             <p class="block text-base font-medium text-gray-700">Relations To Scottish Gaelic</p>
             <div class="pl-2">
                 <div class="flex items-center">
-                    <input type="checkbox" id="gaelic-relations[speak-scottish-gaelic]" name="gaelic-relations[speak-scottish-gaelic]" value="Speak Scottish Gaelic">
-                    <label class="pl-2" for="gaelic-relations[speak-scottish-gaelic]">Speak Scottish Gaelic</label>
+                    <input type="checkbox" id="speak_scottish_gaelic" name="speak_scottish_gaelic" value="true">
+                    <label class="pl-2" for="speak_scottish_gaelic">Speak Scottish Gaelic</label>
                 </div>
                 <div class="flex items-center">
-                    <input type="checkbox" id="gaelic-relations[speak-gaelic]" name="gaelic-relations[speak-gaelic]" value="Speak Other Goidelic Languages (Irish, Manx)">
-                    <label class="pl-2" for="gaelic-relations[speak-gaelic]">Speak Other Goidelic Languages (Irish, Manx)</label>
+                    <input type="checkbox" id="speak_gaelic" name="speak_gaelic" value="true">
+                    <label class="pl-2" for="speak_gaelic">Speak Other Goidelic Languages (Irish, Manx)</label>
                 </div>
                 <div class="flex items-center">
-                    <input type="checkbox" id="gaelic-relations[interested-in-scottish-gaelic]" name="gaelic-relations[interested-in-scottish-gaelic]" value="Interested in Scottish Gaelic">
-                    <label class="pl-2" for="gaelic-relations[interested-in-scottish-gaelic]">Interested In Scottish Gaelic</label>
+                    <input type="checkbox" id="interested_in_scottish_gaelic" name="interested_in_scottish_gaelic" value="true">
+                    <label class="pl-2" for="interested_in_scottish_gaelic">Interested In Scottish Gaelic</label>
                 </div>
                 <div class="flex items-center">
-                    <input type="checkbox" id="gaelic-relations[interested-in-gaelic]" name="gaelic-relations[interested-in-gaelic]" value="Interested in Gaelic">
-                    <label class="pl-2" for="gaelic-relations[interested-in-gaelic]">Interested In Gaelic</label>
+                    <input type="checkbox" id="interested_in_gaelic" name="interested_in_gaelic" value="true">
+                    <label class="pl-2" for="interested_in_gaelic">Interested In Gaelic</label>
                 </div>
             </div>
         </div>
