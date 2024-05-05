@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('knowledge_retention_quiz_results', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->integer('quiz');
+            $table->integer('question_1');
+            $table->integer('question_2');
+            $table->integer('question_3');
+            $table->integer('question_4');
+            $table->integer('question_5');
+            $table->integer('question_6');
+            $table->integer('question_7');
+            $table->integer('question_8');
+            $table->integer('question_9');
+            $table->integer('question_10');
+            $table->integer('score');
             $table->timestamps();
         });
     }
