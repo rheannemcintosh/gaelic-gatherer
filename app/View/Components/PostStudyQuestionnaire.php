@@ -6,19 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class AdminLayout extends Component
+class PostStudyQuestionnaire extends Component
 {
-    /**
-     * Shows whether the button to finish exploring the platform should be displayed or not.
-     */
-    public bool $hideButton;
-
     /**
      * Create a new component instance.
      */
-    public function __construct($hideButton = false)
+    public function __construct()
     {
-        $this->hideButton = $hideButton;
+        //
     }
 
     /**
@@ -26,6 +21,6 @@ class AdminLayout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('layouts.admin');
+        return view('components.post-study-questionnaire');
     }
 }
