@@ -14,7 +14,7 @@ class LessonTypeSeeder extends Seeder
     public function run(): void
     {
         DB::table('lesson_types')->insert([
-            'name' => 'Reading',
+            'name' => 'Overview',
         ]);
 
         DB::table('lesson_types')->insert([
