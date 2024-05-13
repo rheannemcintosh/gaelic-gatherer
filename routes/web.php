@@ -6,6 +6,7 @@ use App\Http\Controllers\LessonController;
 use App\Http\Controllers\PostStudyQuestionnaireController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\UserLessonController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,6 +54,14 @@ Route::prefix('knowledge-retention-quiz')->group(function () {
     Route::get('/', [KnowledgeRetentionQuizController::class, 'show'])->name('knowledge-retention-quiz.show');
     Route::post('/', [KnowledgeRetentionQuizController::class, 'store'])->name('knowledge-retention-quiz.store');
 });
+
+
+Route::middleware('auth')->group(function () {
+    Route::prefix('user-lesson')->group(function () {
+        Route::post('/', [UserLessonController::class, 'store'])->name('user-lessons.store');
+    });
+});
+
 
 require __DIR__.'/auth.php';
 

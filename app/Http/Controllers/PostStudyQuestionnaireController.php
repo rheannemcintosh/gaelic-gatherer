@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lesson;
 use App\Models\QuestionnaireResponse;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class PostStudyQuestionnaireController extends Controller
 {
@@ -16,6 +16,21 @@ class PostStudyQuestionnaireController extends Controller
      */
     public function show()
     {
+        $numberOfOverviewLessons = Lesson::whereHas('lessonType', function($query) {
+            $query->where('name', '=', 'Overview');
+        })->count();
+
+        $completedLessons = User::find(Auth::id())
+            ->lessons()
+            ->wherePivot('completed', true)
+            ->pluck('lesson_id')
+            ->unique()
+            ->count();
+
+        if ($numberOfOverviewLessons != $completedLessons) {
+            return redirect(RouteServiceProvider::HOME);
+        }
+
         return view('pages.post-study-questionnaire');
     }
 

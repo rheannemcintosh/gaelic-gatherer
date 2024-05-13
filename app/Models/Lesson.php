@@ -28,4 +28,14 @@ class Lesson extends Model
     {
         return $this->belongsTo('App\Models\LessonType');
     }
+
+    /**
+     * The users which have completed the lesson.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withPivot('completed', 'completed_at');
+    }
 }
