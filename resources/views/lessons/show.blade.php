@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    @if ($lesson->lessonType->name == 'Reading')
+    @if ($lesson->lessonType->name == 'Overview')
         <x-overview-lesson :lesson="$lesson"/>
     @endif
 
