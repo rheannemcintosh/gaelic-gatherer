@@ -54,4 +54,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Lesson::class)->using(LessonUser::class);
     }
+
+    /**
+     * The badges which have been completed by the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function badges(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Badge::class);
+    }
 }
