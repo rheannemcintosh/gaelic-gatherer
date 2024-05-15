@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Badge extends Model
 {
+//    protected $table = 'badge_users';
+
     use HasFactory;
 
     /**
@@ -19,4 +21,12 @@ class Badge extends Model
         'description',
         'icon'
     ];
+
+    /**
+     * The users that belong to the badge.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }
