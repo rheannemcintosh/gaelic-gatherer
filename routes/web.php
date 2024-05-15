@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\BadgeUserController;
 use App\Http\Controllers\KnowledgeRetentionQuizController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\PostStudyQuestionnaireController;
@@ -62,6 +63,11 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+Route::middleware('auth')->group(function () {
+    Route::prefix('badge-user')->group(function () {
+        Route::post('/', [BadgeUserController::class, 'store'])->name('badge-users.store');
+    });
+});
 
 require __DIR__.'/auth.php';
 
