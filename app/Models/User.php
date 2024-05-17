@@ -76,6 +76,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Count the number of completed lessons for the user.
+     *
+     * @return int
+     */
+    public function countCompletedLessons()
+    {
+        return $this->completedLessons()->count();
+    }
+
+    /**
      * The uncompleted badges for the user.
      *
      * @return \Illuminate\Database\Eloquent\Collection
