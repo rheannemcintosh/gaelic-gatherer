@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BadgeUserController;
 use App\Http\Controllers\KnowledgeRetentionQuizController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\MyBadgesController;
 use App\Http\Controllers\PostStudyQuestionnaireController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UnitController;
@@ -20,6 +21,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// Authenticated Routes
+Route::middleware('auth')->group(function () {
+
+    // Badges
+    Route::get('/my-badges', [MyBadgesController::class, 'index'])->name('my-badges.index');
+
+});
 
 Route::get('/', function () {
     return view('welcome');
