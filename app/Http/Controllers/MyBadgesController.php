@@ -23,6 +23,22 @@ class MyBadgesController extends Controller
     }
 
     /**
+     * Check for new badges earned by the current user.
+     *
+     * @return RedirectResponse
+     */
+    public function checkForNewBadges(): RedirectResponse
+    {
+        foreach (auth()->user()->uncompletedBadges() as $badge) {
+            // Temporary placeholder to check if the badge is the one we're looking for
+            dd($badge->name);
+        }
+
+        // Redirect the user to the home page
+        return redirect(RouteServiceProvider::HOME);
+    }
+
+    /**
      * Display the badges for the current user.
      */
     public function index ()
