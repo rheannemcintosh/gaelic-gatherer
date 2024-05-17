@@ -64,4 +64,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Badge::class)->withPivot('completed', 'completed_at');
     }
+
+    /**
+     * The uncompleted badges for the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function uncompletedBadges(): \Illuminate\Database\Eloquent\Collection
+    {
+        return $this->badges()->wherePivot('completed', false)->get();
+    }
 }
