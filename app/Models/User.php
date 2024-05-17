@@ -66,6 +66,16 @@ class User extends Authenticatable
     }
 
     /**
+     * The lessons which have been completed by the user.
+     *
+     * @return BelongsToMany
+     */
+    public function completedLessons(): BelongsToMany
+    {
+        return $this->belongsToMany(Lesson::class)->using(LessonUser::class)->wherePivot('completed', true);
+    }
+
+    /**
      * The uncompleted badges for the user.
      *
      * @return \Illuminate\Database\Eloquent\Collection
