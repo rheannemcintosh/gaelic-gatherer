@@ -32,8 +32,13 @@ class MyBadgesController extends Controller
     public function checkForNewBadges(): RedirectResponse
     {
         foreach (auth()->user()->uncompletedBadges() as $badge) {
-            if ($badge->name == 'Brilliant Bagpipes') {
-                $this->checkBrilliantBagpipes($badge->id);
+            switch ($badge->name) {
+                case 'Brilliant Bagpipes':
+                    $this->checkBrilliantBagpipes($badge->id);
+                    break;
+                case 'Kingly Kilt':
+                    $this->checkKinglyKilt($badge->id);
+                    break;
             }
         }
 
@@ -44,11 +49,23 @@ class MyBadgesController extends Controller
     /**
      * Check if the user has completed the required lessons for the Brilliant Bagpipes badge.
      *
-     * @param $badgeId the id of the badge to check and update if necessary
+     * @param $badgeId integer the id of the badge to check and update if necessary
      */
     private function checkBrilliantBagpipes($badgeId)
     {
         if (auth()->user()->countCompletedLessons() >= 1) {
+            auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+        }
+    }
+
+    /**
+     * Check if the user has completed the required lessons for the Kingly Kilt badge.
+     *
+     * @param $badgeId integer the id of the badge to check and update if necessary
+     */
+    private function checkKinglyKilt($badgeId)
+    {
+        if (auth()->user()->countCompletedLessons() >= 5) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
         }
     }
