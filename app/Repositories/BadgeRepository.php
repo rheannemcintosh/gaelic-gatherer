@@ -11,6 +11,6 @@ class BadgeRepository
      */
     public function all()
     {
-        return Badge::all();
+        return auth()->user()->badges;
     }
 }

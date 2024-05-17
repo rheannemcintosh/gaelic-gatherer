@@ -62,6 +62,6 @@ class User extends Authenticatable
      */
     public function badges(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Badge::class);
+        return $this->belongsToMany(Badge::class)->withPivot('completed', 'completed_at');
     }
 }
