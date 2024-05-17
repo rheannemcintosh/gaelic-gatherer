@@ -39,6 +39,9 @@ class MyBadgesController extends Controller
                 case 'Kingly Kilt':
                     $this->checkKinglyKilt($badge->id);
                     break;
+                case 'Terrific Terrier':
+                    $this->checkTerrificTerrier($badge->id);
+                    break;
             }
         }
 
@@ -66,6 +69,18 @@ class MyBadgesController extends Controller
     private function checkKinglyKilt($badgeId)
     {
         if (auth()->user()->countCompletedLessons() >= 5) {
+            auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+        }
+    }
+
+    /**
+     * Check if the user has completed the required lessons for the Terrific Terrier badge.
+     *
+     * @param $badgeId integer the id of the badge to check and update if necessary
+     */
+    private function checkTerrificTerrier($badgeId)
+    {
+        if (auth()->user()->countCompletedLessons() >= 10) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
         }
     }
