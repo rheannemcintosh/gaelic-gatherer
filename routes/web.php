@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
     // Badges
     Route::get('/my-badges', [MyBadgesController::class, 'index'])->name('my-badges.index');
 
+        Route::get('/assign', [MyBadgesController::class, 'checkForNewBadges'])->name('badges.assign');
 });
 
 Route::get('/', function () {
