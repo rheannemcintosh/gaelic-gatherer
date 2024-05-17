@@ -26,6 +26,6 @@ class UserLessonController extends Controller
         $user->lessons()->attach($request->lesson, $pivotData);
 
         // Redirect back to the home page
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(route('badges.assign'));
     }
 }
