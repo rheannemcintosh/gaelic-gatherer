@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -48,9 +49,9 @@ class User extends Authenticatable
     /**
      * The lessons which have been completed by the user.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
-    public function lessons(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function lessons(): BelongsToMany
     {
         return $this->belongsToMany(Lesson::class)->using(LessonUser::class);
     }
@@ -58,11 +59,31 @@ class User extends Authenticatable
     /**
      * The badges which have been completed by the user.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
-    public function badges(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function badges(): BelongsToMany
     {
         return $this->belongsToMany(Badge::class)->withPivot('completed', 'completed_at');
+    }
+
+    /**
+     * The lessons which have been completed by the user.
+     *
+     * @return BelongsToMany
+     */
+    public function completedLessons(): BelongsToMany
+    {
+        return $this->belongsToMany(Lesson::class)->using(LessonUser::class)->wherePivot('completed', true);
+    }
+
+    /**
+     * Count the number of completed lessons for the user.
+     *
+     * @return int
+     */
+    public function countCompletedLessons()
+    {
+        return $this->completedLessons()->count();
     }
 
     /**

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Badge;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,12 +32,25 @@ class MyBadgesController extends Controller
     public function checkForNewBadges(): RedirectResponse
     {
         foreach (auth()->user()->uncompletedBadges() as $badge) {
-            // Temporary placeholder to check if the badge is the one we're looking for
-            dd($badge->name);
+            if ($badge->name == 'Brilliant Bagpipes') {
+                $this->checkBrilliantBagpipes($badge->id);
+            }
         }
 
         // Redirect the user to the home page
         return redirect(RouteServiceProvider::HOME);
+    }
+
+    /**
+     * Check if the user has completed the required lessons for the Brilliant Bagpipes badge.
+     *
+     * @param $badgeId the id of the badge to check and update if necessary
+     */
+    private function checkBrilliantBagpipes($badgeId)
+    {
+        if (auth()->user()->countCompletedLessons() >= 1) {
+            auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+        }
     }
 
     /**
