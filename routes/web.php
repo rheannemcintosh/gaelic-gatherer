@@ -25,10 +25,11 @@ use Illuminate\Support\Facades\Route;
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
 
-    // Badges
-    Route::get('/my-badges', [MyBadgesController::class, 'index'])->name('my-badges.index');
-
+    // Badge Routes
+    Route::prefix('badges')->group(function () {
+        Route::get('/', [MyBadgesController::class, 'index'])->name('badges.index');
         Route::get('/assign', [MyBadgesController::class, 'checkForNewBadges'])->name('badges.assign');
+    });
 });
 
 Route::get('/', function () {
