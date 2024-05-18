@@ -11,6 +11,8 @@ class BadgeRepository
      */
     public function all()
     {
-        return auth()->user()->badges;
+        if (isset(auth()->user()->badges)) {
+            return auth()->user()->badges;
+        }
     }
 }
