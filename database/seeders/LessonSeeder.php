@@ -48,5 +48,39 @@ class LessonSeeder extends Seeder
             'name' => 'Numbers Overview',
             'required' => true,
         ]);
+        DB::table('lessons')->insert([
+            'unit_id' => 1,
+            'lesson_type_id' => 5,
+            'name' => 'Match Greetings',
+            'required' => false,
+        ]);
+
+        DB::table('lessons')->insert([
+            'unit_id' => 2,
+            'lesson_type_id' => 5,
+            'name' => 'Match Places',
+            'required' => false,
+        ]);
+
+        DB::table('lessons')->insert([
+            'unit_id' => 3,
+            'lesson_type_id' => 5,
+            'name' => 'Match Food & Drink',
+            'required' => false,
+        ]);
+
+        DB::table('lessons')->insert([
+            'unit_id' => 4,
+            'lesson_type_id' => 5,
+            'name' => 'Match Weather',
+            'required' => false,
+        ]);
+
+        DB::table('lessons')->insert([
+            'unit_id' => 5,
+            'lesson_type_id' => 5,
+            'name' => 'Match Numbers',
+            'required' => false,
+        ]);
     }
 }
