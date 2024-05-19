@@ -1,5 +1,5 @@
 <div class="">
-    <form action="{{ route('lessons.complete') }}" method="POST">
+    <form method="POST" action="{{ route('user-lessons.store', ['lesson' => $lesson->id]) }}">
         @csrf
         <div class="grid grid-cols-2 gap-4 mb-4">
             <div class="mt-4">
