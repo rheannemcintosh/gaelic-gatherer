@@ -18,6 +18,8 @@
 
     @if ($lesson->lessonType->name == 'Overview')
         <x-overview-lesson :lesson="$lesson"/>
+    @elseif ($lesson->lessonType->name == 'Matching')
+        <x-matching-lesson :lesson="$lesson" :englishWords="$englishWords" :gaelicWords="$gaelicWords"/>
     @endif
 
 </x-admin-layout>
