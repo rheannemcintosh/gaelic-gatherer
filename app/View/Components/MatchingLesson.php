@@ -15,15 +15,17 @@ class MatchingLesson extends Component
     public Lesson $lesson;
     public $englishWords;
     public $gaelicWords;
+    public $name;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($lesson, $gaelicWords, $englishWords)
+    public function __construct($lesson, $gaelicWords, $englishWords, $name)
     {
         $this->lesson = $lesson;
         $this->gaelicWords = $gaelicWords;
         $this->englishWords = $englishWords;
+        $this->name = $name;
     }
 
     /**

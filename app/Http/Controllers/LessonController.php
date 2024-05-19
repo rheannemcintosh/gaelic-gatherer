@@ -36,24 +36,38 @@ class LessonController extends Controller
      */
     public function show(string $unitSlug, Lesson $lesson)
     {
-        $gaelicWords = [
-            ['index' => 0, 'word' => '1' ],
-            [ 'index' => 1, 'word' => '2' ],
-            [ 'index' => 2, 'word' => '3' ],
-            [ 'index' => 3, 'word' => '4' ]
-        ];
+        if ($lesson->lessonType->name != 'Matching') {
+            return view('lessons.show', compact('lesson'));
+        }
 
-        $englishWords = [
-            ['index' => 0, 'word' => '1' ],
-            [ 'index' => 1, 'word' => '2' ],
-            [ 'index' => 2, 'word' => '3' ],
-            [ 'index' => 3, 'word' => '4' ]
-        ];
+        $gaelicWords = [];
+        $englishWords = [];
+        $name = '';
+
+        switch ($lesson->name) {
+            case 'Match Greetings':
+                $gaelicWords = [
+                    ['index' => 0, 'word' => 'Fàilte'],
+                    ['index' => 1, 'word' => 'Halò'],
+                    ['index' => 2, 'word' => 'Mar Sin Leat'],
+                    ['index' => 3, 'word' => 'Tapadh Leibh']
+                ];
+                $englishWords = [
+                    ['index' => 0, 'word' => 'Welcome'],
+                    ['index' => 1, 'word' => 'Hello'],
+                    ['index' => 2, 'word' => 'Goodbye'],
+                    ['index' => 3, 'word' => 'Thank You']
+                ];
+                $name = 'greetings';
+                break;
+            default:
+                break;
+        }
 
         shuffle($gaelicWords);
         shuffle($englishWords);
 
-        return view('lessons.show', compact('lesson', 'gaelicWords', 'englishWords'));
+        return view('lessons.show', compact('lesson', 'gaelicWords', 'englishWords', 'name'));
     }
 
     /**
