@@ -13,13 +13,38 @@ class MatchingForm extends Component
     public Lesson $lesson;
 
     /**
-     * Create a new component instance.
+     * The selected Gaelic word index.
      */
-    public function mount($lesson)
-    {
-        $this->lesson = $lesson;
-    }
+    public $selectedGaelic = null;
 
+    /**
+     * The selected English word index.
+     */
+    public $selectedEnglish = null;
+
+    /**
+     * The pairs of Gaelic and English words.
+     */
+    public $pairs = [];
+
+    /**
+     * The incorrect pairs of Gaelic and English words.
+     */
+    public $incorrectPairs = [];
+
+    /**
+     * The form completion status.
+     */
+    public $isComplete = false;
+
+    /**
+     * The incorrect pairs status.
+     */
+    public $isIncorrect = false;
+
+    /**
+     * The default words to match. These will be updated in future jira stories.
+     */
     public $words = [
         ['gaelic' => 'Madainn mhath', 'english' => 'Good morning'],
         ['gaelic' => 'Oidhche mhath', 'english' => 'Good night'],
@@ -27,27 +52,40 @@ class MatchingForm extends Component
         ['gaelic' => 'Ciamar a tha thu?', 'english' => 'How are you?'],
     ];
 
-    public $selectedGaelic = null;
-    public $selectedEnglish = null;
-    public $pairs = [];
-    public $incorrectPairs = [];
-    public $isComplete = false;
-    public $isIncorrect = false;
-
+    /**
+     * The listeners for this component.
+     */
     protected $listeners = ['selectGaelic', 'selectEnglish'];
 
+    /**
+     * Create a new component instance.
+     */
+    public function mount($lesson)
+    {
+        $this->lesson = $lesson;
+    }
+
+    /**
+     * Get the index of gaelic card and check if it matches the selected english card.
+     */
     public function selectGaelic($index)
     {
         $this->selectedGaelic = $index;
         $this->checkPair();
     }
 
+    /**
+     * Get the index of english card and check if it matches the selected gaelic card.
+     */
     public function selectEnglish($index)
     {
         $this->selectedEnglish = $index;
         $this->checkPair();
     }
 
+    /**
+     * Check whether the selected gaelic and english words are a pair.
+     */
     public function checkPair()
     {
         if ($this->selectedGaelic !== null && $this->selectedEnglish !== null) {
@@ -65,11 +103,17 @@ class MatchingForm extends Component
         $this->checkCompletion();
     }
 
+    /**
+     * Reset the selected gaelic and english words after a delay.
+     */
     public function resetSelectionsAfterDelay()
     {
         $this->dispatch('reset-selections');
     }
 
+    /**
+     * Reset the selected gaelic and english words.
+     */
     public function resetSelections()
     {
         $this->selectedGaelic = null;
@@ -78,20 +122,17 @@ class MatchingForm extends Component
         $this->isIncorrect = false;
     }
 
+    /**
+     * Check whether the form is complete.
+     */
     public function checkCompletion()
     {
         $this->isComplete = count($this->pairs) === count($this->words);
     }
 
-    public function submitForm()
-    {
-        if ($this->isComplete) {
-            // Handle form submission, e.g., save data, redirect, etc.
-        } else {
-            $this->dispatch('form-not-complete');
-        }
-    }
-
+    /**
+     * Get the view / contents that represent the component.
+     */
     public function render()
     {
         return view('livewire.matching-form');
