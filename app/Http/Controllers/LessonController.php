@@ -36,7 +36,24 @@ class LessonController extends Controller
      */
     public function show(string $unitSlug, Lesson $lesson)
     {
-        return view('lessons.show', compact('lesson'));
+        $gaelicWords = [
+            ['index' => 0, 'word' => '1' ],
+            [ 'index' => 1, 'word' => '2' ],
+            [ 'index' => 2, 'word' => '3' ],
+            [ 'index' => 3, 'word' => '4' ]
+        ];
+
+        $englishWords = [
+            ['index' => 0, 'word' => '1' ],
+            [ 'index' => 1, 'word' => '2' ],
+            [ 'index' => 2, 'word' => '3' ],
+            [ 'index' => 3, 'word' => '4' ]
+        ];
+
+        shuffle($gaelicWords);
+        shuffle($englishWords);
+
+        return view('lessons.show', compact('lesson', 'gaelicWords', 'englishWords'));
     }
 
     /**

@@ -4,10 +4,10 @@
         <div class="grid grid-cols-2 gap-4 mb-4">
             <div class="mt-4">
                 <h2 class="text-xl font-bold mb-4 flex justify-center">Scottish Gaelic Words</h2>
-                @foreach($words as $index => $word)
+                @foreach($gaelicWords as $gaelicWord)
                     <div class="flex justify-center">
                         <div
-                            wire:click="selectGaelic({{ $index }})"
+                            wire:click="selectGaelic({{ $gaelicWord['index'] }})"
                             class="
                                 card
                                 bg-gray-50
@@ -19,10 +19,10 @@
                                 flex
                                 justify-center
 
-                                @if(array_key_exists($index, $pairs))
+                                @if(array_key_exists($gaelicWord['index'], $pairs))
                                     bg-green-800
                                     text-white
-                                @elseif($incorrectPairs && $selectedGaelic === $index)
+                                @elseif($incorrectPairs && $selectedGaelic === $gaelicWord['index'])
                                     bg-red-800
                                     text-white
                                 @else
@@ -33,17 +33,17 @@
                             "
                             style="width: 150px; height: 150px;"
                         >
-                            <p class="flex justify-center items-center text-center font-bold">{{ $word['gaelic'] }}</p>
+                            <p class="flex justify-center items-center text-center font-bold">{{ $gaelicWord['word'] }}</p>
                         </div>
                     </div>
                 @endforeach
             </div>
             <div class="mt-4">
                 <h2 class="text-xl font-bold mb-4 flex justify-center">English Words</h2>
-                @foreach($words as $index => $word)
+                @foreach($englishWords as $englishWord)
                     <div class="flex justify-center">
                         <div
-                            wire:click="selectEnglish({{ $index }})"
+                            wire:click="selectEnglish({{ $englishWord['index'] }})"
                             class="
                                 card
                                 bg-gray-50
@@ -55,10 +55,10 @@
                                 flex
                                 justify-center
 
-                                @if(array_key_exists($index, $pairs))
+                                @if(array_key_exists($englishWord['index'], $pairs))
                                     bg-green-800
                                     text-white
-                                @elseif($incorrectPairs && $selectedEnglish === $index)
+                                @elseif($incorrectPairs && $selectedEnglish === $englishWord['index'] )
                                     bg-red-800
                                     text-white
                                 @else
@@ -69,7 +69,7 @@
                             "
                             style="width: 150px; height: 150px;"
                         >
-                            <p class="flex justify-center items-center text-center font-bold">{{ $word['english'] }}</p>
+                            <p class="flex justify-center items-center text-center font-bold">{{ $englishWord['word'] }}</p>
                         </div>
                     </div>
                 @endforeach
