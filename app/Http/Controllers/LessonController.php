@@ -53,7 +53,7 @@ class LessonController extends Controller
         shuffle($gaelicWords);
         shuffle($englishWords);
 
-        return view('lessons.show', compact('lesson', 'gaelicWords', 'englishWords'));
+        return view('lessons.show', compact('lesson', 'gaelicWords', 'englishWords', 'name'));
     }
 
     /**
