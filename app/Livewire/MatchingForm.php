@@ -2,10 +2,24 @@
 
 namespace App\Livewire;
 
+use App\Models\Lesson;
 use Livewire\Component;
 
 class MatchingForm extends Component
 {
+    /**
+     * The lesson instance.
+     */
+    public Lesson $lesson;
+
+    /**
+     * Create a new component instance.
+     */
+    public function mount($lesson)
+    {
+        $this->lesson = $lesson;
+    }
+
     public $words = [
         ['gaelic' => 'Madainn mhath', 'english' => 'Good morning'],
         ['gaelic' => 'Oidhche mhath', 'english' => 'Good night'],
