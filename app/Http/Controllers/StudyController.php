@@ -32,7 +32,6 @@ class StudyController extends Controller
             'study_started_at' => now()
         ]);
 
-        // Redirect to the overview page
-        return redirect()->route('units.index');
+        return redirect(route('badges.check'));
     }
 }
