@@ -75,6 +75,21 @@ class LessonController extends Controller
                 ];
                 $name = 'places';
                 break;
+            case 'Match Food & Drink':
+                $gaelicWords = [
+                    ['index' => 0, 'word' => 'Is toil leam Bradan'],
+                    ['index' => 1, 'word' => 'Uisge-Beatha'],
+                    ['index' => 2, 'word' => 'Cha toil leam cofaidh'],
+                    ['index' => 3, 'word' => 'Aran']
+                ];
+                $englishWords = [
+                    ['index' => 0, 'word' => 'I like salmon'],
+                    ['index' => 1, 'word' => 'Whisky'],
+                    ['index' => 2, 'word' => 'I don\'t like coffee'],
+                    ['index' => 3, 'word' => 'Bread']
+                ];
+                $name = 'food & drink';
+                break;
             default:
                 break;
         }
