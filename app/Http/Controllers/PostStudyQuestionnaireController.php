@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Lesson;
 use App\Models\QuestionnaireResponse;
 use App\Models\User;
+use App\Models\UserData;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,19 +44,22 @@ class PostStudyQuestionnaireController extends Controller
             'post_study_motivation' => ['required', 'string'],
         ]);
 
-        $questionnaireResponde = QuestionnaireResponse::create([
+        $userData = UserData::find(Auth::id());
+
+        $userData->update([
             'user_id' => Auth::id(),
             'post_study_motivation' => $request->post_study_motivation,
-            'born_in_scotland' => isset($request->born_in_scotland) ?? false,
-            'live_in_scotland' => isset($request->live_in_scotland) ?? false,
-            'visited_scotland' => isset($request->visited_scotland) ?? false,
-            'scottish_ancestry' => isset($request->scottish_ancestry) ?? false,
-            'relations_to_highlands_and_islands' => isset($request->relations_to_highlands_and_islands) ?? false,
-            'interested_in_scottish_culture' => isset($request->interested_in_scottish_culture) ?? false,
-            'speak_scottish_gaelic' => isset($request->speak_scottish_gaelic) ?? false,
-            'speak_gaelic' => isset($request->speak_gaelic) ?? false,
-            'interested_in_scottish_gaelic' => isset($request->interested_in_scottish_gaelic) ?? false,
-            'interested_in_gaelic' => isset($request->interested_in_gaelic) ?? false,
+            'post_study_born_in_scotland' => isset($request->born_in_scotland) ?? false,
+            'post_study_live_in_scotland' => isset($request->live_in_scotland) ?? false,
+            'post_study_visited_scotland' => isset($request->visited_scotland) ?? false,
+            'post_study_scottish_ancestry' => isset($request->scottish_ancestry) ?? false,
+            'post_study_relations_to_highlands_and_islands' => isset($request->relations_to_highlands_and_islands) ?? false,
+            'post_study_interested_in_scottish_culture' => isset($request->interested_in_scottish_culture) ?? false,
+            'post_study_speak_scottish_gaelic' => isset($request->speak_scottish_gaelic) ?? false,
+            'post_study_speak_gaelic' => isset($request->speak_gaelic) ?? false,
+            'post_study_interested_in_scottish_gaelic' => isset($request->interested_in_scottish_gaelic) ?? false,
+            'post_study_interested_in_gaelic' => isset($request->interested_in_gaelic) ?? false,
+            'post_study_completed_at' => now(),
         ]);
 
         return redirect(RouteServiceProvider::HOME);

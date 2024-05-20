@@ -22,8 +22,6 @@ class User extends Authenticatable
         'email',
         'password',
         'initial_consent',
-        'pre_study_motivation',
-        'scottish_gaelic_competency'
     ];
 
     /**
@@ -45,6 +43,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // One-to-One relationship with User
+    public function data()
+    {
+        return $this->hasOne(UserData::class);
+    }
 
     /**
      * The lessons which have been completed by the user.
