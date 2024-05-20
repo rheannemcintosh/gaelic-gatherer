@@ -33,6 +33,9 @@ class MyBadgesController extends Controller
     {
         foreach (auth()->user()->uncompletedBadges() as $badge) {
             switch ($badge->name) {
+                case 'Shortbread Starter':
+                    $this->checkShortbreadStarter($badge->id);
+                    break;
                 case 'Brilliant Bagpipes':
                     $this->checkBrilliantBagpipes($badge->id);
                     break;
@@ -53,6 +56,13 @@ class MyBadgesController extends Controller
 
         // Redirect the user to the home page
         return redirect(RouteServiceProvider::HOME);
+    }
+
+    private function checkShortbreadStarter($badgeId)
+    {
+        if (auth()->user()->data->study_started_at != null && auth()->user()->study_consent == true) {
+            auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+        }
     }
 
     /**

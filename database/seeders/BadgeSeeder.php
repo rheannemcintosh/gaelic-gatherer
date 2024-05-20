@@ -14,6 +14,11 @@ class BadgeSeeder extends Seeder
     public function run(): void
     {
         DB::table('badges')->insert([
+            'name' => 'Shortbread Starter',
+            'description' => 'Start the study',
+        ]);
+
+        DB::table('badges')->insert([
             'name' => 'Gaelic Gatherer',
             'description' => 'Collect all Badges'
         ]);
