@@ -22,6 +22,8 @@ class MyBadgesController extends Controller
         foreach ($badges as $badge) {
             $user->badges()->attach($badge->id, ['created_at' => now(), 'updated_at' => now()]);
         }
+
+        return redirect()->route('welcome.show');
     }
 
     /**

@@ -33,7 +33,8 @@ Route::middleware('auth')->group(function () {
     // Badge Routes
     Route::prefix('badges')->group(function () {
         Route::get('/', [MyBadgesController::class, 'index'])->name('badges.index');
-        Route::get('/assign', [MyBadgesController::class, 'checkForNewBadges'])->name('badges.assign');
+        Route::get('/assign', [MyBadgesController::class, 'assignBadgesToUser'])->name('badges.assign');
+        Route::get('/check', [MyBadgesController::class, 'checkForNewBadges'])->name('badges.check');
     });
 });
 
