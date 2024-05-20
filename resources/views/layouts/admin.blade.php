@@ -13,7 +13,7 @@
         </nav>
 
         <!-- Badges -->
-        @isset($badges)
+        @if (isset($badges) && !$hideButton)
             <div class="mt-8">
                 <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 bg-gray-50 sm:shadow-xl p-8">
                     <div x-data="{ isVisible: false }">

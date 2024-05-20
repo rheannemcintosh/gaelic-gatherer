@@ -18,6 +18,7 @@ class UserData extends Model
         'pre_study_motivation',
         'pre_study_competency',
         'pre_study_completed_at',
+        'study_started_at',
         'post_study_motivation',
         'post_study_born_in_scotland',
         'post_study_live_in_scotland',
