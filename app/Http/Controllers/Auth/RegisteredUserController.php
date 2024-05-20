@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Helpers\ConsentHelper;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserData;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -48,6 +49,13 @@ class RegisteredUserController extends Controller
             'initial_consent' => true,
             'pre_study_motivation' => $request->pre_study_motivation,
             'scottish_gaelic_competency' => $request->scottish_gaelic_competency,
+        ]);
+
+        $userData = UserData::create([
+            'user_id' => $user->id,
+            'pre_study_motivation' => $request->pre_study_motivation,
+            'pre_study_competency' => $request->scottish_gaelic_competency,
+            'pre_study_completed_at' => now(),
         ]);
 
         event(new Registered($user));
