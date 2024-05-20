@@ -90,6 +90,21 @@ class LessonController extends Controller
                 ];
                 $name = 'food & drink';
                 break;
+            case 'Match Weather':
+                $gaelicWords = [
+                    ['index' => 0, 'word' => 'Tha i teth'],
+                    ['index' => 1, 'word' => 'Chan eil e grianach'],
+                    ['index' => 2, 'word' => 'Reòiteach agus gaothach'],
+                    ['index' => 3, 'word' => 'Fliuch']
+                ];
+                $englishWords = [
+                    ['index' => 0, 'word' => 'It is hot'],
+                    ['index' => 1, 'word' => 'It is not sunny'],
+                    ['index' => 2, 'word' => 'Freezing and windy'],
+                    ['index' => 3, 'word' => 'Rainy']
+                ];
+                $name = 'weather';
+                break;
             default:
                 break;
         }

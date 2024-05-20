@@ -17,6 +17,10 @@
                         <td class="border px-4 py-2 text-center font-bold">Tha i ...</td>
                     </tr>
                     <tr>
+                        <td class="border px-4 py-2 text-center">It is not...</td>
+                        <td class="border px-4 py-2 text-center font-bold">Chan eil e...</td>
+                    </tr>
+                    <tr>
                         <td class="border px-4 py-2 text-center">Hot</td>
                         <td class="border px-4 py-2 text-center font-bold">Teth</td>
                     </tr>
@@ -47,10 +51,6 @@
                     <tr>
                         <td class="border px-4 py-2 text-center">Foggy</td>
                         <td class="border px-4 py-2 text-center font-bold">Ceòthach</td>
-                    </tr>
-                    <tr>
-                        <td class="border px-4 py-2 text-center">Snowy</td>
-                        <td class="border px-4 py-2 text-center font-bold">Sneachda</td>
                     </tr>
                 </tbody>
             </table>
