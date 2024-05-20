@@ -46,6 +46,12 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    // One-to-One relationship with User
+    public function data()
+    {
+        return $this->hasOne(UserData::class);
+    }
+
     /**
      * The lessons which have been completed by the user.
      *
