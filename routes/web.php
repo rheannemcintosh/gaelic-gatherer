@@ -7,6 +7,7 @@ use App\Http\Controllers\LessonController;
 use App\Http\Controllers\MyBadgesController;
 use App\Http\Controllers\PostStudyQuestionnaireController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudyController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserLessonController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,10 @@ use Illuminate\Support\Facades\Route;
 
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
+
+    // Welcome Routes
+    Route::get('/welcome', [StudyController::class, 'showWelconePage'])->name('welcome.show');
+    Route::post('/welcome', [StudyController::class, 'startTheStudy'])->name('welcome.start');
 
     // Badge Routes
     Route::prefix('badges')->group(function () {
