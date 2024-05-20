@@ -45,6 +45,9 @@ class MyBadgesController extends Controller
                 case 'Rabbie Reader':
                     $this->checkRabbieReader($badge->id);
                     break;
+                case 'Wonder Wallace':
+                    $this->checkWonderWallace($badge->id);
+                    break;
             }
         }
 
@@ -97,6 +100,22 @@ class MyBadgesController extends Controller
     {
         $completedOverviewLessons = auth()->user()->completedLessons()->whereHas('lessonType', function ($query) {
             $query->where('name', 'Overview');
+        })->count();
+
+        if ($completedOverviewLessons >= 1) {
+            auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+        }
+    }
+
+    /**
+     * Check if the user has completed an overview lesson.
+     *
+     * @param $badgeId integer the id of the badge to check and update if necessary
+     */
+    private function checkWonderWallace($badgeId)
+    {
+        $completedOverviewLessons = auth()->user()->completedLessons()->whereHas('lessonType', function ($query) {
+            $query->where('name', 'Matching');
         })->count();
 
         if ($completedOverviewLessons >= 1) {
