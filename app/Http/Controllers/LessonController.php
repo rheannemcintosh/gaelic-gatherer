@@ -60,6 +60,21 @@ class LessonController extends Controller
                 ];
                 $name = 'greetings';
                 break;
+            case 'Match Places':
+                $gaelicWords = [
+                    ['index' => 0, 'word' => 'Alba'],
+                    ['index' => 1, 'word' => 'Tha mi à Obar Dheathain'],
+                    ['index' => 2, 'word' => 'Glaschu'],
+                    ['index' => 3, 'word' => 'Sasainn']
+                ];
+                $englishWords = [
+                    ['index' => 0, 'word' => 'Scotland'],
+                    ['index' => 1, 'word' => 'I am from Aberdeen'],
+                    ['index' => 2, 'word' => 'Glasgow'],
+                    ['index' => 3, 'word' => 'England']
+                ];
+                $name = 'places';
+                break;
             default:
                 break;
         }
