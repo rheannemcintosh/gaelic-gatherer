@@ -105,6 +105,21 @@ class LessonController extends Controller
                 ];
                 $name = 'weather';
                 break;
+            case 'Match Numbers':
+                $gaelicWords = [
+                    ['index' => 0, 'word' => 'Ocht'],
+                    ['index' => 1, 'word' => 'Dà'],
+                    ['index' => 2, 'word' => 'Deich'],
+                    ['index' => 3, 'word' => 'Aon']
+                ];
+                $englishWords = [
+                    ['index' => 0, 'word' => 'Eight'],
+                    ['index' => 1, 'word' => 'Two'],
+                    ['index' => 2, 'word' => 'Ten'],
+                    ['index' => 3, 'word' => 'One']
+                ];
+                $name = 'numbers';
+                break;
             default:
                 break;
         }
