@@ -12,6 +12,8 @@
             @include('layouts.navigation')
         </nav>
 
+        <x-platform-progress />
+        
         <!-- Badges -->
         @if (isset($badges) && !$hideButton)
             <div class="mt-8">
