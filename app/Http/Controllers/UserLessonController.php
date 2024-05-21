@@ -13,17 +13,8 @@ class UserLessonController extends Controller
      */
     public function store(Request $request)
     {
-        // Get the current user
-        $user   = Auth::user();
-
-        // Add the completed and completed at fields
-        $pivotData = [
-            'completed' => true,
-            'completed_at' => now(),
-        ];
-
         // Attach the lesson to the user
-        $user->lessons()->attach($request->lesson, $pivotData);
+        auth()->user()->lessons()->updateExistingPivot($request->lesson, ['completed' => true, 'completed_at' => now()]);
 
         // Redirect back to the home page
         return redirect(route('badges.check'));

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('lesson_id')->constrained();
             $table->boolean('completed')->default(false);
             $table->timestamp('completed_at')->nullable();
+            $table->timestamps();
         });
     }
 

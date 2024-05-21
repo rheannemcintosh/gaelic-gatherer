@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Helpers\ConsentHelper;
+use App\Helpers\LessonHelper;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserData;
@@ -61,6 +62,8 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+
+        LessonHelper::assignLessonsToUsers();
 
         return redirect()->route('badges.assign');
     }
