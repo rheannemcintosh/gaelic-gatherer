@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Badge;
 use App\Providers\RouteServiceProvider;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +53,9 @@ class MyBadgesController extends Controller
                     break;
                 case 'Wonder Wallace':
                     $this->checkWonderWallace($badge->id);
+                    break;
+                case 'Brave Bobby':
+                    $this->checkBraveBobby($badge->id);
                     break;
             }
         }
@@ -131,6 +135,21 @@ class MyBadgesController extends Controller
         })->count();
 
         if ($completedOverviewLessons >= 1) {
+            auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+        }
+    }
+
+    /**
+     * Check if the user has been on the platform for 5 minutes.
+     *
+     * @param $badgeId integer the id of the badge to check and update if necessary
+     */
+    private function checkBraveBobby($badgeId)
+    {
+        $startDate = Carbon::parse(auth()->user()->data->study_started_at);
+        $minutesStudying = $startDate->diffInMinutes(now());
+
+        if ($minutesStudying >= 5) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
         }
     }
