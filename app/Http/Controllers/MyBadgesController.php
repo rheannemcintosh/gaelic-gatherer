@@ -60,6 +60,9 @@ class MyBadgesController extends Controller
                 case 'Talented Thistle':
                     $this->checkTalentedThistle($badge->id);
                     break;
+                case 'Gaelic Gatherer':
+                    $this->checkGaelicGatherer($badge->id);
+                    break;
             }
         }
 
@@ -171,6 +174,21 @@ class MyBadgesController extends Controller
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
         }
     }
+
+    /**
+     * Check if the user has been on the platform for 5 minutes.
+     *
+     * @param $badgeId integer the id of the badge to check and update if necessary
+     */
+    private function checkGaelicGatherer($badgeId)
+    {
+        $numberOfBadges = auth()->user()->badges()->wherePivot('completed', true)->count();
+
+        if ($numberOfBadges >= 20) {
+            auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+        }
+    }
+
 
     /**
      * Display the badges for the current user.
