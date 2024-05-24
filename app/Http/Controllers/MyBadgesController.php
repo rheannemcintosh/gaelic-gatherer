@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Badge;
+use App\Models\Lesson;
+use App\Models\Unit;
 use App\Providers\RouteServiceProvider;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
@@ -62,6 +64,9 @@ class MyBadgesController extends Controller
                     break;
                 case 'Gaelic Gatherer':
                     $this->checkGaelicGatherer($badge->id);
+                    break;
+                case 'Highlander Hello':
+                    $this->checkHighlanderHello($badge->id);
                     break;
             }
         }
@@ -189,7 +194,25 @@ class MyBadgesController extends Controller
         }
     }
 
+    /**
+     * Check if the user has completed all lessons in the greetings unit.
+     *
+     * @param $badgeId integer the id of the badge to check and update if necessary
+     */
+    private function checkHighlanderHello($badgeId)
+    {
+        $unitId = Unit::where('title', 'Scottish Greetings')->pluck('id');
+        $numLessonsInUnit = Lesson::where('unit_id', $unitId)->count();
 
+        $completedGreetingsLessons = auth()->user()->completedLessons()->whereHas('unit', function ($query) {
+            $query->where('title', 'Scottish Greetings');
+        })->count();
+
+        if ($completedGreetingsLessons >= $numLessonsInUnit) {
+            auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+        }
+    }
+    
     /**
      * Display the badges for the current user.
      */
