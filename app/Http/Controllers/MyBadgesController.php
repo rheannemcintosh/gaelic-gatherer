@@ -68,6 +68,9 @@ class MyBadgesController extends Controller
                 case 'Highlander Hello':
                     $this->checkHighlanderHello($badge->id);
                     break;
+                case 'Admirable Alba':
+                    $this->checkAdmirableAlba($badge->id);
+                    break;
             }
         }
 
@@ -212,7 +215,26 @@ class MyBadgesController extends Controller
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
         }
     }
-    
+
+    /**
+     * Check if the user has completed all lessons in the places unit.
+     *
+     * @param $badgeId integer the id of the badge to check and update if necessary
+     */
+    private function checkAdmirableAlba($badgeId)
+    {
+        $unitId = Unit::where('title', 'Scottish Places')->pluck('id');
+        $numLessonsInUnit = Lesson::where('unit_id', $unitId)->count();
+
+        $completedPlacesLessons = auth()->user()->completedLessons()->whereHas('unit', function ($query) {
+            $query->where('title', 'Scottish Placess');
+        })->count();
+
+        if ($completedPlacesLessons >= $numLessonsInUnit) {
+            auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+        }
+    }
+
     /**
      * Display the badges for the current user.
      */
