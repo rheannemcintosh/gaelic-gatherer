@@ -74,6 +74,9 @@ class MyBadgesController extends Controller
                 case 'Tablet Taster':
                     $this->checkTabletTaster($badge->id);
                     break;
+                case 'Dreich Detective':
+                    $this->checkDreichDetective($badge->id);
+                    break;
             }
         }
 
@@ -253,6 +256,25 @@ class MyBadgesController extends Controller
         })->count();
 
         if ($completedFoodAndDrinkLessons >= $numLessonsInUnit) {
+            auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+        }
+    }
+
+    /**
+     * Check if the user has completed all lessons in the weather unit.
+     *
+     * @param $badgeId integer the id of the badge to check and update if necessary
+     */
+    private function checkDreichDetective($badgeId)
+    {
+        $unitId = Unit::where('title', 'Scottish Weather')->pluck('id');
+        $numLessonsInUnit = Lesson::where('unit_id', $unitId)->count();
+
+        $completedWeatherLessons = auth()->user()->completedLessons()->whereHas('unit', function ($query) {
+            $query->where('title', 'Scottish Weather');
+        })->count();
+
+        if ($completedWeatherLessons >= $numLessonsInUnit) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
         }
     }
