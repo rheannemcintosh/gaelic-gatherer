@@ -230,7 +230,7 @@ class MyBadgesController extends Controller
         $numLessonsInUnit = Lesson::where('unit_id', $unitId)->count();
 
         $completedPlacesLessons = auth()->user()->completedLessons()->whereHas('unit', function ($query) {
-            $query->where('title', 'Scottish Placess');
+            $query->where('title', 'Scottish Places');
         })->count();
 
         if ($completedPlacesLessons >= $numLessonsInUnit) {
