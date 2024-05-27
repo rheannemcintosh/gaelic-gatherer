@@ -80,6 +80,9 @@ class MyBadgesController extends Controller
                 case 'Noble Nessie':
                     $this->checkNobleNessie($badge->id);
                     break;
+                case 'Unit Unicorn':
+                    $this->checkUnitUnicorn($badge->id);
+                    break;
             }
         }
 
@@ -297,6 +300,35 @@ class MyBadgesController extends Controller
         })->count();
 
         if ($completedNumbersLessons >= $numLessonsInUnit) {
+            auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+        }
+    }
+
+    /**
+     * Check if the user has completed all lessons in the numbers unit.
+     *
+     * @param $badgeId integer the id of the badge to check and update if necessary
+     */
+    private function checkUnitUnicorn($badgeId)
+    {
+        $unitsIds = Unit::all()->pluck('id');
+        $numberOfUnits = $unitsIds->count();
+
+        $unitsCompleted = 0;
+
+        foreach ($unitsIds as $unitId) {
+            $numLessonsInUnit = Lesson::where('unit_id', $unitId)->count();
+
+            $completedLessonsInUnit = auth()->user()->completedLessons()->whereHas('unit', function ($query) use ($unitId) {
+                $query->where('unit_id', $unitId);
+            })->count();
+
+            if ($completedLessonsInUnit >= $numLessonsInUnit) {
+                $unitsCompleted++;
+            }
+        }
+
+        if ($unitsCompleted >= $numberOfUnits) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
         }
     }
