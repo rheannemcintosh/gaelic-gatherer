@@ -77,6 +77,9 @@ class MyBadgesController extends Controller
                 case 'Dreich Detective':
                     $this->checkDreichDetective($badge->id);
                     break;
+                case 'Noble Nessie':
+                    $this->checkNobleNessie($badge->id);
+                    break;
             }
         }
 
@@ -275,6 +278,25 @@ class MyBadgesController extends Controller
         })->count();
 
         if ($completedWeatherLessons >= $numLessonsInUnit) {
+            auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+        }
+    }
+
+    /**
+     * Check if the user has completed all lessons in the numbers unit.
+     *
+     * @param $badgeId integer the id of the badge to check and update if necessary
+     */
+    private function checkNobleNessie($badgeId)
+    {
+        $unitId = Unit::where('title', 'Numbers')->pluck('id');
+        $numLessonsInUnit = Lesson::where('unit_id', $unitId)->count();
+
+        $completedNumbersLessons = auth()->user()->completedLessons()->whereHas('unit', function ($query) {
+            $query->where('title', 'Numbers');
+        })->count();
+
+        if ($completedNumbersLessons >= $numLessonsInUnit) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
         }
     }
