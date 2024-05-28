@@ -36,65 +36,73 @@ class MyBadgesController extends Controller
      */
     public function checkForNewBadges(): RedirectResponse
     {
+        $newBadges = [];
         foreach (auth()->user()->uncompletedBadges() as $badge) {
+            $checkPassed = false;
             switch ($badge->name) {
                 case 'Shortbread Starter':
-                    $this->checkShortbreadStarter($badge->id);
+                    $checkPassed = $this->checkShortbreadStarter($badge->id);
                     break;
                 case 'Brilliant Bagpipes':
-                    $this->checkBrilliantBagpipes($badge->id);
+                    $checkPassed = $this->checkBrilliantBagpipes($badge->id);
                     break;
                 case 'Kingly Kilt':
-                    $this->checkKinglyKilt($badge->id);
+                    $checkPassed = $this->checkKinglyKilt($badge->id);
                     break;
                 case 'Terrific Terrier':
-                    $this->checkTerrificTerrier($badge->id);
+                    $checkPassed = $this->checkTerrificTerrier($badge->id);
                     break;
                 case 'Rabbie Reader':
-                    $this->checkRabbieReader($badge->id);
+                    $checkPassed = $this->checkRabbieReader($badge->id);
                     break;
                 case 'Wonder Wallace':
-                    $this->checkWonderWallace($badge->id);
+                    $checkPassed = $this->checkWonderWallace($badge->id);
                     break;
                 case 'Brave Bobby':
-                    $this->checkBraveBobby($badge->id);
+                    $checkPassed = $this->checkBraveBobby($badge->id);
                     break;
                 case 'Talented Thistle':
-                    $this->checkTalentedThistle($badge->id);
+                    $checkPassed = $this->checkTalentedThistle($badge->id);
                     break;
                 case 'Gaelic Gatherer':
-                    $this->checkGaelicGatherer($badge->id);
+                    $checkPassed = $this->checkGaelicGatherer($badge->id);
                     break;
                 case 'Highlander Hello':
-                    $this->checkHighlanderHello($badge->id);
+                    $checkPassed = $this->checkHighlanderHello($badge->id);
                     break;
                 case 'Admirable Alba':
-                    $this->checkAdmirableAlba($badge->id);
+                    $checkPassed = $this->checkAdmirableAlba($badge->id);
                     break;
                 case 'Tablet Taster':
-                    $this->checkTabletTaster($badge->id);
+                    $checkPassed = $this->checkTabletTaster($badge->id);
                     break;
                 case 'Dreich Detective':
-                    $this->checkDreichDetective($badge->id);
+                    $checkPassed = $this->checkDreichDetective($badge->id);
                     break;
                 case 'Noble Nessie':
-                    $this->checkNobleNessie($badge->id);
+                    $checkPassed = $this->checkNobleNessie($badge->id);
                     break;
                 case 'Unit Unicorn':
-                    $this->checkUnitUnicorn($badge->id);
+                    $checkPassed = $this->checkUnitUnicorn($badge->id);
                     break;
+            }
+
+            if ($checkPassed) {
+                $newBadges[] = $badge;
             }
         }
 
         // Redirect the user to the home page
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::HOME)->with('newBadges', $newBadges);
     }
 
     private function checkShortbreadStarter($badgeId)
     {
         if (auth()->user()->data->study_started_at != null && auth()->user()->study_consent == true) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -106,7 +114,9 @@ class MyBadgesController extends Controller
     {
         if (auth()->user()->countCompletedLessons() >= 1) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -118,7 +128,9 @@ class MyBadgesController extends Controller
     {
         if (auth()->user()->countCompletedLessons() >= 5) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -130,7 +142,9 @@ class MyBadgesController extends Controller
     {
         if (auth()->user()->countCompletedLessons() >= 10) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -146,7 +160,9 @@ class MyBadgesController extends Controller
 
         if ($completedOverviewLessons >= 1) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -162,7 +178,9 @@ class MyBadgesController extends Controller
 
         if ($completedOverviewLessons >= 1) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -177,7 +195,9 @@ class MyBadgesController extends Controller
 
         if ($minutesStudying >= 5) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -192,7 +212,9 @@ class MyBadgesController extends Controller
 
         if ($minutesStudying >= 30) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -206,7 +228,9 @@ class MyBadgesController extends Controller
 
         if ($numberOfBadges >= 20) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -225,7 +249,9 @@ class MyBadgesController extends Controller
 
         if ($completedGreetingsLessons >= $numLessonsInUnit) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -244,7 +270,9 @@ class MyBadgesController extends Controller
 
         if ($completedPlacesLessons >= $numLessonsInUnit) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -263,7 +291,9 @@ class MyBadgesController extends Controller
 
         if ($completedFoodAndDrinkLessons >= $numLessonsInUnit) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -282,7 +312,9 @@ class MyBadgesController extends Controller
 
         if ($completedWeatherLessons >= $numLessonsInUnit) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -301,7 +333,9 @@ class MyBadgesController extends Controller
 
         if ($completedNumbersLessons >= $numLessonsInUnit) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -330,7 +364,9 @@ class MyBadgesController extends Controller
 
         if ($unitsCompleted >= $numberOfUnits) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+            return true;
         }
+        return false;
     }
 
     /**

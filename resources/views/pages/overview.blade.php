@@ -1,4 +1,9 @@
 <x-admin-layout>
+
+    @if(session('newBadges'))
+        <livewire:badges-popup :newBadges="session('newBadges')" />
+    @endisset
+
     <!-- Page Content -->
     <div class="page-content">
         @foreach ($units as $unit)
