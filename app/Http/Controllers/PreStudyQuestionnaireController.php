@@ -13,6 +13,10 @@ class PreStudyQuestionnaireController extends Controller
      */
     public function showConsent()
     {
+        if (Auth::user()->pre_study_consent) {
+            return redirect(route('pre-study-questionnaire.show'));
+        }
+
         return view('pre-study-questionnaire.consent');
     }
 
@@ -38,6 +42,10 @@ class PreStudyQuestionnaireController extends Controller
      */
     public function show()
     {
+        if (!is_null(UserData::find(Auth::id()))) {
+            return redirect(route('welcome.show'));
+        }
+
         return view('pre-study-questionnaire.form');
     }
 
