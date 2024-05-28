@@ -26,7 +26,7 @@ class MyBadgesController extends Controller
             $user->badges()->attach($badge->id, ['created_at' => now(), 'updated_at' => now()]);
         }
 
-        return redirect()->route('welcome.show');
+        return redirect()->route('pre-study-questionnaire.show.consent');
     }
 
     /**
