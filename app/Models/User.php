@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'initial_consent',
+        'pre_study_consent',
         'study_consent',
     ];
 

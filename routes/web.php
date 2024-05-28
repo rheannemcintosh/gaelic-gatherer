@@ -6,6 +6,7 @@ use App\Http\Controllers\KnowledgeRetentionQuizController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\MyBadgesController;
 use App\Http\Controllers\PostStudyQuestionnaireController;
+use App\Http\Controllers\PreStudyQuestionnaireController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudyController;
 use App\Http\Controllers\UnitController;
@@ -29,6 +30,14 @@ Route::middleware('auth')->group(function () {
     // Welcome Routes
     Route::get('/welcome', [StudyController::class, 'showWelconePage'])->name('welcome.show');
     Route::post('/welcome', [StudyController::class, 'startTheStudy'])->name('welcome.start');
+
+    // Pre Study Questionnaire Routes
+    Route::prefix('pre-study-questionnaire')->group(function () {
+        Route::get('/consent', [PreStudyQuestionnaireController::class, 'showConsent'])->name('pre-study-questionnaire.show.consent');
+        Route::post('/consent', [PreStudyQuestionnaireController::class, 'storeConsent'])->name('pre-study-questionnaire.store.consent');
+        Route::get('/', [PreStudyQuestionnaireController::class, 'show'])->name('pre-study-questionnaire.show');
+        Route::post('/', [PreStudyQuestionnaireController::class, 'store'])->name('pre-study-questionnaire.store');
+    });
 
     // Badge Routes
     Route::prefix('badges')->group(function () {

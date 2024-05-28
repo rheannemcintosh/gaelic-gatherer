@@ -40,23 +40,12 @@ class RegisteredUserController extends Controller
         $request->validate([
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'pre_study_motivation' => ['required', 'in:Highly Motivated,Moderately Motivated,Slightly Motivated,Not Motivated'],
-            'scottish_gaelic_competency' => ['required', 'in:None,Beginner,Intermediate,Advanced,Fluent,Native Speaker']
         ]);
 
         $user = User::create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'initial_consent' => true,
-            'pre_study_motivation' => $request->pre_study_motivation,
-            'scottish_gaelic_competency' => $request->scottish_gaelic_competency,
-        ]);
-
-        $userData = UserData::create([
-            'user_id' => $user->id,
-            'pre_study_motivation' => $request->pre_study_motivation,
-            'pre_study_competency' => $request->scottish_gaelic_competency,
-            'pre_study_completed_at' => now(),
         ]);
 
         event(new Registered($user));
