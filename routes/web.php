@@ -39,6 +39,14 @@ Route::middleware('auth')->group(function () {
         Route::post('/', [PreStudyQuestionnaireController::class, 'store'])->name('pre-study-questionnaire.store');
     });
 
+    // Post Study Questionnaire Routes
+    Route::prefix('post-study-questionnaire')->group(function () {
+        Route::get('/consent', [PostStudyQuestionnaireController::class, 'showConsent'])->name('post-study-questionnaire.show.consent');
+        Route::post('/consent', [PostStudyQuestionnaireController::class, 'storeConsent'])->name('post-study-questionnaire.store.consent');
+        Route::get('/', [PostStudyQuestionnaireController::class, 'show'])->name('post-study-questionnaire.show');
+        Route::post('/', [PostStudyQuestionnaireController::class, 'store'])->name('post-study-questionnaire.store');
+    });
+
     // Badge Routes
     Route::prefix('badges')->group(function () {
         Route::get('/', [MyBadgesController::class, 'index'])->name('badges.index');
@@ -68,13 +76,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/research-study/download-pdf', [RegisteredUserController::class, 'downloadParticipantInformationSheetPDF'])->name('research-study.download-pdf');
-
-
-// Post Study Questionnaire Routes
-Route::prefix('post-study-questionnaire')->group(function () {
-    Route::get('/', [PostStudyQuestionnaireController::class, 'show'])->name('post-study-questionnaire.show');
-    Route::post('/', [PostStudyQuestionnaireController::class, 'store'])->name('post-study-questionnaire.store');
-});
 
 // Knowledge Retention Quiz Routes
 Route::prefix('knowledge-retention-quiz')->group(function () {
