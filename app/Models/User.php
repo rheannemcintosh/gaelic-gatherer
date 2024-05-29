@@ -24,6 +24,7 @@ class User extends Authenticatable
         'initial_consent',
         'pre_study_consent',
         'study_consent',
+        'post_study_consent',
     ];
 
     /**
