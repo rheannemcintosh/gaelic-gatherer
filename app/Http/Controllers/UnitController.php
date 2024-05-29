@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\UnitHelper;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class UnitController extends Controller
     {
         $units = Unit::with('lessons')->get();
 
-        return view('pages.overview', compact('units'));
+        $percentageComplete = UnitHelper::getCompletitionPercentagesOfUnits($units);
+
+        return view('pages.overview', compact('units', 'percentageComplete'));
     }
 
     /**
