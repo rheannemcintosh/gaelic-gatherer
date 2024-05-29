@@ -13,30 +13,54 @@ use Illuminate\Support\Facades\Auth;
 class PostStudyQuestionnaireController extends Controller
 {
     /**
-     * Display the specified resource.
+     * Display the consent for the post-study questionnaire.
      */
-    public function show()
+    public function showConsent()
     {
-        $numberOfOverviewLessons = Lesson::whereHas('lessonType', function($query) {
-            $query->where('name', '=', 'Overview');
-        })->count();
-
-        $completedLessons = User::find(Auth::id())
-            ->lessons()
-            ->wherePivot('completed', true)
-            ->pluck('lesson_id')
-            ->unique()
-            ->count();
-
-        if ($numberOfOverviewLessons != $completedLessons) {
-            return redirect(RouteServiceProvider::HOME);
+        if (Auth::user()->post_study_consent) {
+            return redirect(route('post-study-questionnaire.show'));
         }
 
-        return view('pages.post-study-questionnaire');
+        return view('post-study-questionnaire.consent');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store the consent to the pre-study questionnaire.
+     */
+    public function storeConsent()
+    {
+        // Get the authenticated user
+        $user = Auth::user();
+
+        // Update the study consent field
+        $user->update([
+            'post_study_consent' => true
+        ]);
+
+        // Redirect to the pre-study questionnaire form
+        return redirect(route('post-study-questionnaire.show'));
+    }
+
+    /**
+     * Display the pre-study questionnaire form.
+     */
+    public function show()
+    {
+        if (!Auth::user()->post_study_consent) {
+            return redirect(route('post-study-questionnaire.show.consent'));
+        }
+
+        if (!is_null(auth()->user()->data->post_study_completed_at)) {
+            return redirect(route('knowledge-retention-quiz.show'));
+        }
+
+        return view('post-study-questionnaire.form');
+    }
+
+    /**
+     * Store the pre-study questionnaire form.
+     *
+     * @param Request $request
      */
     public function store(Request $request)
     {
@@ -62,6 +86,6 @@ class PostStudyQuestionnaireController extends Controller
             'post_study_completed_at' => now(),
         ]);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(route('knowledge-retention-quiz.show'));
     }
 }
