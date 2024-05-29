@@ -51,7 +51,7 @@ class PostStudyQuestionnaireController extends Controller
         }
 
         if (!is_null(auth()->user()->data->post_study_completed_at)) {
-            return redirect(route('knowledge-retention-quiz.show'));
+            return redirect(route('knowledge-retention-quiz.show.consent', ['quiz' => 1]));
         }
 
         return view('post-study-questionnaire.form');
@@ -87,6 +87,6 @@ class PostStudyQuestionnaireController extends Controller
             'quiz_one_unlocked_at' => now(),
         ]);
 
-        return redirect(route('knowledge-retention-quiz.show'));
+        return redirect(route('knowledge-retention-quiz.show.consent', ['quiz' => 1]));
     }
 }
