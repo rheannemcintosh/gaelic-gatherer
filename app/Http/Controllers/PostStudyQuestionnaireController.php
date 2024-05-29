@@ -84,6 +84,7 @@ class PostStudyQuestionnaireController extends Controller
             'post_study_interested_in_scottish_gaelic' => isset($request->interested_in_scottish_gaelic) ?? false,
             'post_study_interested_in_gaelic' => isset($request->interested_in_gaelic) ?? false,
             'post_study_completed_at' => now(),
+            'quiz_one_unlocked_at' => now(),
         ]);
 
         return redirect(route('knowledge-retention-quiz.show'));
