@@ -45,20 +45,17 @@ return new class extends Migration
             $table->timestamp('quiz_one_unlocked_at')->nullable();
             $table->timestamp('quiz_one_started_at')->nullable();
             $table->timestamp('quiz_one_completed_at')->nullable();
-            $table->boolean('quiz_one_completed')->nullable();
 
             // Knowledge Retention Quiz Two
             $table->timestamp('quiz_two_unlocked_at')->nullable();
             $table->timestamp('quiz_two_started_at')->nullable();
             $table->timestamp('quiz_two_completed_at')->nullable();
-            $table->boolean('quiz_two_completed')->nullable();
 
             // Knowledge Retention Quiz Three
             $table->timestamp('quiz_three_unlocked_at')->nullable();
             $table->timestamp('quiz_three_started_at')->nullable();
             $table->timestamp('quiz_three_completed_at')->nullable();
-            $table->boolean('quiz_three_completed')->nullable();
-            
+
             // Created At & Updated At
             $table->timestamps();
         });
