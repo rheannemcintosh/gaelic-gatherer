@@ -52,14 +52,13 @@ class KnowledgeRetentionQuizController extends Controller
      */
     public function show($quiz)
     {
-
         if ($quiz == 1 && !Auth::user()->quiz_one_consent) {
             return redirect(route('post-study-questionnaire.show.consent', ['quiz' => $quiz]));
         }
 
-//        if (!is_null(auth()->user()->data->post_study_completed_at)) {
-//            return redirect(route('knowledge-retention-quiz.show', ['quiz' => $quiz]));
-//        }
+        if (!is_null(auth()->user()->data->quiz_one_completed_at)) {
+            return redirect(route('on-hold'));
+        }
 
         return view('knowledge-retention-quiz.form', ['quiz' => $quiz]);
     }
