@@ -1,5 +1,5 @@
 <div>
-    <form method="POST" action="{{ route('knowledge-retention-quiz.store') }}">
+    <form method="POST" action="{{ route('knowledge-retention-quiz.store', ['quiz' => $quiz]) }}">
 
         @if (!empty($errors->all()))
             <div class="mt-2 bg-red-600 text-white rounded-md px-4 py-2">

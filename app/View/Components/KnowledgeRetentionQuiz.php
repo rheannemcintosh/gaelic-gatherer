@@ -8,12 +8,14 @@ use Illuminate\View\Component;
 
 class KnowledgeRetentionQuiz extends Component
 {
+    public int $quiz;
+
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($quiz)
     {
-        //
+        $this->quiz = $quiz;
     }
 
     /**
