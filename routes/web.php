@@ -61,6 +61,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/assign', [MyBadgesController::class, 'assignBadgesToUser'])->name('badges.assign');
         Route::get('/check', [MyBadgesController::class, 'checkForNewBadges'])->name('badges.check');
     });
+
+
+    Route::get('/on-hold', function () {
+        return view('pages.on-hold');
+    })->name('on-hold');
 });
 
 Route::get('/', function () {

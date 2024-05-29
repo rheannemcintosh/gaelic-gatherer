@@ -112,6 +112,6 @@ class KnowledgeRetentionQuizController extends Controller
             'quiz_three_unlocked_at' => Carbon::now()->addDays(14),
         ]);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(route('on-hold'));
     }
 }
