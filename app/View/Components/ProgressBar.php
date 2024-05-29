@@ -16,16 +16,9 @@ class ProgressBar extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($percentage)
     {
-        // Generate a random number between 0 and 3
-        $randomIndex = rand(0, 3);
-
-        // Array of possible percentage values
-        $values = [0, 33, 66, 100];
-
-        // Set the percentage value
-        $this->percentage = $values[$randomIndex];
+        $this->percentage = $percentage;
     }
 
     /**
