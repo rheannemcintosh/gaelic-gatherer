@@ -6,10 +6,9 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class KnowledgeRetentionQuiz extends Component
+class KnowledgeRetentionButton extends Component
 {
     public int $quiz;
-
     /**
      * Create a new component instance.
      */
@@ -23,6 +22,6 @@ class KnowledgeRetentionQuiz extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.knowledge-retention-quiz');
+        return view('components.knowledge-retention-button');
     }
 }

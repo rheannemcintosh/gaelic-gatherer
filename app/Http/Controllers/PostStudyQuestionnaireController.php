@@ -51,7 +51,7 @@ class PostStudyQuestionnaireController extends Controller
         }
 
         if (!is_null(auth()->user()->data->post_study_completed_at)) {
-            return redirect(route('knowledge-retention-quiz.show'));
+            return redirect(route('knowledge-retention-quiz.show.consent', ['quiz' => 1]));
         }
 
         return view('post-study-questionnaire.form');
@@ -84,8 +84,9 @@ class PostStudyQuestionnaireController extends Controller
             'post_study_interested_in_scottish_gaelic' => isset($request->interested_in_scottish_gaelic) ?? false,
             'post_study_interested_in_gaelic' => isset($request->interested_in_gaelic) ?? false,
             'post_study_completed_at' => now(),
+            'quiz_one_unlocked_at' => now(),
         ]);
 
-        return redirect(route('knowledge-retention-quiz.show'));
+        return redirect(route('knowledge-retention-quiz.show.consent', ['quiz' => 1]));
     }
 }
