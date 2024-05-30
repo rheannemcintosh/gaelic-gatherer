@@ -80,7 +80,6 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/overview', [UnitController::class, 'index'])->name('units.index');
-    Route::get('/units/{slug}', [UnitController::class, 'show'])->name('units.show');
     Route::get('/units/{slug}/lessons/{lesson}', [LessonController::class, 'show'])->name('lessons.show');
 });
 

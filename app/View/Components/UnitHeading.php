@@ -15,17 +15,13 @@ class UnitHeading extends Component
     public Unit $unit;
 
     /**
-     * The overview data.
-     */
-    public mixed $overview;
-
-    /**
      * Create a new component instance.
+     *
+     * @param Unit $unit
      */
-    public function __construct($unit, $overview = null)
+    public function __construct(Unit $unit)
     {
-        $this->unit     = $unit;
-        $this->overview = $overview;
+        $this->unit = $unit;
     }
 
     /**
@@ -33,6 +29,6 @@ class UnitHeading extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.unit-heading');
+        return view('components.units.unit-heading');
     }
 }
