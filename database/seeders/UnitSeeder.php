@@ -13,6 +13,7 @@ class UnitSeeder extends Seeder
      */
     public function run(): void
     {
+        // Create the Greetings Unit
         DB::table('units')->insert([
             'title' => 'Scottish Greetings',
             'description' => 'Learn how to greet people in Scottish Gaelic.',
@@ -23,6 +24,7 @@ class UnitSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
+        // Create the Places Unit
         DB::table('units')->insert([
             'title' => 'Scottish Places',
             'description' => 'Learn about some of the most famous places in Scotland.',
@@ -33,6 +35,7 @@ class UnitSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
+        // Create the Food & Drink Unit
         DB::table('units')->insert([
             'title' => 'Scottish Food & Drink',
             'description' => 'Learn about some of the most famous food and drink in Scotland.',
@@ -43,6 +46,7 @@ class UnitSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
+        // Create the Weather Unit
         DB::table('units')->insert([
             'title' => 'Scottish Weather',
             'description' => 'Learn how to talk about the weather in Scottish Gaelic.',
@@ -53,10 +57,11 @@ class UnitSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
+        // Create the Numbers Unit
         DB::table('units')->insert([
-            'title' => 'Scottish Gaelic Alphabet',
-            'description' => 'Learn the Scottish Gaelic alphabet.',
-            'slug' => 'alphabet',
+            'title' => 'Numbers',
+            'description' => 'Learn how to count in Scottish Gaelic, from one to ten!',
+            'slug' => 'numbers',
             'active' => true,
             'sort_order' => 5,
             'created_at' => now(),
