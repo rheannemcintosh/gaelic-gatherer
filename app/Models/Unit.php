@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Unit extends Model
 {
-    use HasFactory;
-
     /**
      * The lessons that belong to the unit.
      *
