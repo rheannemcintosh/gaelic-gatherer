@@ -15,8 +15,8 @@ class UnitSeeder extends Seeder
     {
         // Create the Greetings Unit
         DB::table('units')->insert([
-            'title' => 'Scottish Greetings',
-            'description' => 'Learn how to greet people in Scottish Gaelic.',
+            'title' => 'Greetings',
+            'description' => 'Learn how to greet people in Scottish Gaelic, such as saying hello and asking someone how they are!',
             'slug' => 'greetings',
             'active' => true,
             'sort_order' => 1,
@@ -26,8 +26,8 @@ class UnitSeeder extends Seeder
 
         // Create the Places Unit
         DB::table('units')->insert([
-            'title' => 'Scottish Places',
-            'description' => 'Learn about some of the most famous places in Scotland.',
+            'title' => 'Places',
+            'description' => 'Learn how to say the names of some places in Scottish Gaelic, from Aberdeen to England!',
             'slug' => 'places',
             'active' => true,
             'sort_order' => 2,
@@ -37,8 +37,8 @@ class UnitSeeder extends Seeder
 
         // Create the Food & Drink Unit
         DB::table('units')->insert([
-            'title' => 'Scottish Food & Drink',
-            'description' => 'Learn about some of the most famous food and drink in Scotland.',
+            'title' => 'Food & Drink',
+            'description' => 'Learn how to talk about food and drink in Scottish Gaelic, such as haggis and whisky!',
             'slug' => 'food-and-drink',
             'active' => true,
             'sort_order' => 3,
@@ -48,8 +48,8 @@ class UnitSeeder extends Seeder
 
         // Create the Weather Unit
         DB::table('units')->insert([
-            'title' => 'Scottish Weather',
-            'description' => 'Learn how to talk about the weather in Scottish Gaelic.',
+            'title' => 'Weather',
+            'description' => 'Learn how to talk about the weather in Scottish Gaelic, whether it is rainy, foggy or windy!',
             'slug' => 'weather',
             'active' => true,
             'sort_order' => 4,
