@@ -240,11 +240,11 @@ class MyBadgesController extends Controller
      */
     private function checkHighlanderHello($badgeId)
     {
-        $unitId = Unit::where('title', 'Scottish Greetings')->pluck('id');
+        $unitId = Unit::where('title', 'Greetings')->pluck('id');
         $numLessonsInUnit = Lesson::where('unit_id', $unitId)->count();
 
         $completedGreetingsLessons = auth()->user()->completedLessons()->whereHas('unit', function ($query) {
-            $query->where('title', 'Scottish Greetings');
+            $query->where('title', 'Greetings');
         })->count();
 
         if ($completedGreetingsLessons >= $numLessonsInUnit) {
@@ -261,11 +261,11 @@ class MyBadgesController extends Controller
      */
     private function checkAdmirableAlba($badgeId)
     {
-        $unitId = Unit::where('title', 'Scottish Places')->pluck('id');
+        $unitId = Unit::where('title', 'Places')->pluck('id');
         $numLessonsInUnit = Lesson::where('unit_id', $unitId)->count();
 
         $completedPlacesLessons = auth()->user()->completedLessons()->whereHas('unit', function ($query) {
-            $query->where('title', 'Scottish Places');
+            $query->where('title', 'Places');
         })->count();
 
         if ($completedPlacesLessons >= $numLessonsInUnit) {
@@ -282,11 +282,11 @@ class MyBadgesController extends Controller
      */
     private function checkTabletTaster($badgeId)
     {
-        $unitId = Unit::where('title', 'Scottish Food & Drink')->pluck('id');
+        $unitId = Unit::where('title', 'Food & Drink')->pluck('id');
         $numLessonsInUnit = Lesson::where('unit_id', $unitId)->count();
 
         $completedFoodAndDrinkLessons = auth()->user()->completedLessons()->whereHas('unit', function ($query) {
-            $query->where('title', 'Scottish Food & Drink');
+            $query->where('title', 'Food & Drink');
         })->count();
 
         if ($completedFoodAndDrinkLessons >= $numLessonsInUnit) {
@@ -303,11 +303,11 @@ class MyBadgesController extends Controller
      */
     private function checkDreichDetective($badgeId)
     {
-        $unitId = Unit::where('title', 'Scottish Weather')->pluck('id');
+        $unitId = Unit::where('title', 'Weather')->pluck('id');
         $numLessonsInUnit = Lesson::where('unit_id', $unitId)->count();
 
         $completedWeatherLessons = auth()->user()->completedLessons()->whereHas('unit', function ($query) {
-            $query->where('title', 'Scottish Weather');
+            $query->where('title', 'Weather');
         })->count();
 
         if ($completedWeatherLessons >= $numLessonsInUnit) {
