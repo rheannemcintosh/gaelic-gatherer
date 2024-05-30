@@ -19,6 +19,8 @@ class UnitSeeder extends Seeder
             'slug' => 'greetings',
             'active' => true,
             'sort_order' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         DB::table('units')->insert([
@@ -27,6 +29,8 @@ class UnitSeeder extends Seeder
             'slug' => 'places',
             'active' => true,
             'sort_order' => 2,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         DB::table('units')->insert([
@@ -35,6 +39,8 @@ class UnitSeeder extends Seeder
             'slug' => 'food-and-drink',
             'active' => true,
             'sort_order' => 3,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         DB::table('units')->insert([
@@ -43,6 +49,8 @@ class UnitSeeder extends Seeder
             'slug' => 'weather',
             'active' => true,
             'sort_order' => 4,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         DB::table('units')->insert([
@@ -51,6 +59,8 @@ class UnitSeeder extends Seeder
             'slug' => 'alphabet',
             'active' => true,
             'sort_order' => 5,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 }
