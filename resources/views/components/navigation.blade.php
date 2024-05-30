@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between h-24">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
@@ -9,14 +9,32 @@
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
-
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
             </div>
+
+            <!-- Badges -->
+            @if (isset($badges) && !$hideButton)
+                <div class="z-10 mt-5" x-data="{ isVisible: false }">
+                    <div class="flex justify-center items-center z-10">
+                        <button @click="isVisible = !isVisible" class="justify-center bg-gradient-to-r from-blue-700 to-blue-500 px-8 py-4 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105">
+                            <span class="text-white font-bold">View All Badges</span>
+                        </button>
+                    </div>
+                    <div  class="z-10 max-w-4xl mx-auto sm:px-6 lg:px-2 bg-white p-2">
+                        <div x-show="isVisible">
+                            <div class="flex justify-center py-4 font-bold text-sm">Please hover over each badge to see how to earn it!</div>
+                            @foreach($badges->chunk(5) as $chunk)
+                                <div class="grid grid-cols-5">
+                                    @foreach($chunk as $badge)
+                                        <div class="m-1 p-2">
+                                            <livewire:badge-with-tooltip :badge="$badge" :key="$badge->id"/>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            @endif
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -43,7 +61,7 @@
                             @csrf
 
                             <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
+                                             onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
@@ -89,7 +107,7 @@
                     @csrf
 
                     <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
+                                           onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
@@ -98,3 +116,4 @@
         </div>
     </div>
 </nav>
+
