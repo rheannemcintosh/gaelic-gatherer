@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\BadgeHelper;
 use App\Helpers\ConsentHelper;
 use App\Helpers\LessonHelper;
 use App\Http\Controllers\Controller;
@@ -52,18 +53,10 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        LessonHelper::assignLessonsToUsers();
+        // Assign Lessons and Badges to the User
+        LessonHelper::assignLessonsToUser();
+        BadgeHelper::assignBadgesToUser();
 
-        return redirect()->route('badges.assign');
-    }
-
-    /**
-     * Download the participant information sheet PDF.
-     */
-    public function downloadParticipantInformationSheetPDF()
-    {
-        $filePath = storage_path('app/public/participant-information-sheet.pdf');
-
-        return response()->download($filePath);
+        return redirect()->route('pre-study-questionnaire.show.consent');
     }
 }
