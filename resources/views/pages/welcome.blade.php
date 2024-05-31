@@ -15,7 +15,7 @@
     </p>
     </div>
 
-    <form method="POST" action="{{ route('welcome.start') }}">
+    <form method="POST" action="{{ route('welcome.store') }}">
         @csrf
         <div class="mt-8">
             <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">

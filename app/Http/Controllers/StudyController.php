@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\UnitHelper;
+use App\Models\Unit;
 use App\Models\UserData;
 use Illuminate\Support\Facades\Auth;
 
 class StudyController extends Controller
 {
     // Show the welcome page to research participants
-    public function showWelconePage()
+    public function showWelcomePage()
     {
         return view('pages.welcome');
     }
@@ -33,5 +35,24 @@ class StudyController extends Controller
         ]);
 
         return redirect(route('badges.check'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function showOverviewPage()
+    {
+        $units           = Unit::with('lessons')->get();
+        $unitPercentages = UnitHelper::getCompletionPercentagesOfAllUnits($units);
+
+        return view('pages.overview', compact('units', 'unitPercentages'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function showOnHoldPage()
+    {
+        return view('pages.on-hold');
     }
 }

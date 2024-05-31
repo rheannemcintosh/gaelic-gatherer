@@ -21,7 +21,7 @@
             @if (auth()->user()->study_consent && isset(auth()->user()->data->study_completed_at))
                 <x-check-circle />
             @elseif (auth()->user()->pre_study_consent && isset(auth()->user()->data->pre_study_completed_at))
-                <x-target-circle :route="route('units.index')" />
+                <x-target-circle :route="route('overview.show')" />
             @else
                 <x-lock-circle />
             @endif

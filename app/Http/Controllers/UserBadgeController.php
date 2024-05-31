@@ -11,24 +11,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class MyBadgesController extends Controller
+class UserBadgeController extends Controller
 {
-    /**
-     * Assign all badges to the current user.
-     */
-    public function assignBadgesToUser ()
-    {
-        $user = Auth::user();
-
-        $badges = Badge::all();
-
-        foreach ($badges as $badge) {
-            $user->badges()->attach($badge->id, ['created_at' => now(), 'updated_at' => now()]);
-        }
-
-        return redirect()->route('pre-study-questionnaire.show.consent');
-    }
-
     /**
      * Check for new badges earned by the current user.
      *

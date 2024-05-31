@@ -57,7 +57,7 @@ class KnowledgeRetentionQuizController extends Controller
         }
 
         if (!is_null(auth()->user()->data->quiz_one_completed_at)) {
-            return redirect(route('on-hold'));
+            return redirect(route('on-hold.show'));
         }
 
         return view('knowledge-retention-quiz.form', ['quiz' => $quiz]);
@@ -111,6 +111,6 @@ class KnowledgeRetentionQuizController extends Controller
             'quiz_three_unlocked_at' => Carbon::now()->addDays(14),
         ]);
 
-        return redirect(route('on-hold'));
+        return redirect(route('on-hold.show'));
     }
 }
