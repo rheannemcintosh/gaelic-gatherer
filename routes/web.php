@@ -75,9 +75,6 @@ require __DIR__.'/backend.php';
     })->name('on-hold');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -89,8 +86,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/overview', [UnitController::class, 'index'])->name('units.index');
     Route::get('/units/{slug}/lessons/{lesson}', [LessonController::class, 'show'])->name('lessons.show');
 });
-
-Route::get('/research-study/download-pdf', [RegisteredUserController::class, 'downloadParticipantInformationSheetPDF'])->name('research-study.download-pdf');
 
 Route::middleware('auth')->group(function () {
     Route::prefix('user-lesson')->group(function () {
@@ -104,9 +99,4 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-
-// Frontend routes
-Route::get('/research-study', function () {
-    return view('research-study');
-});
 
