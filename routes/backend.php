@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/units/{slug}/lessons/{lesson}', [LessonController::class, 'show'])->name('lessons.show');
     Route::post('/user-lesson', [UserLessonController::class, 'store'])->name('user-lessons.store');
     Route::get('/badges/check', [UserBadgeController::class, 'checkForNewBadges'])->name('badges.check');
+    Route::get('/complete', [StudyController::class, 'completeTheStudy'])->name('study.complete');
     Route::get('/on-hold', [StudyController::class, 'showOnHoldPage'])->name('on-hold.show');
 
     // Post Study Questionnaire Routes
