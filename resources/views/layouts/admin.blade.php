@@ -23,7 +23,7 @@
                 @if (!$hideButton)
                     <div class="w-full mb-4 flex items-center justify-center">
                         <div class="justify-center bg-gradient-to-r from-blue-700 to-blue-500 px-8 py-4 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105">
-                            <a href="{{ route('post-study-questionnaire.show') }}">
+                            <a href="{{ route('study.complete') }}">
                                 <span class="text-white font-bold">Finished Exploring? Complete the Study Here!</span>
                             </a>
                         </div>

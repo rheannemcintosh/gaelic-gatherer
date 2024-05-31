@@ -12,7 +12,19 @@ class StudyController extends Controller
     // Show the welcome page to research participants
     public function showWelcomePage()
     {
-        return view('pages.welcome');
+        if(auth()->user()->study_consent && is_null(auth()->user()->data->study_started_at) && is_null(auth()->user()->data->study_completed_at)) {
+            return view('pages.welcome');
+        }
+
+        if(auth()->user()->study_consent && !is_null(auth()->user()->data->study_started_at) && is_null(auth()->user()->data->study_completed_at)) {
+            return redirect(route('overview.show'));
+        }
+
+        if(auth()->user()->study_consent && !is_null(auth()->user()->data->study_started_at) && !is_null(auth()->user()->data->study_completed_at)) {
+            return redirect(route('post-study-questionnaire.show.consent'));
+        }
+
+        return redirect(route('pre-study-questionnaire.show.consent'));
     }
 
     // Start the study
@@ -42,10 +54,36 @@ class StudyController extends Controller
      */
     public function showOverviewPage()
     {
-        $units           = Unit::with('lessons')->get();
-        $unitPercentages = UnitHelper::getCompletionPercentagesOfAllUnits($units);
+        if (auth()->user()->study_consent && !is_null(auth()->user()->data->study_started_at) && is_null(auth()->user()->data->study_completed_at)) {
+            $units           = Unit::with('lessons')->get();
+            $unitPercentages = UnitHelper::getCompletionPercentagesOfAllUnits($units);
 
-        return view('pages.overview', compact('units', 'unitPercentages'));
+            return view('pages.overview', compact('units', 'unitPercentages'));
+        }
+
+        if (auth()->user()->study_consent && !is_null(auth()->user()->data->study_started_at) && !is_null(auth()->user()->data->study_completed_at)) {
+            return redirect(route('post-study-questionnaire.show.consent'));
+        }
+
+
+        return redirect(route('pre-study-questionnaire.show.consent'));
+    }
+
+    public function completeTheStudy()
+    {
+        // Get the authenticated user
+        $user = Auth::user();
+
+
+        // Find the user data field
+        $userData = UserData::find($user->id);
+
+        // Update the study completed at field
+        $userData->update([
+            'study_completed_at' => now()
+        ]);
+
+        return redirect(route('post-study-questionnaire.show.consent'));
     }
 
     /**
@@ -53,6 +91,10 @@ class StudyController extends Controller
      */
     public function showOnHoldPage()
     {
-        return view('pages.on-hold');
+        if (auth()->user()->data->quiz_one_completed_at) {
+            return view('pages.on-hold');
+        }
+
+        return redirect(route('knowledge-retention-quiz.show.consent', ['quiz' => 1]));
     }
 }

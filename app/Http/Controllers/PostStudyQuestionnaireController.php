@@ -7,6 +7,7 @@ use App\Models\QuestionnaireResponse;
 use App\Models\User;
 use App\Models\UserData;
 use App\Providers\RouteServiceProvider;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +18,29 @@ class PostStudyQuestionnaireController extends Controller
      */
     public function showConsent()
     {
+        $numberOfOverviewLessons = Lesson::whereHas('lessonType', function($query) {
+            $query->where('name', '=', 'Overview');
+        })->count();
+
+        $completedLessons = User::find(Auth::id())
+            ->lessons()
+            ->wherePivot('completed', true)
+            ->whereHas('lessonType', function($query) {
+                $query->where('name', '=', 'Overview');
+            })
+            ->count();
+
+        if ($numberOfOverviewLessons > $completedLessons) {
+            return redirect(RouteServiceProvider::HOME);
+        }
+
+        $userData = UserData::find(Auth::id());
+
+        $userData->update([
+            'study_completed_at' => now(),
+        ]);
+
+
         if (Auth::user()->post_study_consent) {
             return redirect(route('post-study-questionnaire.show'));
         }
