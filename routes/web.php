@@ -26,6 +26,13 @@ use Illuminate\Support\Facades\Route;
 
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
+require __DIR__.'/auth.php';
+
+// Frontend Routes
+require __DIR__.'/frontend.php';
+
+// Backend Routes
+require __DIR__.'/backend.php';
 
     // Welcome Routes
     Route::get('/welcome', [StudyController::class, 'showWelconePage'])->name('welcome.show');
@@ -97,7 +104,6 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-require __DIR__.'/auth.php';
 
 // Frontend routes
 Route::get('/research-study', function () {
