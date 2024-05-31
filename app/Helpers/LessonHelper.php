@@ -10,7 +10,7 @@ class LessonHelper
     /**
      * Assign all lessons to the current user.
      */
-    public static function assignLessonsToUsers()
+    public static function assignLessonsToUser ()
     {
         $user = Auth::user();
 
