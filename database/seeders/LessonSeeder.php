@@ -82,5 +82,12 @@ class LessonSeeder extends Seeder
             'name' => 'Match Numbers',
             'required' => false,
         ]);
+
+        DB::table('lessons')->insert([
+            'unit_id' => 5,
+            'lesson_type_id' => 8,
+            'name' => 'Maths',
+            'required' => false,
+        ]);
     }
 }

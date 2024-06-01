@@ -40,5 +40,9 @@ class LessonTypeSeeder extends Seeder
         DB::table('lesson_types')->insert([
             'name' => 'Story',
         ]);
+
+        DB::table('lesson_types')->insert([
+            'name' => 'Maths',
+        ]);
     }
 }
