@@ -50,7 +50,11 @@
         <div class="flex flex-col items-center">
             @if (auth()->user()->quiz_two_consent && isset(auth()->user()->data->quiz_two_completed_at))
                 <x-check-circle />
-            @elseif (auth()->user()->quiz_one_consent && isset(auth()->user()->data->quiz_one_completed_at))
+            @elseif (
+                auth()->user()->quiz_one_consent &&
+                isset(auth()->user()->data->quiz_one_completed_at) &&
+                now() >= auth()->user()->data->quiz_two_unlocked_at
+            )
                 <x-target-circle :route="route('knowledge-retention-quiz.show.consent', ['quiz' => 2])" />
             @else
                 <x-lock-circle />
