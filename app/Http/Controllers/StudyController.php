@@ -12,9 +12,9 @@ class StudyController extends Controller
     // Show the welcome page to research participants
     public function showWelcomePage()
     {
-        if(auth()->user()->study_consent && is_null(auth()->user()->data->study_started_at) && is_null(auth()->user()->data->study_completed_at)) {
-            return view('pages.welcome');
-        }
+        if (!auth()->user()->data->pre_study_completed_at) {
+            return redirect(route('pre-study-questionnaire.show.consent'));
+         }
 
         if(auth()->user()->study_consent && !is_null(auth()->user()->data->study_started_at) && is_null(auth()->user()->data->study_completed_at)) {
             return redirect(route('overview.show'));
@@ -24,7 +24,7 @@ class StudyController extends Controller
             return redirect(route('post-study-questionnaire.show.consent'));
         }
 
-        return redirect(route('pre-study-questionnaire.show.consent'));
+        return view('pages.welcome');
     }
 
     // Start the study
