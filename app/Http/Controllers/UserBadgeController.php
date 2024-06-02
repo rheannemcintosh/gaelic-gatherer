@@ -69,6 +69,9 @@ class UserBadgeController extends Controller
                 case 'Unit Unicorn':
                     $checkPassed = $this->checkUnitUnicorn($badge->id);
                     break;
+                case 'Magnificent Munro':
+                    $checkPassed = $this->checkMagnificentMunro($badge->id);
+                    break;
             }
 
             if ($checkPassed) {
@@ -140,6 +143,24 @@ class UserBadgeController extends Controller
     {
         $completedOverviewLessons = auth()->user()->completedLessons()->whereHas('lessonType', function ($query) {
             $query->where('name', 'Overview');
+        })->count();
+
+        if ($completedOverviewLessons >= 1) {
+            auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Check if the user has completed the maths lesson.
+     *
+     * @param $badgeId integer the id of the badge to check and update if necessary
+     */
+    private function checkMagnificentMunro($badgeId)
+    {
+        $completedOverviewLessons = auth()->user()->completedLessons()->whereHas('lessonType', function ($query) {
+            $query->where('name', 'Maths');
         })->count();
 
         if ($completedOverviewLessons >= 1) {
