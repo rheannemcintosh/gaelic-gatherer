@@ -12,8 +12,11 @@
                 <x-knowledge-retention-button :quiz="2" />
             </a>
         </button>
-        <button @if(auth()->user()->data->quiz_three_unlocked_at >= now()) disabled @endif class="disabled:cursor-not-allowed">
-            <x-knowledge-retention-button :quiz="3" />
+
+        <button @if(auth()->user()->data->quiz_three_unlocked_at <= now() || isset(auth()->user()->data->quiz_three_completed_at)) disabled @endif class="disabled:cursor-not-allowed">
+            <a href="{{ route('knowledge-retention-quiz.show.consent', ['quiz' => 3]) }}">
+                <x-knowledge-retention-button :quiz="3" />
+            </a>
         </button>
     </div>
 </x-admin-layout>
