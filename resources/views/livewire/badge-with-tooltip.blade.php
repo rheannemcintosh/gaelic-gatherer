@@ -6,7 +6,7 @@
             @if ($badge->pivot->completed)
                 <img class="w-20 h-20" src="{{ asset('images/badges/' . $badge->icon) }}">
             @else
-                <div class="w-16 h-16 bg-gray-500 rounded-full"></div>
+                <img class="blur-extra-sm grayscale w-20 h-20" src="{{ asset('images/badges/' . $badge->icon) }}">
             @endif
         </div>
 
