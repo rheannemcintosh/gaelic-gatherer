@@ -19,7 +19,8 @@ class KnowledgeRetentionQuizController extends Controller
     {
         if (
             ($quiz == 1 && Auth::user()->quiz_one_consent) ||
-            ($quiz == 2 && Auth::user()->quiz_two_consent)
+            ($quiz == 2 && Auth::user()->quiz_two_consent) ||
+            ($quiz == 3 && Auth::user()->quiz_three_consent)
         ) {
             return redirect(route('knowledge-retention-quiz.show', ['quiz' => $quiz]));
         }
@@ -32,6 +33,7 @@ class KnowledgeRetentionQuizController extends Controller
      */
     public function storeConsent($quiz)
     {
+
         // Get the authenticated user
         $user = Auth::user();
         $userData = UserData::find(Auth::id());
@@ -54,6 +56,15 @@ class KnowledgeRetentionQuizController extends Controller
             $userData->update([
                 'quiz_two_started_at' => now(),
             ]);
+        } else if ($quiz == 3) {
+            // Update the study consent field
+            $user->update([
+                'quiz_three_consent' => true
+            ]);
+
+            $userData->update([
+                'quiz_three_started_at' => now(),
+            ]);
         }
 
         // Redirect to the pre-study questionnaire form
@@ -67,14 +78,16 @@ class KnowledgeRetentionQuizController extends Controller
     {
         if (
             ($quiz == 1 && !Auth::user()->quiz_one_consent) ||
-            ($quiz == 2 && !Auth::user()->quiz_two_consent)
+            ($quiz == 2 && !Auth::user()->quiz_two_consent) ||
+            ($quiz == 3 && !Auth::user()->quiz_three_consent)
         ) {
             return redirect(route('knowledge-retention-quiz.show.consent', ['quiz' => $quiz]));
         }
 
         if (
             ($quiz == 1 && !is_null(auth()->user()->data->quiz_one_completed_at)) ||
-            ($quiz == 2 && !is_null(auth()->user()->data->quiz_two_completed_at))
+            ($quiz == 2 && !is_null(auth()->user()->data->quiz_two_completed_at)) ||
+            ($quiz == 3 && !is_null(auth()->user()->data->quiz_three_completed_at))
         ) {
             return redirect(route('on-hold.show'));
         }
@@ -133,6 +146,10 @@ class KnowledgeRetentionQuizController extends Controller
         } else if ($quiz == 2) {
             $userData->update([
                 'quiz_two_completed_at' => now(),
+            ]);
+        } else if ($quiz == 3) {
+            $userData->update([
+                'quiz_three_completed_at' => now(),
             ]);
         }
 
