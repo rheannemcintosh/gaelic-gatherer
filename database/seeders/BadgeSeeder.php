@@ -14,108 +14,93 @@ class BadgeSeeder extends Seeder
     public function run(): void
     {
         DB::table('badges')->insert([
-            'name' => 'Shortbread Starter',
-            'description' => 'Start the study',
+            'name'        => 'Shortbread Starter',
+            'description' => 'Start the Study',
+            'icon'        => 'shortbread-starter.png',
         ]);
 
         DB::table('badges')->insert([
-            'name' => 'Gaelic Gatherer',
-            'description' => 'Collect all Badges'
+            'name'        => 'Brave Bobby',
+            'description' => 'Complete 1 Lesson',
+            'icon'        => 'brave-bobby.png',
         ]);
 
         DB::table('badges')->insert([
-            'name' => 'Highlander Hello',
-            'description' => 'Complete the Scottish Gaelic Greetings Unit'
+            'name'        => 'Knowing Kelpie',
+            'description' => 'Complete 10 Lessons',
+            'icon'        => 'knowing-kelpie.png',
         ]);
 
         DB::table('badges')->insert([
-            'name' => 'Admirable Alba',
-            'description' => 'Complete the Scottish Places Unit'
+            'name'        => 'Remarkable Rabbie',
+            'description' => 'Complete a Reading Lesson',
+            'icon'        => 'remarkable-rabbie.png',
         ]);
 
         DB::table('badges')->insert([
-            'name' => 'Dreich Detective',
-            'description' => 'Complete the Weather Unit'
+            'name'        => 'Magnificent Munro',
+            'description' => 'Complete a Matching Lesson',
+            'icon'        => 'magnificent-munro.png',
         ]);
 
         DB::table('badges')->insert([
-            'name' => 'Super Shortbread',
-            'description' => 'Complete the Food & Drink Unit'
+            'name'        => 'Celtic Connoisseur',
+            'description' => 'Complete a Calculations Lesson',
+            'icon'        => 'celtic-connoisseur.png',
         ]);
 
         DB::table('badges')->insert([
-            'name' => 'Affa Amazing',
-            'description' => 'Complete the Alphabet Unit'
+            'name'        => 'Brilliant Bagpipes',
+            'description' => 'Spend 5 Minutes Learning',
+            'icon'        => 'brilliant-bagpipes.png',
         ]);
 
         DB::table('badges')->insert([
-            'name' => 'Celtic Connoisseur',
-            'description' => 'Complete all the Mandatory Overview Lessons'
+            'name'        => 'Terrific Terrier',
+            'description' => 'Spend 30 Minutes Learning',
+            'icon'        => 'terrific-terrier.png',
         ]);
 
         DB::table('badges')->insert([
-            'name' => 'Brave Bobby',
-            'description' => 'Spend Five Minutes Learning'
+            'name'        => 'Highlander Hello',
+            'description' => 'Complete the Greetings Unit',
+            'icon'        => 'highlander-hello.png',
         ]);
 
         DB::table('badges')->insert([
-            'name' => 'Happy Haggis',
-            'description' => 'Spend Thirty Minutes Learning'
+            'name'        => 'Admirable Alba',
+            'description' => 'Complete the Places Unit',
+            'icon'        => 'admirable-alba.png',
         ]);
 
         DB::table('badges')->insert([
-            'name' => 'Brilliant Bagpipes',
-            'description' => 'Complete One Lesson'
+            'name'        => 'Happy Haggis',
+            'description' => 'Complete the Food & Drink Unit',
+            'icon'        => 'happy-haggis.png',
         ]);
 
         DB::table('badges')->insert([
-            'name' => 'Kingly Kilt',
-            'description' => 'Complete Five Lessons'
+            'name'        => 'Dreich Detective',
+            'description' => 'Complete the Weather Unit',
+            'icon'        => 'dreich-detective.png',
         ]);
 
         DB::table('badges')->insert([
-            'name' => 'Terrific Terrier',
-            'description' => 'Complete Ten Lessons'
+            'name'        => 'Noble Nessie',
+            'description' => 'Complete the Numbers Unit',
+            'icon'        => 'noble-nessie.png',
         ]);
 
         DB::table('badges')->insert([
-            'name' => 'Unit Unicorn',
-            'description' => 'Complete all Units'
+            'name'        => 'Unit Unicorn',
+            'description' => 'Complete all Units',
+            'icon'        => 'unit-unicorn.png',
         ]);
 
         DB::table('badges')->insert([
-            'name' => 'Rabbie Reader',
-            'description' => 'Complete a Reading Lesson'
-        ]);
-
-        DB::table('badges')->insert([
-            'name' => 'Noble Nessie',
-            'description' => 'Complete a Map Based Lesson'
-        ]);
-
-        DB::table('badges')->insert([
-            'name' => 'Wonder Wallace',
-            'description' => 'Complete a Word Matching Lesson'
-        ]);
-
-        DB::table('badges')->insert([
-            'name' => 'Talented Thistle',
-            'description' => 'Complete a Translation Lesson'
-        ]);
-
-        DB::table('badges')->insert([
-            'name' => 'Ceilidh Conqueror',
-            'description' => 'Complete a ????? Lesson'
-        ]);
-
-        DB::table('badges')->insert([
-            'name' => 'Knowing Kelpie',
-            'description' => 'Complete the course'
-        ]);
-
-        DB::table('badges')->insert([
-            'name' => 'Perfect Piper',
-            'description' => 'Achieve a perfect score in the practice quiz'
+            'name'        => 'Gaelic Gatherer',
+            'description' => 'Collect all Badges',
+            'icon'        => 'gaelic-gatherer.png',
         ]);
     }
 }

@@ -18,7 +18,7 @@
                         <div class="m-1 p-2">
                             <!-- Badge -->
                             <div class="flex justify-center pb-2">
-                                <div class="w-16 h-16 bg-gray-500 rounded-full"></div>
+                                <img class="w-20 h-20" src="{{ asset('images/badges/' . $badge->icon) }}">
                             </div>
                             <!-- Badge Name -->
                             <div class="flex justify-center">
