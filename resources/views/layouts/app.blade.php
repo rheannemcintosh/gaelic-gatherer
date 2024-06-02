@@ -5,16 +5,33 @@
     @include('components.head')
 
     <!-- Body -->
-    <body class="font-sans antialiased min-h-screen bg-gray-50 sm:bg-gray-100 flex flex-col text-gray-800">
+    <body class="font-sans antialiased min-h-screen bg-gray-50 sm:bg-gray-100  text-gray-800">
+        <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10 flex gap-4">
+            @guest
+                @if (!config('app.study_closed') && config('app.study_live'))
+                    <div class="w-full flex items-center justify-center">
+                        <a href="{{ route('login') }}" class="w-28 bg-blue-700 hover:bg-blue-500 px-4 py-2 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105 flex justify-center items-center">
+                            <span class="text-center text-white font-bold">Login</span>
+                        </a>
+                    </div>
+                    <div class="w-full flex items-center justify-center">
+                        <a href="{{ route('register') }}" class="w-28 bg-blue-700 hover:bg-blue-500 px-4 py-2 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105 flex justify-center items-center">
+                            <span class="text-white font-bold">Register</span>
+                        </a>
+                    </div>
+                @endif
+            @endguest
+        </div>
 
         <!-- Page Content -->
-        <main class="sm:p-8 flex justify-center items-center min-h-screen ">
-            <div class="w-full flex flex-col items-center lg:max-w-4xl pt-8">
-                <img class="w-28 h-28 bg-blue-500" src="" />
-                <h1 class="text-2xl font-bold">Gaelic Gatherer</h1>
-                <div class="m-8 p-8 bg-white shadow-md sm:rounded-lg">
-                    {{ $slot }}
-                </div>
+        <main class="sm:p-8 flex justify-center items-center min-h-screen bg-gray-100">
+            <div class="w-full flex flex-col justify-center items-center lg:max-w-4xl p-8">
+                @if(Route::currentRouteName() === 'welcome')
+                    <img class="w-6/12 mb-6" src="{{ asset('images/gaelic-gatherer-logo.png') }}" alt="Gaelic Gatherer Logo" />
+                @else
+                    <img class="w-3/12 mb-6" src="{{ asset('images/gaelic-gatherer-logo.png') }}" alt="Gaelic Gatherer Logo" />
+                @endif
+                {{ $slot }}
             </div>
         </main>
 
