@@ -13,11 +13,17 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->boolean('initial_consent')->default(false);
+            $table->boolean('pre_study_consent')->default(false);
+            $table->boolean('study_consent')->default(false);
+            $table->boolean('post_study_consent')->default(false);
+            $table->boolean('quiz_one_consent')->default(false);
+            $table->boolean('quiz_two_consent')->default(false);
+            $table->boolean('quiz_three_consent')->default(false);
             $table->timestamps();
         });
     }

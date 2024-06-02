@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Head -->
+    @include('components.head')
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+    <!-- Body -->
+    <body class="font-sans antialiased min-h-screen bg-gray-50 sm:bg-gray-100  text-gray-800">
+        <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10 flex gap-4">
+            @guest
+                @if (!config('app.study_closed') && config('app.study_live'))
+                    <div class="w-full flex items-center justify-center">
+                        <a href="{{ route('login') }}" class="w-28 bg-blue-700 hover:bg-blue-500 px-4 py-2 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105 flex justify-center items-center">
+                            <span class="text-center text-white font-bold">Login</span>
+                        </a>
                     </div>
-                </header>
-            @endif
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+                    <div class="w-full flex items-center justify-center">
+                        <a href="{{ route('register') }}" class="w-28 bg-blue-700 hover:bg-blue-500 px-4 py-2 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105 flex justify-center items-center">
+                            <span class="text-white font-bold">Register</span>
+                        </a>
+                    </div>
+                @endif
+            @endguest
         </div>
+
+        <!-- Page Content -->
+        <main class="sm:p-8 flex justify-center items-center min-h-screen bg-gray-100">
+            <div class="w-full flex flex-col justify-center items-center lg:max-w-4xl p-8">
+                @if(Route::currentRouteName() === 'welcome')
+                    <img class="w-6/12 mb-6" src="{{ asset('images/gaelic-gatherer-logo.png') }}" alt="Gaelic Gatherer Logo" />
+                @else
+                    <img class="w-3/12 mb-6" src="{{ asset('images/gaelic-gatherer-logo.png') }}" alt="Gaelic Gatherer Logo" />
+                @endif
+                {{ $slot }}
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-auto bg-gray-400 text-white p-4">
+            <div class="container mx-auto text-center">
+                © Rheanne McIntosh 2024
+            </div>
+        </footer>
+
     </body>
 </html>

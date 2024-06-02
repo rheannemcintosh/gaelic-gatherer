@@ -14,6 +14,9 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            blur: {
+                'extra-sm': '3px',
+            },
         },
     },
 
