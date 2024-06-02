@@ -4,7 +4,7 @@
 
         <div class="flex justify-center pb-2">
             @if ($badge->pivot->completed)
-                <div class="w-16 h-16 bg-red-500 rounded-full"></div>
+                <img class="w-20 h-20" src="{{ asset('images/badges/' . $badge->icon) }}">
             @else
                 <div class="w-16 h-16 bg-gray-500 rounded-full"></div>
             @endif
