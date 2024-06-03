@@ -55,7 +55,14 @@ class StudyController extends Controller
     public function showOverviewPage()
     {
         if (auth()->user()->study_consent && !is_null(auth()->user()->data->study_started_at) && is_null(auth()->user()->data->study_completed_at)) {
-            $units           = Unit::with('lessons')->get();
+            $user = Auth::user();
+
+            $units = Unit::with(['lessons' => function($query) use ($user) {
+                $query->with(['users' => function($query) use ($user) {
+                    $query->where('user_id', $user->id);
+                }]);
+            }])->get();
+
             $unitPercentages = UnitHelper::getCompletionPercentagesOfAllUnits($units);
 
             return view('pages.overview', compact('units', 'unitPercentages'));
