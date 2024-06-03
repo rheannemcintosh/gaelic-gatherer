@@ -10,8 +10,13 @@
                 <div class="text-center font-bold text-xl">
                     {{ $lesson->name }}
                 </div>
-                <div class="text-center">
+                <div class="text-center text-sm">
                     {{ $lesson->description }}
+                </div>
+                <div id="completed" class="absolute bottom-0 left-0 mb-2 ml-2">
+                    @if ($lesson->required)
+                        <span class="font-bold text-xs italic">required</span>
+                    @endif
                 </div>
                 <div id="completed" class="absolute bottom-0 right-0 mb-2 mr-2">
                     @if ($lesson->users->isNotEmpty() && $lesson->users->first()->pivot->completed)
