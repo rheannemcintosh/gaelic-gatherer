@@ -50,10 +50,7 @@
         </main>
 
         <!-- Footer -->
-        <footer class="mt-auto bg-gray-400 text-white p-4">
-            <div class="container mx-auto text-center">
-            </div>
-        </footer>
+        <x-footer />
 
     </body>
 </html>

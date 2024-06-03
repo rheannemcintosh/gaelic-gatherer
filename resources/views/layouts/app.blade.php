@@ -36,11 +36,7 @@
         </main>
 
         <!-- Footer -->
-        <footer class="mt-auto bg-gray-400 text-white p-4">
-            <div class="container mx-auto text-center">
-                © Rheanne McIntosh 2024
-            </div>
-        </footer>
+        <x-footer />
 
     </body>
 </html>
