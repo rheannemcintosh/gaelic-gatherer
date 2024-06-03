@@ -14,3 +14,8 @@ use Illuminate\Support\Facades\Route;
             Route::get('/download-pdf', [FrontendController::class, 'downloadParticipantInformationSheetPDF'])->name('research-study.download-pdf');
         });
     });
+
+    Route::get('/privacy-policy', function () {
+        return view('pages.privacy-policy');
+    })->name('privacy-policy');
+
