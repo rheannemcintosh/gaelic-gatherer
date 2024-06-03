@@ -6,7 +6,7 @@
 
     <!-- Body -->
     <body class="font-sans antialiased min-h-screen bg-gray-50 sm:bg-gray-100  text-gray-800">
-        <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10 flex gap-4">
+        <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10 flex gap-4 bg-gray-100 rounded-bl-2xl">
             @guest
                 @if (!config('app.study_closed') && config('app.study_live'))
                     <div class="w-full flex items-center justify-center">
@@ -36,11 +36,7 @@
         </main>
 
         <!-- Footer -->
-        <footer class="mt-auto bg-gray-400 text-white p-4">
-            <div class="container mx-auto text-center">
-                © Rheanne McIntosh 2024
-            </div>
-        </footer>
+        <x-footer />
 
     </body>
 </html>
