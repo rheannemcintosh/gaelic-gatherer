@@ -45,7 +45,7 @@ class LessonController extends Controller
         $name = '';
 
         switch ($lesson->name) {
-            case 'Match Greetings':
+            case 'Matching Greetings':
                 $gaelicWords = [
                     ['index' => 0, 'word' => 'Fàilte'],
                     ['index' => 1, 'word' => 'Halò'],
@@ -60,7 +60,7 @@ class LessonController extends Controller
                 ];
                 $name = 'greetings';
                 break;
-            case 'Match Places':
+            case 'Matching Places':
                 $gaelicWords = [
                     ['index' => 0, 'word' => 'Alba'],
                     ['index' => 1, 'word' => 'Tha mi à Obar Dheathain'],
@@ -75,7 +75,7 @@ class LessonController extends Controller
                 ];
                 $name = 'places';
                 break;
-            case 'Match Food & Drink':
+            case 'Matching Food & Drink':
                 $gaelicWords = [
                     ['index' => 0, 'word' => 'Is toil leam Bradan'],
                     ['index' => 1, 'word' => 'Uisge-Beatha'],
@@ -90,7 +90,7 @@ class LessonController extends Controller
                 ];
                 $name = 'food & drink';
                 break;
-            case 'Match Weather':
+            case 'Matching Weather':
                 $gaelicWords = [
                     ['index' => 0, 'word' => 'Tha i teth'],
                     ['index' => 1, 'word' => 'Chan eil e grianach'],
@@ -105,7 +105,7 @@ class LessonController extends Controller
                 ];
                 $name = 'weather';
                 break;
-            case 'Match Numbers':
+            case 'Matching Numbers':
                 $gaelicWords = [
                     ['index' => 0, 'word' => 'Ocht'],
                     ['index' => 1, 'word' => 'Dà'],
