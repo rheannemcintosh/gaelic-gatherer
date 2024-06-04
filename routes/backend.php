@@ -51,6 +51,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/{quiz}', [KnowledgeRetentionQuizController::class, 'store'])->name('knowledge-retention-quiz.store');
     });
 
+    Route::get('/help', [StudyController::class, 'showHelpPage'])->name('help.show');
+
     // Profile Routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
