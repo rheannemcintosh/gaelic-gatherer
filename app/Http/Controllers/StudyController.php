@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\UnitHelper;
+use App\Models\Badge;
 use App\Models\Unit;
 use App\Models\UserData;
 use Illuminate\Support\Facades\Auth;
@@ -103,5 +104,13 @@ class StudyController extends Controller
         }
 
         return redirect(route('knowledge-retention-quiz.show.consent', ['quiz' => 1]));
+    }
+
+    public function showHelpPage()
+    {
+        $units = Unit::all();
+        $badges = Badge::all();
+
+        return view('pages.help', compact('units', 'badges'));
     }
 }
