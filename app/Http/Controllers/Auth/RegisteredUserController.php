@@ -43,6 +43,13 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        if (
+            (config('app.study_closed') || !config('app.study_live')) &&
+            (in_array($request->email, config('app.study_override_emails')) === false)
+        ){
+            return redirect()->route('welcome');
+        }
+
         $user = User::create([
             'email' => $request->email,
             'password' => Hash::make($request->password),

@@ -41,6 +41,7 @@ return [
      */
     'study_live' => (bool) env('STUDY_LIVE', false),
     'study_closed' => (bool) env('STUDY_CLOSED', true),
+    'study_override_emails' => explode(",",env('STUDY_OVERRIDE_EMAILS')),
 
     /*
     |--------------------------------------------------------------------------
