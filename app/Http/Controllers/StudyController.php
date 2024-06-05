@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Helpers\UnitHelper;
 use App\Models\Badge;
+use App\Models\Lesson;
 use App\Models\Unit;
+use App\Models\User;
 use App\Models\UserData;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 
 class StudyController extends Controller
@@ -55,7 +58,9 @@ class StudyController extends Controller
      */
     public function showOverviewPage()
     {
+
         if (auth()->user()->study_consent && !is_null(auth()->user()->data->study_started_at) && is_null(auth()->user()->data->study_completed_at)) {
+
             $user = Auth::user();
 
             $units = Unit::with(['lessons' => function($query) use ($user) {
@@ -70,6 +75,7 @@ class StudyController extends Controller
         }
 
         if (auth()->user()->study_consent && !is_null(auth()->user()->data->study_started_at) && !is_null(auth()->user()->data->study_completed_at)) {
+//            dd('here');
             return redirect(route('post-study-questionnaire.show.consent'));
         }
 
@@ -79,9 +85,24 @@ class StudyController extends Controller
 
     public function completeTheStudy()
     {
+        $numberOfOverviewLessons = Lesson::whereHas('lessonType', function($query) {
+            $query->where('name', '=', 'Overview');
+        })->count();
+
+        $completedLessons = User::find(Auth::id())
+            ->lessons()
+            ->wherePivot('completed', true)
+            ->whereHas('lessonType', function($query) {
+                $query->where('name', '=', 'Overview');
+            })
+            ->count();
+
+        if ($numberOfOverviewLessons > $completedLessons) {
+            return redirect(RouteServiceProvider::HOME);
+        }
+
         // Get the authenticated user
         $user = Auth::user();
-
 
         // Find the user data field
         $userData = UserData::find($user->id);
