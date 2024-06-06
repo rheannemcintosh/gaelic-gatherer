@@ -15,6 +15,7 @@ class UserData extends Model
      */
     protected $fillable = [
         'user_id',
+        'study_group',
         'pre_study_motivation',
         'pre_study_competency',
         'pre_study_completed_at',
