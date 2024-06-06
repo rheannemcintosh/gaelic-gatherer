@@ -68,6 +68,7 @@ class PreStudyQuestionnaireController extends Controller
         // Create the user data record
         UserData::create([
             'user_id' => $user->id,
+            'study_group' => \App\Helpers\StudyGroupHelper::assignStudyGroup(),
             'pre_study_motivation' => $request->pre_study_motivation,
             'pre_study_competency' => $request->scottish_gaelic_competency,
             'pre_study_completed_at' => now(),
