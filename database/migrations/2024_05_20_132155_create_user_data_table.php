@@ -18,6 +18,9 @@ return new class extends Migration
             // User ID
             $table->foreignId('user_id')->constrained();
 
+            // Study Group
+            $table->enum('study_group', ['Control', 'Experimental']);
+
             // Pre Study Questionnaire
             $table->enum('pre_study_motivation', ['Highly Motivated', 'Moderately Motivated', 'Slightly Motivated', 'Not Motivated'])->nullable();
             $table->enum('pre_study_competency', ['None', 'Beginner', 'Intermediate', 'Advanced', 'Fluent', 'Native Speaker'])->nullable();
