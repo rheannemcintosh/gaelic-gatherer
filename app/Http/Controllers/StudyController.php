@@ -134,4 +134,13 @@ class StudyController extends Controller
 
         return view('pages.help', compact('units', 'badges'));
     }
+
+    public function showThankYouPage()
+    {
+        if (!auth()->user()->data->quiz_three_completed_at) {
+            return redirect(route('post-study-questionnaire.show.consent'));
+        }
+
+        return view('pages.thank-you');
+    }
 }

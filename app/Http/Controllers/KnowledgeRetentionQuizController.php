@@ -153,6 +153,10 @@ class KnowledgeRetentionQuizController extends Controller
             ]);
         }
 
+        if ($quiz == 3) {
+            return redirect(route('thank-you.show'));
+        }
+
         return redirect(route('on-hold.show'));
     }
 }
