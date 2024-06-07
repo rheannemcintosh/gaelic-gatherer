@@ -60,10 +60,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        // Assign Lessons and Badges to the User
-        LessonHelper::assignLessonsToUser();
-        BadgeHelper::assignBadgesToUser();
-
         return redirect()->route('pre-study-questionnaire.show.consent');
     }
 }
