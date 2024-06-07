@@ -21,6 +21,10 @@ class UserBadgeController extends Controller
      */
     public function checkForNewBadges(): RedirectResponse
     {
+        if (auth()->user()->data->study_group == 'Control') {
+            return redirect(RouteServiceProvider::HOME);
+        }
+
         $newBadges = [];
         foreach (auth()->user()->uncompletedBadges() as $badge) {
             $checkPassed = false;

@@ -14,28 +14,30 @@
             </div>
 
             <!-- Badges -->
-            @if (isset($badges) && !$hideButton)
-                <div class="z-10 mt-5" x-data="{ isVisible: false }">
-                    <div class="flex justify-center items-center z-10">
-                        <button @click="isVisible = !isVisible" class="justify-center bg-gradient-to-r from-blue-700 to-blue-500 px-8 py-4 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105">
-                            <span class="text-white font-bold">View All Badges</span>
-                        </button>
-                    </div>
-                    <div  class="z-10 max-w-4xl mx-auto sm:px-6 lg:px-2 bg-white p-2">
-                        <div x-show="isVisible">
-                            <div class="flex justify-center py-4 font-bold text-sm">Please hover over each badge to see how to earn it!</div>
-                            @foreach($badges->chunk(5) as $chunk)
-                                <div class="grid grid-cols-5">
-                                    @foreach($chunk as $badge)
-                                        <div class="m-1 p-2">
-                                            <livewire:badge-with-tooltip :badge="$badge" :key="$badge->id"/>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            @endforeach
+            @if (auth()->user()->data->study_group == 'Experimental')
+                @if (isset($badges) && !$hideButton)
+                    <div class="z-10 mt-5" x-data="{ isVisible: false }">
+                        <div class="flex justify-center items-center z-10">
+                            <button @click="isVisible = !isVisible" class="justify-center bg-gradient-to-r from-blue-700 to-blue-500 px-8 py-4 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105">
+                                <span class="text-white font-bold">View All Badges</span>
+                            </button>
+                        </div>
+                        <div  class="z-10 max-w-4xl mx-auto sm:px-6 lg:px-2 bg-white p-2">
+                            <div x-show="isVisible">
+                                <div class="flex justify-center py-4 font-bold text-sm">Please hover over each badge to see how to earn it!</div>
+                                @foreach($badges->chunk(5) as $chunk)
+                                    <div class="grid grid-cols-5">
+                                        @foreach($chunk as $badge)
+                                            <div class="m-1 p-2">
+                                                <livewire:badge-with-tooltip :badge="$badge" :key="$badge->id"/>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
             @endif
 
             <!-- Settings Dropdown -->
