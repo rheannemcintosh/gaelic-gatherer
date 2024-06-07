@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\BadgeHelper;
+use App\Helpers\LessonHelper;
 use App\Models\UserData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -66,13 +68,21 @@ class PreStudyQuestionnaireController extends Controller
         ]);
 
         // Create the user data record
-        UserData::create([
+        $userData = UserData::create([
             'user_id' => $user->id,
             'study_group' => \App\Helpers\StudyGroupHelper::assignStudyGroup(),
             'pre_study_motivation' => $request->pre_study_motivation,
             'pre_study_competency' => $request->scottish_gaelic_competency,
             'pre_study_completed_at' => now(),
         ]);
+
+        // Assign Lessons to the User
+        LessonHelper::assignLessonsToUser();
+
+        // Assign Badges to the User if they are in the Experimental Group
+        if ($userData->study_group == 'Experimental') {
+            BadgeHelper::assignBadgesToUser();
+        }
 
         // Redirect to the welcome page
         return redirect(route('welcome.show'));
