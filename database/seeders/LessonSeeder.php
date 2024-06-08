@@ -93,6 +93,14 @@ class LessonSeeder extends Seeder
         ]);
 
         DB::table('lessons')->insert([
+            'unit_id' => 4,
+            'lesson_type_id' => 3,
+            'name' => 'Weather Icons',
+            'description' => 'Tell the weather through common weather icons.',
+            'required' => false,
+        ]);
+
+        DB::table('lessons')->insert([
             'unit_id' => 5,
             'lesson_type_id' => 8,
             'name' => 'Calculations',
