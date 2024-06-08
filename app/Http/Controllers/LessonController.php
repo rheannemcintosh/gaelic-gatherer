@@ -36,6 +36,8 @@ class LessonController extends Controller
      */
     public function show(string $unitSlug, Lesson $lesson)
     {
+        auth()->user()->lessons()->updateExistingPivot($lesson, ['number_of_starts' => auth()->user()->lessons()->where('lesson_id', $lesson->id)->first()->pivot->number_of_starts + 1]);
+
         if ($lesson->lessonType->name == 'Overview') {
             return view('lessons.show', compact('lesson'));
         }

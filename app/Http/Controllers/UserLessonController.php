@@ -14,7 +14,7 @@ class UserLessonController extends Controller
     public function store(Request $request)
     {
         // Attach the lesson to the user
-        auth()->user()->lessons()->updateExistingPivot($request->lesson, ['completed' => true, 'completed_at' => now()]);
+        auth()->user()->lessons()->updateExistingPivot($request->lesson, ['completed' => true, 'completed_at' => now(), 'number_of_completes' => auth()->user()->lessons()->where('lesson_id', $request->lesson)->first()->pivot->number_of_completes + 1]);
 
         // Redirect back to the home page
         return redirect(route('badges.check'));

@@ -13,6 +13,8 @@ class LessonUser extends Pivot
         'lesson_id',
         'user_id',
         'completed',
-        'completed_at'
+        'completed_at',
+        'number_of_starts',
+        'number_of_completes',
     ];
 }
