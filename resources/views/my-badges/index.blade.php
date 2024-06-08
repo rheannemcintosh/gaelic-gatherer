@@ -5,8 +5,8 @@
                 <div>
                     <div>
                         <div class="flex justify-center py-4 font-bold text-sm">Please hover over each badge to see how to earn it!</div>
-                        @foreach($myBadges->chunk(5) as $chunk)
-                            <div class="grid grid-cols-5">
+                        @foreach($myBadges->chunk(4) as $chunk)
+                            <div class="grid grid-cols-4">
                                 @foreach($chunk as $badge)
                                     <div class="m-1 p-2">
                                         <livewire:badge-with-tooltip :badge="$badge" :key="$badge->id"/>

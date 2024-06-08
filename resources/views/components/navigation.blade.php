@@ -24,9 +24,9 @@
                         </div>
                         <div  class="z-10 max-w-4xl mx-auto sm:px-6 lg:px-2 bg-white p-2">
                             <div x-show="isVisible">
-                                <div class="flex justify-center py-4 font-bold text-sm">Please hover over each badge to see how to earn it!</div>
-                                @foreach($badges->chunk(5) as $chunk)
-                                    <div class="grid grid-cols-5">
+                                <div class="flex justify-center items-center py-4 font-bold text-sm">Please hover over each badge to see how to earn it!</div>
+                                @foreach($badges->chunk(4) as $chunk)
+                                    <div class=" grid grid-cols-4">
                                         @foreach($chunk as $badge)
                                             <div class="m-1 p-2">
                                                 <livewire:badge-with-tooltip :badge="$badge" :key="$badge->id"/>
