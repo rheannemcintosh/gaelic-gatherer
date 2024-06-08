@@ -14,8 +14,8 @@
             </div>
 
             <!-- Badges -->
-            @if (auth()->user()->data->study_group == 'Experimental')
                 @if (isset($badges) && !$hideButton)
+                    @if (auth()->user()->data->study_group == 'Experimental')
                     <div class="z-10 mt-5" x-data="{ isVisible: false }">
                         <div class="flex justify-center items-center z-10">
                             <button @click="isVisible = !isVisible" class="justify-center bg-gradient-to-r from-blue-700 to-blue-500 px-8 py-4 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105">
