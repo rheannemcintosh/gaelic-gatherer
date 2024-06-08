@@ -1,18 +1,11 @@
 <x-admin-layout>
-    <x-unit-heading :unit="$lesson->unit" />
-    <div class="border border-blue-900 border-8 flex items-center">
-        <div class="ml-4 text-blue-900">
-            <span class="material-symbols-rounded text-7xl">
-                {{ $lesson->lessonType->thumbnail }}
-            </span>
-        </div>
-        <div class="ml-4 w-full text-blue-900">
-            <h2 class="font-bold">
-                {{ $lesson->name }}
-            </h2>
-            <p>
-                {{ $lesson->description }}
-            </p>
+    <div class="bg-blue-700 flex items-center p-4 text-white">
+        <span class="material-symbols-rounded text-7xl ">
+            {{ $lesson->lessonType->thumbnail }}
+        </span>
+        <div class="pl-4 ">
+            <h2 class="text-white font-bold text-xl ">Unit 1 | Greetings Overview</h2>
+            <p class="font-bold">Learn the basics of how to greet people in Scottish Gaelic.</p>
         </div>
     </div>
 

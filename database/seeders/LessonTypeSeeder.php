@@ -15,6 +15,7 @@ class LessonTypeSeeder extends Seeder
     {
         DB::table('lesson_types')->insert([
             'name' => 'Overview',
+            'thumbnail' => 'menu_book',
         ]);
 
         DB::table('lesson_types')->insert([
@@ -31,6 +32,7 @@ class LessonTypeSeeder extends Seeder
 
         DB::table('lesson_types')->insert([
             'name' => 'Matching',
+            'thumbnail' => 'extension',
         ]);
 
         DB::table('lesson_types')->insert([
@@ -43,6 +45,7 @@ class LessonTypeSeeder extends Seeder
 
         DB::table('lesson_types')->insert([
             'name' => 'Maths',
+            'thumbnail' => 'calculate',
         ]);
     }
 }
