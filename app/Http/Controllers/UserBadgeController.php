@@ -44,6 +44,9 @@ class UserBadgeController extends Controller
                 case 'Magnificent Munro':
                     $checkPassed = $this->checkMagnificentMunro($badge->id);
                     break;
+                case 'Talented Thistle':
+                    $checkPassed = $this->checkTalentedThistle($badge->id);
+                    break;
                 case 'Celtic Connoisseur':
                     $checkPassed = $this->checkCelticConnoisseur($badge->id);
                     break;
@@ -159,6 +162,25 @@ class UserBadgeController extends Controller
     {
         $completedOverviewLessons = auth()->user()->completedLessons()->whereHas('lessonType', function ($query) {
             $query->where('name', 'Matching');
+        })->count();
+
+        if ($completedOverviewLessons >= 1) {
+            auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Check if the user has completed the icon lesson,
+     * and can be awarded the Talented Thistle badge.
+     *
+     * @param $badgeId integer the id of the badge to check and update if necessary
+     */
+    private function checkTalentedThistle($badgeId)
+    {
+        $completedOverviewLessons = auth()->user()->completedLessons()->whereHas('lessonType', function ($query) {
+            $query->where('name', 'Icon');
         })->count();
 
         if ($completedOverviewLessons >= 1) {

@@ -44,6 +44,12 @@ class BadgeSeeder extends Seeder
         ]);
 
         DB::table('badges')->insert([
+            'name'        => 'Talented Thistle',
+            'description' => 'Complete an Icon Lesson',
+            'icon'        => 'talented-thistle.png',
+        ]);
+
+        DB::table('badges')->insert([
             'name'        => 'Celtic Connoisseur',
             'description' => 'Complete a Calculations Lesson',
             'icon'        => 'celtic-connoisseur.png',
