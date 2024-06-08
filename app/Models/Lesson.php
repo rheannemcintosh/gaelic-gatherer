@@ -36,6 +36,6 @@ class Lesson extends Model
      */
     public function users()
     {
-        return $this->belongsToMany(User::class)->withPivot('completed', 'completed_at');
+        return $this->belongsToMany(User::class)->withPivot('completed', 'completed_at', 'number_of_starts', 'number_of_completes');
     }
 }
