@@ -52,7 +52,11 @@ class RegisteredUserController extends Controller
             (config('app.study_closed') || !config('app.study_live')) &&
             (in_array($request->email, config('app.study_override_emails')) === false)
         ){
-            return redirect()->route('welcome');
+            return redirect()
+                ->route('welcome')
+                ->with([
+                    'statusMessage' => 'This study is currently closed. Please contact the study administrator for more information.',
+                ]);
         }
 
         $user = User::create([
