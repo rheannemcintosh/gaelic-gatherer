@@ -16,8 +16,13 @@
         <x-platform-progress />
 
         <!-- Page Content -->
-        <main class="mt-8">
+        <main class="my-8">
             <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 bg-gray-50 sm:shadow-xl p-8">
+                
+                <!-- Status Bar -->
+                @if(session()->get('statusMessage'))
+                    <livewire:status-bar :type="session()->get('statusType') ?? null" :message="session()->get('statusMessage')" />
+                @endif
 
                 <!-- Post Study Questionnaire -->
                 @if (!$hideButton)
