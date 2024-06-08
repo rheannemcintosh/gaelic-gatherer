@@ -39,7 +39,7 @@ class RegisteredUserController extends Controller
                 ->withErrors(['initial_consent_statement' => 'You must agree to all statements.'])
                 ->with([
                     'statusMessage' => 'Oops! This form has some errors. Please try again!',
-                    'statusType' => 'error',
+                    'statusType'    => 'error',
                 ]);
         }
 
@@ -69,6 +69,11 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('pre-study-questionnaire.show.consent');
+        return redirect()
+            ->route('pre-study-questionnaire.show.consent')
+            ->with([
+                'statusMessage' => 'Success! Thank you for registering for the study!',
+                'statusType'    => 'success',
+            ]);
     }
 }
