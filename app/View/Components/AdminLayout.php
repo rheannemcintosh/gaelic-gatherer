@@ -12,13 +12,22 @@ class AdminLayout extends Component
      * Shows whether the button to finish exploring the platform should be displayed or not.
      */
     public bool $hideButton;
+    public mixed $statusMessage;
+    public mixed $statusType;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($hideButton = false)
+    public function __construct(
+        $hideButton = false,
+        $statusMessage = null,
+        $statusType = null,
+    )
     {
         $this->hideButton = $hideButton;
+        $this->statusMessage = $statusMessage;
+        $this->statusType = $statusType;
+
     }
 
     /**
