@@ -1,8 +1,8 @@
 <div class="w-full flex flex-col shadow-md">
     <a href="/units/{{ $slug }}/lessons/{{ $lesson->id }}">
-        <div class="border-4 border-blue-900 m-8 h-48 flex flex-col items-center justify-center p-8 relative">
+        <div class="border-4 border-blue-900 m-4 h-48 flex flex-col items-center justify-center p-8 relative">
             <div class="text-blue-900 flex items-center justify-center">
-                <span class="material-symbols-rounded text-7xl">
+                <span class="material-symbols-rounded text-5xl">
                     {{ $lesson->lessonType->thumbnail }}
                 </span>
             </div>
@@ -13,7 +13,7 @@
                 <div class="text-center text-sm">
                     {{ $lesson->description }}
                 </div>
-                <div id="completed" class="absolute bottom-0 left-0 mb-2 ml-2">
+                <div id="completed" class="absolute top-0 left-0 px-2  text-white bg-blue-900 rounded-br-lg">
                     @if ($lesson->required)
                         <span class="font-bold text-xs italic">required</span>
                     @endif
