@@ -17,6 +17,10 @@ class KnowledgeRetentionQuizController extends Controller
      */
     public function showConsent($quiz)
     {
+        if ($quiz != 1 && $quiz != 2 && $quiz != 3) {
+            abort(404);
+        }
+
         if (
             ($quiz == 1 && Auth::user()->quiz_one_consent) ||
             ($quiz == 2 && Auth::user()->quiz_two_consent) ||
@@ -76,6 +80,10 @@ class KnowledgeRetentionQuizController extends Controller
      */
     public function show($quiz)
     {
+        if ($quiz != 1 && $quiz != 2 && $quiz != 3) {
+            abort(404);
+        }
+
         if (
             ($quiz == 1 && !Auth::user()->quiz_one_consent) ||
             ($quiz == 2 && !Auth::user()->quiz_two_consent) ||
