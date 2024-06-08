@@ -35,7 +35,12 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         if (isset($request->initial_consent_statement) == 0 || count($request->initial_consent_statement) !== count(ConsentHelper::CONSENT_STATEMENTS)) {
-            return back()->withErrors(['initial_consent_statement' => 'You must agree to all statements.']);
+            return back()
+                ->withErrors(['initial_consent_statement' => 'You must agree to all statements.'])
+                ->with([
+                    'statusMessage' => 'Oops! This form has some errors. Please try again!',
+                    'statusType' => 'error',
+                ]);
         }
 
         $request->validate([
