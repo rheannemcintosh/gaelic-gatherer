@@ -46,8 +46,10 @@ class MatchingForm extends Component
      * The default words to match. These will be updated in future jira stories.
      */
     public $words = [];
-    public $gaelicWords = [];
-    public $englishWords = [];
+    public $columnOneWords = [];
+    public $columnTwoWords = [];
+    public $columnOneName ='';
+    public $columnTwoName ='';
 
     /**
      * The listeners for this component.
@@ -57,14 +59,16 @@ class MatchingForm extends Component
     /**
      * Create a new component instance.
      */
-    public function mount($lesson, $englishWords, $gaelicWords)
+    public function mount($lesson, $columnOneName, $columnTwoName, $columnTwoWords, $columnOneWords)
     {
         $this->lesson = $lesson;
-        $this->englishWords = $englishWords;
-        $this->gaelicWords = $gaelicWords;
+        $this->columnTwoWords = $columnTwoWords;
+        $this->columnOneWords = $columnOneWords;
+        $this->columnOneName = $columnOneName;
+        $this->columnTwoName = $columnTwoName;
         $this->words = array_map(function ($gaelic, $english) {
             return ['gaelic' => $gaelic, 'english' => $english];
-        }, $this->gaelicWords, $this->englishWords);
+        }, $this->columnOneWords, $this->columnTwoWords);
     }
 
     /**

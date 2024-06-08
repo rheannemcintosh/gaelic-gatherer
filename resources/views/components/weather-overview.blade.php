@@ -25,16 +25,16 @@
                         <td class="border px-4 py-2 text-center font-bold">Teth</td>
                     </tr>
                     <tr>
-                        <td class="border px-4 py-2 text-center">Warm</td>
-                        <td class="border px-4 py-2 text-center font-bold">Blàth</td>
-                    </tr>
-                    <tr>
                         <td class="border px-4 py-2 text-center">Cold</td>
                         <td class="border px-4 py-2 text-center font-bold">Fuar</td>
                     </tr>
                     <tr>
                         <td class="border px-4 py-2 text-center">Freezing</td>
                         <td class="border px-4 py-2 text-center font-bold">Reòiteach</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2 text-center">Snowy</td>
+                        <td class="border px-4 py-2 text-center font-bold">Sneachda</td>
                     </tr>
                     <tr>
                         <td class="border px-4 py-2 text-center">Sunny</td>

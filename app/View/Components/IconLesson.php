@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class MatchingLesson extends Component
+class IconLesson extends Component
 {
     /**
      * The lesson instance.
@@ -22,7 +22,7 @@ class MatchingLesson extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct($lesson, $columnOneName, $columnTwoName, $columnOneWords, $columnTwoWords, $name)
+    public function __construct($lesson, $columnOneName, $columnOneWords, $columnTwoName, $columnTwoWords, $name)
     {
         $this->lesson = $lesson;
         $this->columnOneName = $columnOneName;
@@ -37,6 +37,6 @@ class MatchingLesson extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.matching-lesson');
+        return view('components.icon-lesson');
     }
 }

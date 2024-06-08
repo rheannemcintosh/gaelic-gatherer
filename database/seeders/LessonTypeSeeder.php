@@ -23,7 +23,8 @@ class LessonTypeSeeder extends Seeder
         ]);
 
         DB::table('lesson_types')->insert([
-            'name' => 'Picture',
+            'name' => 'Icon',
+            'thumbnail' => 'photo_camera',
         ]);
 
         DB::table('lesson_types')->insert([
