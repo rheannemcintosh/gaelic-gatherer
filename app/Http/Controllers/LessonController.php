@@ -36,23 +36,43 @@ class LessonController extends Controller
      */
     public function show(string $unitSlug, Lesson $lesson)
     {
-        if ($lesson->lessonType->name != 'Matching') {
+        if ($lesson->lessonType->name == 'Overview') {
             return view('lessons.show', compact('lesson'));
         }
 
-        $gaelicWords = [];
-        $englishWords = [];
+        $columnOneWords = [];
+        $columnTwoWords = [];
+        $columnOneName = '';
+        $columnTwoName = '';
         $name = '';
+
+        if ($lesson->lessonType->name == 'Icon') {
+            $columnOneWords = [
+                ['index' => 0, 'word' => 'Sunny'],
+                ['index' => 1, 'word' => 'Rainy'],
+                ['index' => 2, 'word' => 'Foggy'],
+                ['index' => 3, 'word' => 'Snowy']
+            ];
+            $columnTwoWords = [
+                ['index' => 0, 'word' => 'Grianach'],
+                ['index' => 1, 'word' => 'Fliuch'],
+                ['index' => 2, 'word' => 'Ceòthach'],
+                ['index' => 3, 'word' => 'Sneachda']
+            ];
+            $name = 'weather';
+            $columnOneName = 'Weather Icons';
+            $columnTwoName = 'Gaelic Translations';
+        }
 
         switch ($lesson->name) {
             case 'Matching Greetings':
-                $gaelicWords = [
+                $columnOneWords = [
                     ['index' => 0, 'word' => 'Fàilte'],
                     ['index' => 1, 'word' => 'Halò'],
                     ['index' => 2, 'word' => 'Mar Sin Leat'],
                     ['index' => 3, 'word' => 'Tapadh Leibh']
                 ];
-                $englishWords = [
+                $columnTwoWords = [
                     ['index' => 0, 'word' => 'Welcome'],
                     ['index' => 1, 'word' => 'Hello'],
                     ['index' => 2, 'word' => 'Goodbye'],
@@ -61,13 +81,13 @@ class LessonController extends Controller
                 $name = 'greetings';
                 break;
             case 'Matching Places':
-                $gaelicWords = [
+                $columnOneWords = [
                     ['index' => 0, 'word' => 'Alba'],
                     ['index' => 1, 'word' => 'Tha mi à Obar Dheathain'],
                     ['index' => 2, 'word' => 'Glaschu'],
                     ['index' => 3, 'word' => 'Sasainn']
                 ];
-                $englishWords = [
+                $columnTwoWords = [
                     ['index' => 0, 'word' => 'Scotland'],
                     ['index' => 1, 'word' => 'I am from Aberdeen'],
                     ['index' => 2, 'word' => 'Glasgow'],
@@ -76,13 +96,13 @@ class LessonController extends Controller
                 $name = 'places';
                 break;
             case 'Matching Food & Drink':
-                $gaelicWords = [
+                $columnOneWords = [
                     ['index' => 0, 'word' => 'Is toil leam Bradan'],
                     ['index' => 1, 'word' => 'Uisge-Beatha'],
                     ['index' => 2, 'word' => 'Cha toil leam cofaidh'],
                     ['index' => 3, 'word' => 'Aran']
                 ];
-                $englishWords = [
+                $columnTwoWords = [
                     ['index' => 0, 'word' => 'I like salmon'],
                     ['index' => 1, 'word' => 'Whisky'],
                     ['index' => 2, 'word' => 'I don\'t like coffee'],
@@ -91,13 +111,13 @@ class LessonController extends Controller
                 $name = 'food & drink';
                 break;
             case 'Matching Weather':
-                $gaelicWords = [
+                $columnOneWords = [
                     ['index' => 0, 'word' => 'Tha i teth'],
                     ['index' => 1, 'word' => 'Chan eil e grianach'],
                     ['index' => 2, 'word' => 'Reòiteach agus gaothach'],
                     ['index' => 3, 'word' => 'Fliuch']
                 ];
-                $englishWords = [
+                $columnTwoWords = [
                     ['index' => 0, 'word' => 'It is hot'],
                     ['index' => 1, 'word' => 'It is not sunny'],
                     ['index' => 2, 'word' => 'Freezing and windy'],
@@ -106,13 +126,13 @@ class LessonController extends Controller
                 $name = 'weather';
                 break;
             case 'Matching Numbers':
-                $gaelicWords = [
+                $columnOneWords = [
                     ['index' => 0, 'word' => 'Ocht'],
                     ['index' => 1, 'word' => 'Dà'],
                     ['index' => 2, 'word' => 'Deich'],
                     ['index' => 3, 'word' => 'Aon']
                 ];
-                $englishWords = [
+                $columnTwoWords = [
                     ['index' => 0, 'word' => 'Eight'],
                     ['index' => 1, 'word' => 'Two'],
                     ['index' => 2, 'word' => 'Ten'],
@@ -124,10 +144,10 @@ class LessonController extends Controller
                 break;
         }
 
-        shuffle($gaelicWords);
-        shuffle($englishWords);
+        shuffle($columnOneWords);
+        shuffle($columnTwoWords);
 
-        return view('lessons.show', compact('lesson', 'gaelicWords', 'englishWords', 'name'));
+        return view('lessons.show', compact('lesson', 'columnOneWords', 'columnTwoWords', 'name', 'columnOneName', 'columnTwoName'));
     }
 
     /**
