@@ -4,8 +4,8 @@
             {{ $lesson->lessonType->thumbnail }}
         </span>
         <div class="pl-4 ">
-            <h2 class="text-white font-bold text-xl ">Unit 1 | Greetings Overview</h2>
-            <p class="font-bold">Learn the basics of how to greet people in Scottish Gaelic.</p>
+            <h2 class="text-white font-bold text-xl ">Unit {{ $lesson->unit->sort_order }} | {{ $lesson->name }}</h2>
+            <p class="font-bold">{{ $lesson->description }}</p>
         </div>
     </div>
 
