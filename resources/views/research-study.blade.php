@@ -23,8 +23,8 @@
         <p class="mb-4 text-center">If you are still interested and meet the criteria, please register below!</p>
 
         <div class="flex justify-center">
-            <a href="/research-study/download-pdf" class="mr-2 inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150">Download Participant Information Sheet</a>
-            <a href="/register" class="ml-2 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Register for the Study</a>
+            <a href="/research-study/download-pdf" class="mr-2 inline-flex items-center px-4 py-2 bg-white border border-blue-900 rounded-md font-semibold text-xs text-blue-900 uppercase tracking-widest shadow-sm hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150">Download Participant Information Sheet</a>
+            <a href="{{ route('register') }}" class="ml-2 inline-flex items-center px-4 py-2 bg-blue-700 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-900 focus:bg-blue-900 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Register for the Study</a>
         </div>
     </div>
 </x-app-layout>

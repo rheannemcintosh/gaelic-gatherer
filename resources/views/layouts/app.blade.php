@@ -10,12 +10,12 @@
             @guest
                 @if (!config('app.study_closed') && config('app.study_live'))
                     <div class="w-full flex items-center justify-center">
-                        <a href="{{ route('login') }}" class="w-28 bg-blue-700 hover:bg-blue-500 px-4 py-2 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105 flex justify-center items-center">
+                        <a href="{{ route('login') }}" class="w-28 bg-blue-700 hover:bg-blue-900 px-4 py-2 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105 flex justify-center items-center">
                             <span class="text-center text-white font-bold">Login</span>
                         </a>
                     </div>
                     <div class="w-full flex items-center justify-center">
-                        <a href="{{ route('register') }}" class="w-28 bg-blue-700 hover:bg-blue-500 px-4 py-2 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105 flex justify-center items-center">
+                        <a href="{{ route('register') }}" class="w-28 bg-blue-700 hover:bg-blue-900 px-4 py-2 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105 flex justify-center items-center">
                             <span class="text-white font-bold">Register</span>
                         </a>
                     </div>

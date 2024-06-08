@@ -18,10 +18,15 @@
             </div>
         @endforeach
 
-        <!-- Submit Button -->
-        <x-primary-button class="mt-4">
-            {{ __('Submit') }}
-        </x-primary-button>
+        <div class="mt-8">
+            <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+                <div class="w-full flex items-center justify-center">
+                    <button class="justify-center bg-gradient-to-r from-blue-700 to-blue-500 px-8 py-4 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105">
+                        <span class="text-white font-bold">Submit</span>
+                    </button>
+                </div>
+            </div>
+        </div>
 
     </form>
 </div>
