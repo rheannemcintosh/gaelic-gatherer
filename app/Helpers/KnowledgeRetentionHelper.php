@@ -59,7 +59,7 @@ class KnowledgeRetentionHelper
             'correct_answer' => '3'
         ],
         6 => [
-            'question' => 'Translate the phrase "It is freezing and windy" into Scottish Gaelic',
+            'question' => 'Translate the phrase "It is cold and windy" into Scottish Gaelic',
             'answers' => [
                 1 => 'Tha i fuar agus gaothach',
                 2 => 'Tha i blàth agus ceòthach',
