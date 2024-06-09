@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\UnitHelper;
 use App\Models\Badge;
 use App\Models\Lesson;
+use App\Models\LessonType;
 use App\Models\Unit;
 use App\Models\User;
 use App\Models\UserData;
@@ -181,8 +182,9 @@ class StudyController extends Controller
     {
         $units = Unit::all();
         $badges = Badge::all();
+        $lessonTypes = LessonType::all();
 
-        return view('pages.help', compact('units', 'badges'));
+        return view('pages.help', compact('units', 'badges', 'lessonTypes'));
     }
 
     /**
