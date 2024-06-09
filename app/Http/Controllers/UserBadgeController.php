@@ -396,7 +396,7 @@ class UserBadgeController extends Controller
     {
         $numberOfBadges = auth()->user()->badges()->wherePivot('completed', true)->count();
 
-        if ($numberOfBadges >= 14) {
+        if ($numberOfBadges >= 19) {
             auth()->user()->badges()->updateExistingPivot($badgeId, ['completed' => true, 'completed_at' => now()]);
             return true;
         }
