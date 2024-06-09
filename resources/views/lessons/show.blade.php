@@ -9,8 +9,6 @@
         </div>
     </div>
 
-
-
     @if ($lesson->lessonType->name == 'Overview')
         <x-overview-lesson :lesson="$lesson"/>
     @elseif ($lesson->lessonType->name == 'Matching')
@@ -20,7 +18,5 @@
     @elseif ($lesson->lessonType->name == 'Icon')
         <x-icon-lesson :name="$name" :lesson="$lesson" :columnOneName="$columnOneName" :columnTwoName="$columnTwoName" :columnTwoWords="$columnTwoWords" :columnOneWords="$columnOneWords"/>
     @endif
-
-
-
+    
 </x-admin-layout>
