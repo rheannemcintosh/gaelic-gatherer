@@ -4,6 +4,9 @@ namespace App\Helpers;
 
 class StudyHelper
 {
+    /**
+     * The steps for the study.
+     */
     public const STUDY_STEPS = [
         [
             'step' => 'Initial Registration',

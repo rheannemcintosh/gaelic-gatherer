@@ -4,6 +4,9 @@ namespace App\Helpers;
 
 class KnowledgeRetentionHelper
 {
+    /**
+     * The questions and answers for the knowledge retention quiz.
+     */
     public const QUESTIONS = [
         1 => [
             'question' => 'What does "Trì" mean in Scottish Gaelic?',

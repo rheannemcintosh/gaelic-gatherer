@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 
 class LessonHelper
 {
+    /**
+     * The different types of lessons available.
+     */
     public const LESSON_TYPES = [
         [
             'type' => 'Overview Lessons',
