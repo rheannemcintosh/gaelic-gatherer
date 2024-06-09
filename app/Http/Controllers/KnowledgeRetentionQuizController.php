@@ -76,7 +76,12 @@ class KnowledgeRetentionQuizController extends Controller
         }
 
         // Redirect to the pre-study questionnaire form
-        return redirect(route('knowledge-retention-quiz.show', ['quiz' => $quiz]));
+        return redirect()
+            ->route('knowledge-retention-quiz.show', ['quiz' => $quiz])
+            ->with([
+                'statusMessage' => 'Thank you consenting. Please complete the quiz.',
+                'statusType'    => 'success',
+            ]);
     }
 
     /**
