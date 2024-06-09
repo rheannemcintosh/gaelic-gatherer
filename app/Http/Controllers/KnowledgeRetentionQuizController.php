@@ -26,7 +26,11 @@ class KnowledgeRetentionQuizController extends Controller
             ($quiz == 2 && Auth::user()->quiz_two_consent) ||
             ($quiz == 3 && Auth::user()->quiz_three_consent)
         ) {
-            return redirect(route('knowledge-retention-quiz.show', ['quiz' => $quiz]));
+            return redirect()
+                ->route('knowledge-retention-quiz.show', ['quiz' => $quiz])
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
         }
 
         return view('knowledge-retention-quiz.consent', ['quiz' => $quiz]);
@@ -72,7 +76,12 @@ class KnowledgeRetentionQuizController extends Controller
         }
 
         // Redirect to the pre-study questionnaire form
-        return redirect(route('knowledge-retention-quiz.show', ['quiz' => $quiz]));
+        return redirect()
+            ->route('knowledge-retention-quiz.show', ['quiz' => $quiz])
+            ->with([
+                'statusMessage' => 'Thank you consenting. Please complete the quiz.',
+                'statusType'    => 'success',
+            ]);
     }
 
     /**
@@ -89,7 +98,11 @@ class KnowledgeRetentionQuizController extends Controller
             ($quiz == 2 && !Auth::user()->quiz_two_consent) ||
             ($quiz == 3 && !Auth::user()->quiz_three_consent)
         ) {
-            return redirect(route('knowledge-retention-quiz.show.consent', ['quiz' => $quiz]));
+            return redirect()
+                ->route('knowledge-retention-quiz.show.consent', ['quiz' => $quiz])
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
         }
 
         if (
@@ -97,7 +110,11 @@ class KnowledgeRetentionQuizController extends Controller
             ($quiz == 2 && !is_null(auth()->user()->data->quiz_two_completed_at)) ||
             ($quiz == 3 && !is_null(auth()->user()->data->quiz_three_completed_at))
         ) {
-            return redirect(route('on-hold.show'));
+            return redirect()
+                ->route('on-hold.show')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
         }
 
         return view('knowledge-retention-quiz.form', ['quiz' => $quiz]);
@@ -162,9 +179,19 @@ class KnowledgeRetentionQuizController extends Controller
         }
 
         if ($quiz == 3) {
-            return redirect(route('thank-you.show'));
+            return redirect()
+                ->route('thank-you.show')
+                ->with([
+                    'statusMessage' => 'Thank you for completing the entire study!',
+                    'statusType'    => 'success',
+                ]);
         }
 
-        return redirect(route('on-hold.show'));
+        return redirect()
+            ->route('on-hold.show')
+            ->with([
+                'statusMessage' => 'Thank you for completing the quiz. The next quiz will be available soon!',
+                'statusType'    => 'success',
+            ]);
     }
 }

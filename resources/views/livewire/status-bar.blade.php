@@ -1,7 +1,7 @@
 <div aria-label="Status Bar"
      class="
          {{ $this->statusBarClass }}
-         overflow-hidden shadow-sm sm:rounded-lg mb-4 text-xs
+         overflow-hidden shadow-sm sm:rounded-lg mb-4 text-xs w-full
      "
 >
     <div class="px-4 py-2 text-gray-50">

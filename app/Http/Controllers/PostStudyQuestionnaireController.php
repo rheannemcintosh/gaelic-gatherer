@@ -22,7 +22,11 @@ class PostStudyQuestionnaireController extends Controller
 
 
         if (Auth::user()->post_study_consent) {
-            return redirect(route('post-study-questionnaire.show'));
+            return redirect()
+                ->route('post-study-questionnaire.show')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
         }
 
         return view('post-study-questionnaire.consent');
@@ -41,8 +45,12 @@ class PostStudyQuestionnaireController extends Controller
             'post_study_consent' => true
         ]);
 
-        // Redirect to the pre-study questionnaire form
-        return redirect(route('post-study-questionnaire.show'));
+        return redirect()
+            ->route('post-study-questionnaire.show')
+            ->with([
+                'statusMessage' => 'Thank you consenting. Please complete the post-study questionnaire.',
+                'statusType'    => 'success',
+            ]);
     }
 
     /**
@@ -51,11 +59,19 @@ class PostStudyQuestionnaireController extends Controller
     public function show()
     {
         if (!Auth::user()->post_study_consent) {
-            return redirect(route('post-study-questionnaire.show.consent'));
+            return redirect()
+                ->route('post-study-questionnaire.show.consent')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
         }
 
         if (!is_null(auth()->user()->data->post_study_completed_at)) {
-            return redirect(route('knowledge-retention-quiz.show.consent', ['quiz' => 1]));
+            return redirect()
+                ->route('knowledge-retention-quiz.show.consent', ['quiz' => 1])
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
         }
 
         return view('post-study-questionnaire.form');
@@ -91,6 +107,11 @@ class PostStudyQuestionnaireController extends Controller
             'quiz_one_unlocked_at' => now(),
         ]);
 
-        return redirect(route('knowledge-retention-quiz.show.consent', ['quiz' => 1]));
+        return redirect()
+            ->route('knowledge-retention-quiz.show.consent', ['quiz' => 1])
+            ->with([
+                'statusMessage' => 'Thank you for completing the post-study questionnaire. You can now start the first quiz.',
+                'statusType'    => 'success',
+            ]);
     }
 }

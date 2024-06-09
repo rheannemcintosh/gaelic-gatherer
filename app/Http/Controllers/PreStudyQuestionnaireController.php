@@ -16,7 +16,11 @@ class PreStudyQuestionnaireController extends Controller
     public function showConsent()
     {
         if (Auth::user()->pre_study_consent) {
-            return redirect(route('pre-study-questionnaire.show'));
+            return redirect()
+                ->route('pre-study-questionnaire.show')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
         }
 
         return view('pre-study-questionnaire.consent');
@@ -36,7 +40,12 @@ class PreStudyQuestionnaireController extends Controller
         ]);
 
         // Redirect to the pre-study questionnaire form
-        return redirect(route('pre-study-questionnaire.show'));
+        return redirect()
+            ->route('pre-study-questionnaire.show')
+            ->with([
+                'statusMessage' => 'Thank you consenting. Please complete the pre-study questionnaire.',
+                'statusType'    => 'success',
+            ]);
     }
 
     /**
@@ -45,7 +54,11 @@ class PreStudyQuestionnaireController extends Controller
     public function show()
     {
         if (!is_null(UserData::find(Auth::id()))) {
-            return redirect(route('welcome.show'));
+            return redirect()
+                ->route('welcome.show')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
         }
 
         return view('pre-study-questionnaire.form');
@@ -85,6 +98,11 @@ class PreStudyQuestionnaireController extends Controller
         }
 
         // Redirect to the welcome page
-        return redirect(route('welcome.show'));
+        return redirect()
+            ->route('welcome.show')
+            ->with([
+                'statusMessage' => 'Thank you for completing the pre-study questionnaire. You can now start the study.',
+                'statusType'    => 'success',
+            ]);
     }
 }

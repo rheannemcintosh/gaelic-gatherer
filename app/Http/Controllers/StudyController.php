@@ -17,15 +17,29 @@ class StudyController extends Controller
     public function showWelcomePage()
     {
         if (!auth()->user()->data->pre_study_completed_at) {
-            return redirect(route('pre-study-questionnaire.show.consent'));
+
+            return redirect()
+                ->route('pre-study-questionnaire.show.consent')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
          }
 
         if(auth()->user()->study_consent && !is_null(auth()->user()->data->study_started_at) && is_null(auth()->user()->data->study_completed_at)) {
-            return redirect(route('overview.show'));
+
+            return redirect()
+                ->route('overview.show')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
         }
 
         if(auth()->user()->study_consent && !is_null(auth()->user()->data->study_started_at) && !is_null(auth()->user()->data->study_completed_at)) {
-            return redirect(route('post-study-questionnaire.show.consent'));
+            return redirect()
+                ->route('post-study-questionnaire.show.consent')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
         }
 
         return view('pages.welcome');
@@ -75,12 +89,18 @@ class StudyController extends Controller
         }
 
         if (auth()->user()->study_consent && !is_null(auth()->user()->data->study_started_at) && !is_null(auth()->user()->data->study_completed_at)) {
-//            dd('here');
-            return redirect(route('post-study-questionnaire.show.consent'));
+            return redirect()
+                ->route('post-study-questionnaire.show.consent')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
         }
 
-
-        return redirect(route('pre-study-questionnaire.show.consent'));
+        return redirect()
+            ->route('pre-study-questionnaire.show.consent')
+            ->with([
+                'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+            ]);
     }
 
     public function completeTheStudy()
@@ -98,7 +118,10 @@ class StudyController extends Controller
             ->count();
 
         if ($numberOfOverviewLessons > $completedLessons) {
-            return redirect(RouteServiceProvider::HOME);
+            return redirect(RouteServiceProvider::HOME)->with([
+                'statusMessage' => 'You have not completed all the required overview lessons yet!',
+                'statusType'    => 'error',
+            ]);
         }
 
         // Get the authenticated user
@@ -112,7 +135,12 @@ class StudyController extends Controller
             'study_completed_at' => now()
         ]);
 
-        return redirect(route('post-study-questionnaire.show.consent'));
+        return redirect()
+            ->route('post-study-questionnaire.show.consent')
+            ->with([
+                'statusMessage' => 'Thank you for exploring the platform. Please consent to the post-study questionnaire.',
+                'statusType'    => 'success',
+            ]);
     }
 
     /**
@@ -124,7 +152,11 @@ class StudyController extends Controller
             return view('pages.on-hold');
         }
 
-        return redirect(route('knowledge-retention-quiz.show.consent', ['quiz' => 1]));
+        return redirect()
+            ->route('knowledge-retention-quiz.show.consent', ['quiz' => 1])
+            ->with([
+                'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+            ]);
     }
 
     public function showHelpPage()
@@ -138,7 +170,11 @@ class StudyController extends Controller
     public function showThankYouPage()
     {
         if (!auth()->user()->data->quiz_three_completed_at) {
-            return redirect(route('post-study-questionnaire.show.consent'));
+            return redirect()
+                ->route('post-study-questionnaire.show.consent')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
         }
 
         return view('pages.thank-you');

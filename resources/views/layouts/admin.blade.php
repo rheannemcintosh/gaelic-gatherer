@@ -22,6 +22,8 @@
                 <!-- Status Bar -->
                 @if(session()->get('statusMessage'))
                     <livewire:status-bar :type="session()->get('statusType') ?? null" :message="session()->get('statusMessage')" />
+                @elseif ($errors->any())
+                    <livewire:status-bar :type="'error'" :message="'Oops! This form has some errors. Please try again!'" />
                 @endif
 
                 <!-- Post Study Questionnaire -->

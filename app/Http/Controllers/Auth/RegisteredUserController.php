@@ -35,7 +35,12 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         if (isset($request->initial_consent_statement) == 0 || count($request->initial_consent_statement) !== count(ConsentHelper::CONSENT_STATEMENTS)) {
-            return back()->withErrors(['initial_consent_statement' => 'You must agree to all statements.']);
+            return back()
+                ->withErrors(['initial_consent_statement' => 'You must agree to all statements.'])
+                ->with([
+                    'statusMessage' => 'Oops! This form has some errors. Please try again!',
+                    'statusType'    => 'error',
+                ]);
         }
 
         $request->validate([
@@ -47,7 +52,11 @@ class RegisteredUserController extends Controller
             (config('app.study_closed') || !config('app.study_live')) &&
             (in_array($request->email, config('app.study_override_emails')) === false)
         ){
-            return redirect()->route('welcome');
+            return redirect()
+                ->route('welcome')
+                ->with([
+                    'statusMessage' => 'This study is currently closed. Please contact the study administrator for more information.',
+                ]);
         }
 
         $user = User::create([
@@ -60,6 +69,11 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('pre-study-questionnaire.show.consent');
+        return redirect()
+            ->route('pre-study-questionnaire.show.consent')
+            ->with([
+                'statusMessage' => 'Success! Thank you for registering for the study!',
+                'statusType'    => 'success',
+            ]);
     }
 }

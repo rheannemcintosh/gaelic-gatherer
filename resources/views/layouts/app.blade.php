@@ -31,6 +31,11 @@
                 @else
                     <img class="w-3/12 mb-6" src="{{ asset('images/gaelic-gatherer-logo.png') }}" alt="Gaelic Gatherer Logo" />
                 @endif
+
+                @if(session()->get('statusMessage'))
+                    <livewire:status-bar :type="session()->get('statusType') ?? null" :message="session()->get('statusMessage')"  />
+                @endif
+
                 {{ $slot }}
             </div>
         </main>
