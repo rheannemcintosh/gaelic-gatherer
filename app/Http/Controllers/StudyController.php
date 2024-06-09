@@ -129,7 +129,12 @@ class StudyController extends Controller
             'study_completed_at' => now()
         ]);
 
-        return redirect(route('post-study-questionnaire.show.consent'));
+        return redirect()
+            ->route('post-study-questionnaire.show.consent')
+            ->with([
+                'statusMessage' => 'Thank you for exploring the platform. Please consent to the post-study questionnaire.',
+                'statusType'    => 'success',
+            ]);
     }
 
     /**
