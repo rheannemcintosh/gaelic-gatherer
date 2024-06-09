@@ -12,18 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->boolean('initial_consent')->default(false);
-            $table->boolean('pre_study_consent')->default(false);
-            $table->boolean('study_consent')->default(false);
-            $table->boolean('post_study_consent')->default(false);
-            $table->boolean('quiz_one_consent')->default(false);
-            $table->boolean('quiz_two_consent')->default(false);
-            $table->boolean('quiz_three_consent')->default(false);
+            $table->id(); // Standard Laravel Field - The ID of the user
+            $table->string('email')->unique(); // Standard Laravel Field - The email of the user
+            $table->timestamp('email_verified_at')->nullable(); // Standard Laravel Field - The date the email was verified
+            $table->string('password'); // Standard Laravel Field - The user's password
+            $table->rememberToken(); // Standard Laravel Field -  The remember token of the user
+            $table->boolean('initial_consent')->default(false); // Whether the user has consented to all statements on the registration form
+            $table->boolean('pre_study_consent')->default(false); // Whether the user has consented to starting the pre study
+            $table->boolean('study_consent')->default(false); // Whether the user has consented to starting to explore the platform
+            $table->boolean('post_study_consent')->default(false); // Whether the user has consented to starting the post study
+            $table->boolean('quiz_one_consent')->default(false); // Whether the user has consented to starting the first quiz
+            $table->boolean('quiz_two_consent')->default(false); // Whether the user has consented to starting the second quiz
+            $table->boolean('quiz_three_consent')->default(false); // Whether the user has consented to starting the third quiz
             $table->timestamps();
         });
     }

@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('personal_access_tokens', function (Blueprint $table) {
-            $table->id();
-            $table->morphs('tokenable');
-            $table->string('name');
-            $table->string('token', 64)->unique();
-            $table->text('abilities')->nullable();
-            $table->timestamp('last_used_at')->nullable();
-            $table->timestamp('expires_at')->nullable();
-            $table->timestamps();
+            $table->id(); // Standard Laravel Field - The ID of the personal access token
+            $table->morphs('tokenable'); // Standard Laravel Field - The tokenable of the personal access token
+            $table->string('name'); // Standard Laravel Field - The name of the personal access token
+            $table->string('token', 64)->unique(); // Standard Laravel Field - The token of the personal access token
+            $table->text('abilities')->nullable(); // Standard Laravel Field - The abilities of the personal access token
+            $table->timestamp('last_used_at')->nullable(); // Standard Laravel Field - The date the token was last used
+            $table->timestamp('expires_at')->nullable(); // Standard Laravel Field - The date the token expires
+            $table->timestamps(); // Standard Laravel Field - The timestamps of the personal access token
         });
     }
 

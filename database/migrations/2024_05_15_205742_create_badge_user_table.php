@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('badge_user', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('badge_id')->constrained();
-            $table->foreignId('user_id')->constrained();
-            $table->boolean('completed')->default(false);
-            $table->timestamp('completed_at')->nullable();
-            $table->timestamps();
+            $table->id(); // The ID of the badge_user
+            $table->foreignId('badge_id')->constrained(); // The badge id of the user
+            $table->foreignId('user_id')->constrained(); // The user id of the badge
+            $table->boolean('completed')->default(false); // Whether the badge is completed or not
+            $table->timestamp('completed_at')->nullable(); // The date the badge was completed
+            $table->timestamps(); // The created at and updated at timestamps of the badge user
         });
     }
 
