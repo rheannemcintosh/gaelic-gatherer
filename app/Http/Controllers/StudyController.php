@@ -93,8 +93,11 @@ class StudyController extends Controller
             return redirect(route('post-study-questionnaire.show.consent'));
         }
 
-
-        return redirect(route('pre-study-questionnaire.show.consent'));
+        return redirect()
+            ->route('pre-study-questionnaire.show.consent')
+            ->with([
+                'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+            ]);
     }
 
     public function completeTheStudy()
