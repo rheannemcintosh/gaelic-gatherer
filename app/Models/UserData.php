@@ -44,7 +44,11 @@ class UserData extends Model
         'quiz_three_completed_at',
     ];
 
-    // One-to-One relationship with User
+    /**
+     * The user that belongs to the data.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function user()
     {
         return $this->hasOne(User::class);

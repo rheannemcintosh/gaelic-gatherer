@@ -50,7 +50,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    // One-to-One relationship with User
+    /**
+     * The data for the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function data()
     {
         return $this->hasOne(UserData::class);
