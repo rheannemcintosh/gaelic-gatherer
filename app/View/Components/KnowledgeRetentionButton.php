@@ -8,7 +8,11 @@ use Illuminate\View\Component;
 
 class KnowledgeRetentionButton extends Component
 {
+    /**
+     * The number of the quiz.
+     */
     public int $quiz;
+
     /**
      * Create a new component instance.
      */

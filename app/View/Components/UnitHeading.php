@@ -16,8 +16,6 @@ class UnitHeading extends Component
 
     /**
      * Create a new component instance.
-     *
-     * @param Unit $unit
      */
     public function __construct(Unit $unit)
     {
