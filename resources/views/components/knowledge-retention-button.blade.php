@@ -7,6 +7,13 @@
             <span class="material-symbols-rounded text-7xl">
                 lock
             </span>
+        @elseif(
+            ($quiz == 2 && auth()->user()->data->quiz_two_completed_at) ||
+            ($quiz == 3 && auth()->user()->data->quiz_three_completed_at)
+        )
+            <span class="material-symbols-rounded text-7xl text-green-600">
+                check_circle
+            </span>
         @else
             <span class="material-symbols-rounded text-7xl">
                 lock_open_right
