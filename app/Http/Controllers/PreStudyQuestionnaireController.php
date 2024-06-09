@@ -54,7 +54,11 @@ class PreStudyQuestionnaireController extends Controller
     public function show()
     {
         if (!is_null(UserData::find(Auth::id()))) {
-            return redirect(route('welcome.show'));
+            return redirect()
+                ->route('welcome.show')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
         }
 
         return view('pre-study-questionnaire.form');
