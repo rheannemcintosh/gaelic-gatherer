@@ -31,6 +31,13 @@
                         </div>
                         <hr class="w-full border-t-2 border-gray-300 my-2">
                     @endforeach
+                    @foreach($newBadges as $badge)
+                        @if($badge->name == 'Shortbread Starter')
+                            <div class="mt-4 font-bold text-white bg-blue-700 rounded-xl p-4 text-center">
+                                Curious about what this is? On our platform, you can earn badges by completing specific tasks. Simply click the "View All Badges" button at the top of the page to explore the badges available for you to collect. Can you gather them all and become a Gaelic Gatherer?
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>
