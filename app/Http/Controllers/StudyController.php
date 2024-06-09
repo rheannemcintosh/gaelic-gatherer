@@ -118,7 +118,10 @@ class StudyController extends Controller
             ->count();
 
         if ($numberOfOverviewLessons > $completedLessons) {
-            return redirect(RouteServiceProvider::HOME);
+            return redirect(RouteServiceProvider::HOME)->with([
+                'statusMessage' => 'You have not completed all the required overview lessons yet!',
+                'statusType'    => 'error',
+            ]);
         }
 
         // Get the authenticated user
