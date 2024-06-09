@@ -60,7 +60,11 @@ class PostStudyQuestionnaireController extends Controller
     public function show()
     {
         if (!Auth::user()->post_study_consent) {
-            return redirect(route('post-study-questionnaire.show.consent'));
+            return redirect()
+                ->route('post-study-questionnaire.show.consent')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
         }
 
         if (!is_null(auth()->user()->data->post_study_completed_at)) {
