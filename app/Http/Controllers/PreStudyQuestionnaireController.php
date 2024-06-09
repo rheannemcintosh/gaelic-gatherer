@@ -98,6 +98,11 @@ class PreStudyQuestionnaireController extends Controller
         }
 
         // Redirect to the welcome page
-        return redirect(route('welcome.show'));
+        return redirect()
+            ->route('welcome.show')
+            ->with([
+                'statusMessage' => 'Thank you for completing the pre-study questionnaire. You can now start the study.',
+                'statusType'    => 'success',
+            ]);
     }
 }
