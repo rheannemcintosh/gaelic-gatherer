@@ -8,16 +8,6 @@ class KnowledgeRetentionHelper
      * The questions and answers for the knowledge retention quiz.
      */
     public const QUESTIONS = [
-        1 => [
-            'question' => 'What does "Trì" mean in Scottish Gaelic?',
-            'answers' => [
-                1 => 'Four',
-                2 => 'One',
-                3 => 'Two',
-                4 => 'Three',
-            ],
-            'correct_answer' => '4'
-        ],
         2 => [
             'question' => 'What is the Scottish Gaelic word for "nine"?',
             'answers' => [
@@ -28,13 +18,13 @@ class KnowledgeRetentionHelper
             ],
             'correct_answer' => '4'
         ],
-        3 => [
-            'question' => 'What does "Fàilte!" mean in Scottish Gaelic?',
+        5 => [
+            'question' => 'What is "Teth" in Scottish Gaelic"?',
             'answers' => [
-                1 => 'Cheers!',
-                2 => 'Goodbye!',
-                3 => 'Welcome!',
-                4 => 'Hello!',
+                1 => 'Cold',
+                2 => 'Warm',
+                3 => 'Hot',
+                4 => 'Freezing'
             ],
             'correct_answer' => '3'
         ],
@@ -48,15 +38,15 @@ class KnowledgeRetentionHelper
             ],
             'correct_answer' => '3'
         ],
-        5 => [
-            'question' => 'What is "Teth" in Scottish Gaelic"?',
+        10 => [
+            'question' => 'What does "Aran?" mean in Scottish Gaelic?',
             'answers' => [
-                1 => 'Cold',
-                2 => 'Warm',
-                3 => 'Hot',
-                4 => 'Freezing'
+                1 => 'Cheese',
+                2 => 'Bread',
+                3 => 'Ham',
+                4 => 'Chicken'
             ],
-            'correct_answer' => '3'
+            'correct_answer' => '2'
         ],
         6 => [
             'question' => 'Translate the phrase "It is cold and windy" into Scottish Gaelic',
@@ -68,13 +58,13 @@ class KnowledgeRetentionHelper
             ],
             'correct_answer' => '1'
         ],
-        7 => [
-            'question' => 'Translate the phrase "Cò às a tha thu"?',
+        3 => [
+            'question' => 'What does "Fàilte!" mean in Scottish Gaelic?',
             'answers' => [
-                1 => 'How are you?',
-                2 => 'Where are you?',
-                3 => 'Where are you from?',
-                4 => 'What is that?'
+                1 => 'Cheers!',
+                2 => 'Goodbye!',
+                3 => 'Welcome!',
+                4 => 'Hello!',
             ],
             'correct_answer' => '3'
         ],
@@ -88,6 +78,16 @@ class KnowledgeRetentionHelper
             ],
             'correct_answer' => '4'
         ],
+        1 => [
+            'question' => 'What does "Trì" mean in Scottish Gaelic?',
+            'answers' => [
+                1 => 'Four',
+                2 => 'One',
+                3 => 'Two',
+                4 => 'Three',
+            ],
+            'correct_answer' => '4'
+        ],
         9 => [
             'question' => 'Translate "I like salmon but I don\'t like haggis" into Scottish Gaelic.',
             'answers' => [
@@ -98,15 +98,15 @@ class KnowledgeRetentionHelper
             ],
             'correct_answer' => '3'
         ],
-        10 => [
-            'question' => 'What does "Aran?" mean in Scottish Gaelic?',
+        7 => [
+            'question' => 'Translate the phrase "Cò às a tha thu"?',
             'answers' => [
-                1 => 'Cheese',
-                2 => 'Bread',
-                3 => 'Ham',
-                4 => 'Chicken'
+                1 => 'How are you?',
+                2 => 'Where are you?',
+                3 => 'Where are you from?',
+                4 => 'What is that?'
             ],
-            'correct_answer' => '2'
-        ]
+            'correct_answer' => '3'
+        ],
     ];
 }
