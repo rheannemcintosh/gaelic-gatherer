@@ -149,7 +149,11 @@ class StudyController extends Controller
             return view('pages.on-hold');
         }
 
-        return redirect(route('knowledge-retention-quiz.show.consent', ['quiz' => 1]));
+        return redirect()
+            ->route('knowledge-retention-quiz.show.consent', ['quiz' => 1])
+            ->with([
+                'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+            ]);
     }
 
     public function showHelpPage()
