@@ -35,7 +35,11 @@ class StudyController extends Controller
         }
 
         if(auth()->user()->study_consent && !is_null(auth()->user()->data->study_started_at) && !is_null(auth()->user()->data->study_completed_at)) {
-            return redirect(route('post-study-questionnaire.show.consent'));
+            return redirect()
+                ->route('post-study-questionnaire.show.consent')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
         }
 
         return view('pages.welcome');
