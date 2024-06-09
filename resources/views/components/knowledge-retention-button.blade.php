@@ -27,8 +27,8 @@
         <span class="flex justify-center text-center text-xs italic">Unlocks 14 days after completing the initial study</span>
     @endif
     @if ($quiz == 2)
-        <span class="pt-2 flex justify-center">{{ \Carbon\Carbon::parse(auth()->user()->data->quiz_two_unlocked_at)->format('l, F j, Y g:i A') }}</span>
+        <span class="pt-2 flex justify-center">{{ \Carbon\Carbon::parse(auth()->user()->data->quiz_two_unlocked_at)->addHour(1)->format('l, F j, Y g:i A') }}</span>
     @else
-        <span class="pt-2 flex justify-center">{{ \Carbon\Carbon::parse(auth()->user()->data->quiz_three_unlocked_at)->format('l, F j, Y g:i A')  }}</span>
+        <span class="pt-2 flex justify-center">{{ \Carbon\Carbon::parse(auth()->user()->data->quiz_three_unlocked_at)->addHour(1)->format('l, F j, Y g:i A')  }}</span>
     @endif
 </div>
