@@ -16,7 +16,7 @@
             @if (isset($badges) && !$hideButton)
                 @if (auth()->user()->data->study_group == 'Experimental')
                     <div class="flex justify-center items-center z-10">
-                        <button @click="isVisible = !isVisible" class="justify-center bg-gradient-to-r from-blue-700 to-blue-500 px-8 py-4 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105">
+                        <button id="toggle-popup-button" class="justify-center bg-gradient-to-r from-blue-700 to-blue-500 px-8 py-4 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105">
                             <span class="text-white font-bold">View All Badges</span>
                         </button>
                     </div>
@@ -69,23 +69,13 @@
 
     @if (isset($badges) && !$hideButton)
         @if (auth()->user()->data->study_group == 'Experimental')
-            <!-- Badges Display -->
-            <div class="  flex justify-center">
-                <div class="absolute z-10 max-w-4xl mx-auto sm:px-6 lg:px-2 p-2 ">
-                    <div class="bg-white rounded-md shadow-lg rounded-md ring-1 ring-black ring-opacity-5 p-8" x-show="isVisible">
-                        <div class="flex justify-center items-center py-4 font-bold text-sm">Please hover over each badge to see how to earn it!</div>
-                        @foreach($badges->chunk(4) as $chunk)
-                            <div class=" grid grid-cols-4">
-                                @foreach($chunk as $badge)
-                                    <div class="m-1 p-2">
-                                        <livewire:badge-with-tooltip :badge="$badge" :key="$badge->id"/>
-                                    </div>
-                                @endforeach
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
+                <livewire:all-badges-popup :badges="$badges" />
         @endif
     @endif
+
+    <script>
+        document.getElementById('toggle-popup-button').addEventListener('click', function() {
+            Livewire.dispatch('togglePopup');
+        });
+    </script>
 </nav>
