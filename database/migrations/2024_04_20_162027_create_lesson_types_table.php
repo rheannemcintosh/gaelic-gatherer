@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('lesson_types', function (Blueprint $table) {
             $table->id(); // The ID of the lesson type
             $table->string('name'); // The name of the lesson type
-            $table->text('description')->nullable(); // The description of the lesson type
             $table->string('thumbnail')->nullable(); // The icon name of the lesson type
             $table->timestamps(); // The created at and updated at timestamps of the lesson type
         });
