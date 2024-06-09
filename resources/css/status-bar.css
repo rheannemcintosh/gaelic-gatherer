@@ -1,15 +1,19 @@
+/* Success classes */
 .success-bg {
     @apply bg-green-600 text-white;
 }
 
+/* Error Classes */
 .error-bg {
     @apply bg-red-600 text-white;
 }
 
+/* Warning Classes */
 .warning-bg {
     @apply bg-yellow-500 text-white;
 }
 
+/* Information Classes */
 .information-bg {
     @apply bg-blue-600 text-white;
 }
