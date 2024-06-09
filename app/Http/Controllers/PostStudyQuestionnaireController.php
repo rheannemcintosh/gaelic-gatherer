@@ -46,7 +46,12 @@ class PostStudyQuestionnaireController extends Controller
         ]);
 
         // Redirect to the pre-study questionnaire form
-        return redirect(route('post-study-questionnaire.show'));
+        return redirect()
+            ->route('post-study-questionnaire.show')
+            ->with([
+                'statusMessage' => 'Thank you consenting. Please complete the post-study questionnaire.',
+                'statusType'    => 'success',
+            ]);
     }
 
     /**
