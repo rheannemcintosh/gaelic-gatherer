@@ -8,6 +8,9 @@ use Illuminate\View\Component;
 
 class KnowledgeRetentionQuiz extends Component
 {
+    /**
+     * The number of the quiz.
+     */
     public int $quiz;
 
     /**

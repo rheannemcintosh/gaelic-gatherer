@@ -13,17 +13,43 @@ class MatchingLesson extends Component
      * The lesson instance.
      */
     public Lesson $lesson;
-    public $columnTwoWords;
-    public $columnOneWords;
-    public $name;
+
+    /**
+     * The name of the first column
+     */
     public $columnOneName;
+
+    /**
+     * The name of the second column
+     */
     public $columnTwoName;
+
+    /**
+     * The list of words to be displayed in column 1
+     */
+    public $columnOneWords;
+
+    /**
+     * The list of words to be displayed in column 2
+     */
+    public $columnTwoWords;
+
+    /**
+     * The name of the lesson
+     */
+    public $name;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($lesson, $columnOneName, $columnTwoName, $columnOneWords, $columnTwoWords, $name)
-    {
+    public function __construct(
+        $lesson,
+        $columnOneName,
+        $columnTwoName,
+        $columnOneWords,
+        $columnTwoWords,
+        $name
+    ) {
         $this->lesson = $lesson;
         $this->columnOneName = $columnOneName;
         $this->columnTwoName = $columnTwoName;

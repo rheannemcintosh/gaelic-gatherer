@@ -4,6 +4,9 @@ namespace App\Helpers;
 
 class ConsentHelper
 {
+    /**
+     * The consent statements that participants must agree to when registering.
+     */
     public const CONSENT_STATEMENTS = [
         'I have been provided with information explaining what participation in this project involves.',
         'I know how to contact the researcher(s) if I have any questions or concerns.',

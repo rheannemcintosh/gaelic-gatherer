@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class LessonUser extends Pivot
 {
-    protected $table = 'user_lessons';
-
-    // Define fillable attributes
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'lesson_id',
         'user_id',

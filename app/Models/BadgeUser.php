@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class BadgeUser extends Pivot
 {
-    protected $table = 'badge_user';
-
     use HasFactory;
 
-    // Define fillable attributes
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'badge_id',
         'user_id',

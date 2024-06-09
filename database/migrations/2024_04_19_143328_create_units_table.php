@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('units', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // The ID of the unit
             $table->string('title'); // The title of the unit
             $table->text('description')->nullable(); // The description of the unit
             $table->string('slug'); // The slug of the unit, for the URL
             $table->boolean('active'); // Whether the unit is active or not
             $table->integer('sort_order'); // The order in which the units will be displayed in
-            $table->timestamps();
+            $table->timestamps(); // The created at and updated at timestamps of the unit
         });
     }
 

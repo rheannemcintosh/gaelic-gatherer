@@ -8,7 +8,11 @@ use Illuminate\View\Component;
 
 class Navigation extends Component
 {
+    /**
+     * Whether the button should be shown or not.
+     */
     public bool $hideButton;
+
     /**
      * Create a new component instance.
      */

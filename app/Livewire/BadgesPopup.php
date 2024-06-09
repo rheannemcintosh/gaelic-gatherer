@@ -22,8 +22,6 @@ class BadgesPopup extends Component
     public function mount($newBadges)
     {
         $this->showPopup = true;
-
-        // Initialize with some badge data, or fetch from a database
         $this->newBadges = $newBadges;
     }
 

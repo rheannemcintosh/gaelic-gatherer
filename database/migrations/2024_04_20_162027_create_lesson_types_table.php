@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('lesson_types', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->string('thumbnail')->nullable();
-            $table->timestamps();
+            $table->id(); // The ID of the lesson type
+            $table->string('name'); // The name of the lesson type
+            $table->text('description'); // The description of the lesson type
+            $table->boolean('required'); // Whether the lesson type is required or not
+            $table->string('thumbnail')->nullable(); // The icon name of the lesson type
+            $table->timestamps(); // The created at and updated at timestamps of the lesson type
         });
     }
 

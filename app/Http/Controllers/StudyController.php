@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\UnitHelper;
 use App\Models\Badge;
 use App\Models\Lesson;
+use App\Models\LessonType;
 use App\Models\Unit;
 use App\Models\User;
 use App\Models\UserData;
@@ -13,7 +14,9 @@ use Illuminate\Support\Facades\Auth;
 
 class StudyController extends Controller
 {
-    // Show the welcome page to research participants
+    /**
+     * Display the welcome page.
+     */
     public function showWelcomePage()
     {
         if (!Auth::user()->pre_study_consent) {
@@ -53,7 +56,9 @@ class StudyController extends Controller
         return view('pages.welcome');
     }
 
-    // Start the study
+    /**
+     * Allow a user to begin the study.
+     */
     public function startTheStudy()
     {
         // Get the authenticated user
@@ -76,7 +81,7 @@ class StudyController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display the overview page.
      */
     public function showOverviewPage()
     {
@@ -111,6 +116,9 @@ class StudyController extends Controller
             ]);
     }
 
+    /**
+     * Allow a user to complete the study.
+     */
     public function completeTheStudy()
     {
         $numberOfOverviewLessons = Lesson::whereHas('lessonType', function($query) {
@@ -152,7 +160,7 @@ class StudyController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display the on hold page
      */
     public function showOnHoldPage()
     {
@@ -167,14 +175,21 @@ class StudyController extends Controller
             ]);
     }
 
+    /**
+     * Display the help page.
+     */
     public function showHelpPage()
     {
         $units = Unit::all();
         $badges = Badge::all();
+        $lessonTypes = LessonType::all();
 
-        return view('pages.help', compact('units', 'badges'));
+        return view('pages.help', compact('units', 'badges', 'lessonTypes'));
     }
 
+    /**
+     * Display the thank you page.
+     */
     public function showThankYouPage()
     {
         if (!auth()->user()->data->quiz_three_completed_at) {

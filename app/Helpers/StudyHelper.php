@@ -4,10 +4,13 @@ namespace App\Helpers;
 
 class StudyHelper
 {
+    /**
+     * The steps for the study.
+     */
     public const STUDY_STEPS = [
         [
             'step' => 'Initial Registration',
-            'estimated_time' => '10 minutes',
+            'estimated_time' => '5 minutes',
             'description' => 'Read about the study, provide consent, and complete the registration form.'
         ],
         [
@@ -27,17 +30,17 @@ class StudyHelper
         ],
         [
             'step' => 'Quiz 1 (Immediate)',
-            'estimated_time' => '10 minutes',
+            'estimated_time' => '5 minutes',
             'description' => 'Complete the first knowledge retention quiz (consisting of 10 questions) to test your knowledge of Scottish Gaelic. This must be completed immediately after the post-study questionnaire.'
         ],
         [
             'step' => 'Quiz 2 (1 Hour)',
-            'estimated_time' => '10 minutes',
+            'estimated_time' => '5 minutes',
             'description' => 'Complete the second knowledge retention quiz (consisting of 10 questions) to test your knowledge of Scottish Gaelic. This must be completed 1 hour after completing the first quiz.'
         ],
         [
             'step' => 'Quiz 3 (14 Days)',
-            'estimated_time' => '10 minutes',
+            'estimated_time' => '5 minutes',
             'description' => 'Complete the final knowledge retention quiz (consisting of 10 questions) to test your knowledge of Scottish Gaelic. This must be completed 14 days after completing the first quiz.'
         ],
     ];

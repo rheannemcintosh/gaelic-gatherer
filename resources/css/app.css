@@ -1,5 +1,7 @@
+/* Import the Status Bar CSS*/
 @import 'status-bar.css';
 
+/*Import the Tailwind CSS Configuration*/
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

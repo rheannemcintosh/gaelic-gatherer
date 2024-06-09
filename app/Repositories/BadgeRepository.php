@@ -7,7 +7,7 @@ use App\Models\Badge;
 class BadgeRepository
 {
     /**
-     * Get all available badges.
+     * Get all available badges belonginning to the user.
      */
     public function all()
     {

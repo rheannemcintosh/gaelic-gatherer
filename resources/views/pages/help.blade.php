@@ -79,11 +79,11 @@
         <h2 class="text-xl font-bold">Lessons</h2>
         <p>There are several lesson types within the platform, a short explanation of each lesson is available below.</p>
         <div class="m-2">
-            @foreach (\App\Helpers\LessonHelper::LESSON_TYPES as $type)
+            @foreach ($lessonTypes as $type)
                 <div class="grid grid-cols-7 gap-1 mb-1">
-                    <div class="bg-gray-100 rounded-lg col-span-2 font-bold flex items-center justify-center text-md">{{ $type['type'] }}</div>
-                    <div class="border-4 border-gray-4 rounded-lg flex items-center justify-center italic">{{ $type['required'] ? 'required' : 'not required'}}</div>
-                    <div class="col-span-4 border-4 border-gray-4 rounded-lg flex items-center justify-center text-sm p-4">{{ $type['description'] }}</div>
+                    <div class="bg-gray-100 rounded-lg col-span-2 font-bold flex items-center justify-center text-md">{{ $type->name }}</div>
+                    <div class="border-4 border-gray-4 rounded-lg flex items-center justify-center italic">{{ $type->required ? 'required' : 'not required'}}</div>
+                    <div class="col-span-4 border-4 border-gray-4 rounded-lg flex items-center justify-center text-sm p-4">{{ $type->description }}</div>
                 </div>
             @endforeach
         </div>

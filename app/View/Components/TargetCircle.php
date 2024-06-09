@@ -8,7 +8,11 @@ use Illuminate\View\Component;
 
 class TargetCircle extends Component
 {
+    /**
+     * The route to the target circle.
+     */
     public $route;
+
     /**
      * Create a new component instance.
      */
