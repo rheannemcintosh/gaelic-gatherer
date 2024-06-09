@@ -55,13 +55,13 @@ class Maths extends Component
             [
                 'id' => 3,
                 'options' => ['12', '÷', '?', '=', 'dà'],
-                'choices' => ['sia', 'còig', 'trì'],
+                'choices' => ['sia', 'trì', 'còig'],
                 'correct_answer' => 'sia'
             ],
             [
                 'id' => 4,
                 'options' => ['naoi', '-', 'ceithir', '=', '?'],
-                'choices' => ['còig', 'aon', 'seachd'],
+                'choices' => ['aon', 'còig', 'seachd'],
                 'correct_answer' => 'còig'
             ],
             [
