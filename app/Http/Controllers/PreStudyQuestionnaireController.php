@@ -16,7 +16,11 @@ class PreStudyQuestionnaireController extends Controller
     public function showConsent()
     {
         if (Auth::user()->pre_study_consent) {
-            return redirect(route('pre-study-questionnaire.show'));
+            return redirect()
+                ->route('pre-study-questionnaire.show')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
         }
 
         return view('pre-study-questionnaire.consent');
