@@ -162,7 +162,12 @@ class KnowledgeRetentionQuizController extends Controller
         }
 
         if ($quiz == 3) {
-            return redirect(route('thank-you.show'));
+            return redirect()
+                ->route('thank-you.show')
+                ->with([
+                    'statusMessage' => 'Thank you for completing the entire study!',
+                    'statusType'    => 'success',
+                ]);
         }
 
         return redirect(route('on-hold.show'));
