@@ -33,14 +33,27 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Study States
+    | Gaelic Gatherer Study States
     |--------------------------------------------------------------------------
     |
     | These values handle if the study is live and/or closed.
     |
-     */
+    */
     'study_live' => (bool) env('STUDY_LIVE', false),
     'study_closed' => (bool) env('STUDY_CLOSED', true),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Gaelic Gatherer Override Emails
+    |--------------------------------------------------------------------------
+    |
+    | To allow for testing in production to take place before going live to
+    | the public, we can set a list of emails that can override the
+    | registration block.
+    |
+    | This takes a comma separated list of emails, and explodes them into an array.
+    |
+    */
     'study_override_emails' => explode(",",env('STUDY_OVERRIDE_EMAILS')),
 
     /*
