@@ -88,19 +88,21 @@
             @endforeach
         </div>
     </div>
-    <div class="mt-4">
-        <h2 class="text-xl font-bold">Badges</h2>
-        <p>You have been selected to be in the experimental group of this study. This means that you have access to badges as part of exploring the platform. You can view your badges at the top of the screen, and by hovering you can see the requirements for each badge. Additionally, when you complete a lesson, you will be shown any badges you have earned.</p>
-        <div class="m-2">
-            @foreach ($badges as $badge)
-                <div class="grid grid-cols-7 gap-1 mb-1">
-                    <div class="bg-gray-100 rounded-lg col-span-2 font-bold flex items-center justify-center text-md">{{ $badge->name }}</div>
-                    <div class="border-4 border-gray-4 rounded-lg flex items-center justify-center italic py-2">
-                        <img class="w-20 h-20" src="{{ asset('images/badges/' . $badge->icon) }}">
+    @if (auth()->user()->data->study_group == 'Experimental')
+        <div class="mt-4">
+            <h2 class="text-xl font-bold">Badges</h2>
+            <p>You have been selected to be in the experimental group of this study. This means that you have access to badges as part of exploring the platform. You can view your badges at the top of the screen, and by hovering you can see the requirements for each badge. Additionally, when you complete a lesson, you will be shown any badges you have earned.</p>
+            <div class="m-2">
+                @foreach ($badges as $badge)
+                    <div class="grid grid-cols-7 gap-1 mb-1">
+                        <div class="bg-gray-100 rounded-lg col-span-2 font-bold flex items-center justify-center text-md">{{ $badge->name }}</div>
+                        <div class="border-4 border-gray-4 rounded-lg flex items-center justify-center italic py-2">
+                            <img class="w-20 h-20" src="{{ asset('images/badges/' . $badge->icon) }}">
+                        </div>
+                        <div class="col-span-4 border-4 border-gray-4 rounded-lg flex items-center justify-center text-sm p-4">{{ $badge->description }}</div>
                     </div>
-                    <div class="col-span-4 border-4 border-gray-4 rounded-lg flex items-center justify-center text-sm p-4">{{ $badge->description }}</div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </div>
+    @endif
 </x-admin-layout>
