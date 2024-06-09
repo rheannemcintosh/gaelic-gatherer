@@ -16,6 +16,14 @@ class StudyController extends Controller
     // Show the welcome page to research participants
     public function showWelcomePage()
     {
+        if (!Auth::user()->pre_study_consent) {
+            return redirect()
+                ->route('pre-study-questionnaire.show.consent')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
+        }
+
         if (!auth()->user()->data->pre_study_completed_at) {
 
             return redirect()
