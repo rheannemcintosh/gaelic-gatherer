@@ -13,13 +13,13 @@ class PostStudyQuestionnaireController extends Controller
      */
     public function showConsent()
     {
-
-        $userData = UserData::find(Auth::id());
-
-        $userData->update([
-            'study_completed_at' => now(),
-        ]);
-
+        if (!Auth::user()->data->study_completed_at) {
+            return redirect()
+                ->route('welcome.show')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
+        }
 
         if (Auth::user()->post_study_consent) {
             return redirect()

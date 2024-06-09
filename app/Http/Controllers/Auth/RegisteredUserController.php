@@ -65,6 +65,10 @@ class RegisteredUserController extends Controller
             'initial_consent' => true,
         ]);
 
+        UserData::create([
+            'user_id' => $user->id,
+        ]);
+
         event(new Registered($user));
 
         Auth::login($user);

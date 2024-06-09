@@ -53,7 +53,15 @@ class PreStudyQuestionnaireController extends Controller
      */
     public function show()
     {
-        if (!is_null(UserData::find(Auth::id()))) {
+        if(!Auth::user()->pre_study_consent) {
+            return redirect()
+                ->route('pre-study-questionnaire.show.consent')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
+        }
+
+        if (!is_null(auth()->user()->data->pre_study_completed_at)) {
             return redirect()
                 ->route('welcome.show')
                 ->with([
@@ -81,8 +89,9 @@ class PreStudyQuestionnaireController extends Controller
         ]);
 
         // Create the user data record
-        $userData = UserData::create([
-            'user_id' => $user->id,
+        $userData = UserData::find(Auth::id());
+
+        $userData->update([
             'study_group' => \App\Helpers\StudyGroupHelper::assignStudyGroup(),
             'pre_study_motivation' => $request->pre_study_motivation,
             'pre_study_competency' => $request->scottish_gaelic_competency,

@@ -17,6 +17,14 @@ class KnowledgeRetentionQuizController extends Controller
      */
     public function showConsent($quiz)
     {
+        if(!Auth::user()->data->post_study_completed_at) {
+            return redirect()
+                ->route('welcome.show')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
+        }
+
         if ($quiz != 1 && $quiz != 2 && $quiz != 3) {
             abort(404);
         }
