@@ -10,6 +10,12 @@
         <li class="ml-8">You will need to be available for a short quiz, lasting up to 10 minutes, one hour after completing the initial study.</li>
         <li class="ml-8">Another short quiz, also around 10 minutes, will be required 14 days later.</li>
     </ul>
+    <p class="font-bold">
+        This platform has been designed to work only work on desktops / laptops. If you are on another device, such as a mobile or tablet, please log out, and log in on another device if possible.
+    </p>
+    <p>
+        If you require any assistance, there is a help button in the top left hand corner with more details about the platform.
+    </p>
     <p>
         Does everything sound good? If you are happy to continue, please click the button below to get started!
     </p>
