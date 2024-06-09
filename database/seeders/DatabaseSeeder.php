@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run all seeds when the command php artisan db:seed is run.
      */
     public function run(): void
     {

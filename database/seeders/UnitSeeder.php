@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class UnitSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database seeds for the units table, to add the 5 available units.
      */
     public function run(): void
     {
