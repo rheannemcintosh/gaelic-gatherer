@@ -167,7 +167,11 @@ class StudyController extends Controller
     public function showThankYouPage()
     {
         if (!auth()->user()->data->quiz_three_completed_at) {
-            return redirect(route('post-study-questionnaire.show.consent'));
+            return redirect()
+                ->route('post-study-questionnaire.show.consent')
+                ->with([
+                    'statusMessage' => 'Oops! You tried to access the wrong page. We\'ve redirected you to the correct page!',
+                ]);
         }
 
         return view('pages.thank-you');
