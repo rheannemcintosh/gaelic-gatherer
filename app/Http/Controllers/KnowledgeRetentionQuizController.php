@@ -170,6 +170,11 @@ class KnowledgeRetentionQuizController extends Controller
                 ]);
         }
 
-        return redirect(route('on-hold.show'));
+        return redirect()
+            ->route('on-hold.show')
+            ->with([
+                'statusMessage' => 'Thank you for completing the quiz. The next quiz will be available soon!',
+                'statusType'    => 'success',
+            ]);
     }
 }
