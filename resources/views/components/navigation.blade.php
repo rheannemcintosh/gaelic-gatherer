@@ -74,8 +74,12 @@
     @endif
 
     <script>
-        document.getElementById('toggle-popup-button').addEventListener('click', function() {
-            Livewire.dispatch('togglePopup');
-        });
+        const togglePopupButton = document.getElementById('toggle-popup-button');
+
+        if (togglePopupButton) {
+            togglePopupButton.addEventListener('click', function() {
+                Livewire.dispatch('togglePopup');
+            });
+        }
     </script>
 </nav>
