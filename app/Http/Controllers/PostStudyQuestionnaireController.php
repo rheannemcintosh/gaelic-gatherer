@@ -45,7 +45,6 @@ class PostStudyQuestionnaireController extends Controller
             'post_study_consent' => true
         ]);
 
-        // Redirect to the pre-study questionnaire form
         return redirect()
             ->route('post-study-questionnaire.show')
             ->with([
@@ -108,6 +107,11 @@ class PostStudyQuestionnaireController extends Controller
             'quiz_one_unlocked_at' => now(),
         ]);
 
-        return redirect(route('knowledge-retention-quiz.show.consent', ['quiz' => 1]));
+        return redirect()
+            ->route('knowledge-retention-quiz.show.consent', ['quiz' => 1])
+            ->with([
+                'statusMessage' => 'Thank you for completing the post-study questionnaire. You can now start the first quiz.',
+                'statusType'    => 'success',
+            ]);
     }
 }
