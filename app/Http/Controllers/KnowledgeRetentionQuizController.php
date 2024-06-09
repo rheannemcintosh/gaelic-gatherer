@@ -41,6 +41,17 @@ class KnowledgeRetentionQuizController extends Controller
                 ]);
         }
 
+        if (
+            ($quiz == 2 && (auth()->user()->data->quiz_two_unlocked_at >= now())) ||
+            ($quiz == 3 && (auth()->user()->data->quiz_three_unlocked_at >= now()))
+        ) {
+            return redirect()
+                ->route('on-hold.show')
+                ->with([
+                    'statusMessage' => 'Oops! This quiz is not available yet. We\'ve redirected you to the correct page!',
+                ]);
+        }
+
         return view('knowledge-retention-quiz.consent', ['quiz' => $quiz]);
     }
 
