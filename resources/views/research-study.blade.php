@@ -7,13 +7,13 @@
         <p class="mb-4 text-center">The primary goal of this research is to assess how gamified badges influence the retention of knowledge acquired through the Gaelic Gatherer platform. By participating in this study, you will contribute valuable insights to understanding how gamification can enhance the knowledge retention of language learning.</p>
 
         <h2 class="text-center font-bold mb-2">What Does the Study Involve?</h2>
-        <p>Participants will explore an application called Gaelic Gatherer at their own pace, engaging with learning materials on key topics in Scottish Gaelic. They'll then provide some personal information before completing a small quiz on Scottish Gaelic, followed by quizzes one hour and two weeks later to measure knowledge retention.</p>
+        <p>Participants will explore an application called Gaelic Gatherer at their own pace, engaging with learning materials on key topics in Scottish Gaelic. They'll then provide some personal information before completing a small quiz on Scottish Gaelic, followed by quizzes one hour and two weeks later to measure knowledge retention. It is estimated that this study will take no longer than an hour in total.</p>
 
         <h2 class="text-center font-bold mb-2">Who Can Participate?</h2>
         <p class="mb-4 text-center">Individuals over 18 years old, residing in the UK, and without significant prior knowledge of Scottish Gaelic are eligible to participate.</p>
 
         <h2 class="text-center font-bold mb-2">What is the Withdrawal Process?</h2>
-        <p class="mb-4 text-center">Participants can withdraw from this project by discontinuing platform use, selecting withdrawal options in emails or on the platform, or contacting the researcher via email.</p>
+        <p class="mb-4 text-center">Participants can withdraw from this project by discontinuing platform use, or by contacting the researcher via email.</p>
 
         <h2 class="text-center font-bold mb-2">What personal data will be stored?</h2>
         <p class="mb-4 text-center">Participants' personal information, questionnaire responses, quiz performance, and platform usage are collected to enrich our understanding of Scottish Gaelic language learning.</p>
